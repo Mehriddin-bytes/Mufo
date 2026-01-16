@@ -27,7 +27,7 @@ export default function Navbar() {
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
         isScrolled
-          ? 'bg-[#FFFCF8]/98 backdrop-blur-sm shadow-[0_2px_20px_rgba(107,68,35,0.08)]'
+          ? 'bg-white/98 backdrop-blur-sm shadow-[0_2px_20px_rgba(0,0,0,0.08)]'
           : 'bg-transparent'
       )}
     >
@@ -155,7 +155,7 @@ export default function Navbar() {
         {/* Mobile Navigation */}
         <div
           className={cn(
-            'lg:hidden fixed inset-x-0 top-[70px] bg-[#FFFCF8] border-t border-gray-200 transition-all duration-300 overflow-hidden',
+            'lg:hidden fixed inset-x-0 top-[70px] bg-white border-t border-gray-200 transition-all duration-300 overflow-hidden',
             isOpen ? 'max-h-[calc(100vh-70px)] opacity-100' : 'max-h-0 opacity-0'
           )}
         >

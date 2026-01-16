@@ -3,58 +3,58 @@
 /**
  * MUFO RENOVATION - Global Styles & CSS Variables
  * ================================================
- * Unique warm brownish color palette
+ * Navy blue & gold color palette
  * Update hex values here to change the entire site's color scheme.
  */
 
 :root {
   /* ===================
-     BRAND COLORS - Warm Brown Palette
+     BRAND COLORS - Navy Blue
      =================== */
-  --color-brand: #6B4423;           /* Rich walnut brown */
-  --color-brand-hover: #543618;     /* Darker mahogany */
-  --color-brand-light: #8B6240;     /* Lighter camel */
-  --color-brand-dark: #3D2514;      /* Deep espresso */
+  --color-brand: #1e3a5f;           /* Deep navy blue */
+  --color-brand-hover: #152d4a;     /* Darker navy */
+  --color-brand-light: #2d4a6f;     /* Lighter navy */
+  --color-brand-dark: #111827;      /* Very dark navy */
 
   /* ===================
-     ACCENT COLORS - Warm Copper/Gold
+     ACCENT COLORS - Gold
      =================== */
-  --color-accent: #C9A66B;          /* Warm brass */
-  --color-accent-hover: #B8955A;    /* Antique gold */
-  --color-accent-light: #E4D4B8;    /* Cream beige */
+  --color-accent: #d4af37;          /* Gold */
+  --color-accent-hover: #c4a030;    /* Darker gold */
+  --color-accent-light: #e5c76b;    /* Light gold */
 
   /* ===================
-     SECONDARY - Terracotta
+     SECONDARY
      =================== */
-  --color-secondary: #A67C52;       /* Warm sienna */
-  --color-secondary-hover: #8F6A45;
+  --color-secondary: #64748b;       /* Slate */
+  --color-secondary-hover: #475569;
 
   /* ===================
-     NEUTRAL COLORS - Warm Tones
+     NEUTRAL COLORS
      =================== */
-  --color-white: #FFFCF8;           /* Warm white */
-  --color-black: #1C1714;           /* Warm black */
+  --color-white: #ffffff;
+  --color-black: #000000;
 
-  /* Warm Gray Scale */
-  --color-gray-50: #FBF9F6;
-  --color-gray-100: #F5F1EC;
-  --color-gray-200: #E8E1D9;
-  --color-gray-300: #D4C9BC;
-  --color-gray-400: #B3A596;
-  --color-gray-500: #8A7B6C;
-  --color-gray-600: #6B5D50;
-  --color-gray-700: #4D4238;
-  --color-gray-800: #352D26;
-  --color-gray-900: #221C17;
-  --color-gray-950: #120F0C;
+  /* Gray Scale */
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5db;
+  --color-gray-400: #9ca3af;
+  --color-gray-500: #6b7280;
+  --color-gray-600: #4b5563;
+  --color-gray-700: #374151;
+  --color-gray-800: #1f2937;
+  --color-gray-900: #111827;
+  --color-gray-950: #030712;
 
   /* ===================
      SEMANTIC COLORS
      =================== */
-  --color-success: #5B8A5B;
-  --color-warning: #C9A66B;
-  --color-error: #B55A5A;
-  --color-info: #5A7A8A;
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --color-info: #3b82f6;
 
   /* ===================
      LAYOUT
@@ -72,13 +72,13 @@
   --transition-slow: 500ms ease;
 
   /* ===================
-     SHADOWS - Warm tones
+     SHADOWS
      =================== */
-  --shadow-sm: 0 1px 3px rgba(107, 68, 35, 0.08);
-  --shadow-md: 0 4px 12px rgba(107, 68, 35, 0.1);
-  --shadow-lg: 0 8px 24px rgba(107, 68, 35, 0.12);
-  --shadow-xl: 0 16px 40px rgba(107, 68, 35, 0.15);
-  --shadow-warm: 0 8px 30px rgba(201, 166, 107, 0.2);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+  --shadow-xl: 0 16px 40px rgba(0, 0, 0, 0.15);
+  --shadow-warm: 0 8px 30px rgba(212, 175, 55, 0.2);
 }
 
 /* ===================
@@ -226,16 +226,16 @@ body {
   inset: 0;
   background: linear-gradient(
     to bottom,
-    rgba(28, 23, 20, 0.75),
-    rgba(28, 23, 20, 0.6),
-    rgba(28, 23, 20, 0.8)
+    rgba(17, 24, 39, 0.75),
+    rgba(17, 24, 39, 0.6),
+    rgba(17, 24, 39, 0.8)
   );
 }
 
 .overlay-brand {
   position: absolute;
   inset: 0;
-  background: rgba(107, 68, 35, 0.88);
+  background: rgba(30, 58, 95, 0.88);
 }
 
 /* ===================
@@ -333,7 +333,7 @@ body {
 .input:focus {
   outline: none;
   border-color: var(--color-accent);
-  box-shadow: 0 0 0 3px rgba(201, 166, 107, 0.15);
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
 }
 
 .input::placeholder {
@@ -361,7 +361,7 @@ body {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(201, 166, 107, 0.15), transparent);
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.15), transparent);
   transition: left 0.6s ease;
 }
 
