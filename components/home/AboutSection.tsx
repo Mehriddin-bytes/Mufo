@@ -10,7 +10,7 @@ const highlights = [
 
 export default function AboutSection() {
   return (
-    <section className="section-padding bg-[#FFFCF8]">
+    <section className="section-padding bg-gray-50">
       <div className="container-custom">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           {/* Image Side */}

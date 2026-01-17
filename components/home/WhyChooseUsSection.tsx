@@ -11,7 +11,7 @@ const iconMap = {
 
 export default function WhyChooseUsSection() {
   return (
-    <section className="section-padding bg-[#FFFCF8]">
+    <section className="section-padding bg-white">
       <div className="container-custom">
         {/* Section Header */}
         <ScrollAnimation direction="up" className="text-center mb-16">
