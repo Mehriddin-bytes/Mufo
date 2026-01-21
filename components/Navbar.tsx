@@ -2,13 +2,22 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Menu, X, Phone, ArrowRight } from 'lucide-react';
+import { Menu, X, Phone, ArrowRight, ChevronDown, Home, Bath, Warehouse, Building2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { siteConfig, navLinks } from '@/lib/data/siteData';
+import { siteConfig, navLinks, services } from '@/lib/data/siteData';
+
+const serviceIcons = {
+  'kitchen-renovation': Home,
+  'bathroom-renovation': Bath,
+  'basement-finishing': Warehouse,
+  'full-home-renovation': Building2,
+};
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,7 +29,10 @@ export default function Navbar() {
   }, []);
 
   const toggleMenu = () => setIsOpen(!isOpen);
-  const closeMenu = () => setIsOpen(false);
+  const closeMenu = () => {
+    setIsOpen(false);
+    setIsMobileServicesOpen(false);
+  };
 
   return (
     <header
@@ -85,21 +97,111 @@ export default function Navbar() {
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-1">
             {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={cn(
-                  'relative px-5 py-2 text-[0.9375rem] font-medium transition-colors duration-300',
-                  'after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2',
-                  'after:w-0 after:h-[2px] after:bg-accent after:transition-all after:duration-300',
-                  'hover:after:w-6',
-                  isScrolled
-                    ? 'text-gray-700 hover:text-brand'
-                    : 'text-white/90 hover:text-white'
-                )}
-              >
-                {link.label}
-              </Link>
+              link.label === 'Services' ? (
+                <div
+                  key={link.href}
+                  className="relative"
+                  onMouseEnter={() => setIsServicesOpen(true)}
+                  onMouseLeave={() => setIsServicesOpen(false)}
+                >
+                  <Link
+                    href={link.href}
+                    className={cn(
+                      'relative flex items-center gap-1 px-5 py-2 text-[0.9375rem] font-medium transition-colors duration-300',
+                      'after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2',
+                      'after:w-0 after:h-[2px] after:bg-accent after:transition-all after:duration-300',
+                      'hover:after:w-6',
+                      isScrolled
+                        ? 'text-gray-700 hover:text-brand'
+                        : 'text-white/90 hover:text-white'
+                    )}
+                  >
+                    {link.label}
+                    <ChevronDown className={cn(
+                      'w-4 h-4 transition-transform duration-200',
+                      isServicesOpen && 'rotate-180'
+                    )} />
+                  </Link>
+
+                  {/* Dropdown */}
+                  <div
+                    className={cn(
+                      'absolute top-full left-1/2 -translate-x-1/2 pt-4 transition-all duration-200',
+                      isServicesOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'
+                    )}
+                  >
+                    <div className="bg-white rounded-xl shadow-xl border border-gray-100 p-6 min-w-[480px]">
+                      {/* Dropdown Header */}
+                      <div className="flex items-center justify-between mb-4 pb-4 border-b border-gray-100">
+                        <div>
+                          <h3 className="font-display text-lg font-semibold text-gray-900">Our Services</h3>
+                          <p className="text-sm text-gray-500">Expert renovation solutions</p>
+                        </div>
+                        <Link
+                          href="/services"
+                          className="text-sm text-brand font-medium hover:text-brand-hover flex items-center gap-1"
+                        >
+                          View All
+                          <ArrowRight className="w-3.5 h-3.5" />
+                        </Link>
+                      </div>
+
+                      {/* Services Grid */}
+                      <div className="grid grid-cols-2 gap-3">
+                        {services.map((service) => {
+                          const Icon = serviceIcons[service.slug as keyof typeof serviceIcons] || Home;
+                          return (
+                            <Link
+                              key={service.id}
+                              href={`/services/${service.slug}`}
+                              className="group flex items-start gap-4 p-3 rounded-lg hover:bg-gray-50 transition-colors"
+                            >
+                              <div className="w-10 h-10 rounded-lg bg-brand/10 flex items-center justify-center flex-shrink-0 group-hover:bg-brand group-hover:text-white transition-colors">
+                                <Icon className="w-5 h-5 text-brand group-hover:text-white" />
+                              </div>
+                              <div>
+                                <h4 className="font-medium text-gray-900 group-hover:text-brand transition-colors">
+                                  {service.title}
+                                </h4>
+                                <p className="text-sm text-gray-500 line-clamp-1">
+                                  {service.features[0]}
+                                </p>
+                              </div>
+                            </Link>
+                          );
+                        })}
+                      </div>
+
+                      {/* Dropdown Footer */}
+                      <div className="mt-4 pt-4 border-t border-gray-100">
+                        <Link
+                          href="/contact"
+                          className="flex items-center justify-center gap-2 w-full py-3 bg-brand text-white text-sm font-medium rounded-lg hover:bg-brand-hover transition-colors"
+                        >
+                          Get a Free Quote
+                          <ArrowRight className="w-4 h-4" />
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={cn(
+                    'relative px-5 py-2 text-[0.9375rem] font-medium transition-colors duration-300',
+                    'after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2',
+                    'after:w-0 after:h-[2px] after:bg-accent after:transition-all after:duration-300',
+                    'hover:after:w-6',
+                    isScrolled
+                      ? 'text-gray-700 hover:text-brand'
+                      : 'text-white/90 hover:text-white'
+                  )}
+                >
+                  {link.label}
+                </Link>
+              )
             ))}
           </div>
 
@@ -159,18 +261,62 @@ export default function Navbar() {
             isOpen ? 'max-h-[calc(100vh-70px)] opacity-100' : 'max-h-0 opacity-0'
           )}
         >
-          <div className="container-custom py-6">
+          <div className="container-custom py-6 max-h-[calc(100vh-70px)] overflow-y-auto">
             <div className="flex flex-col gap-1">
               {navLinks.map((link, index) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={closeMenu}
-                  className="py-3.5 px-4 text-lg text-gray-800 font-medium border-b border-gray-100 hover:text-brand hover:bg-gray-50 transition-colors"
-                  style={{ animationDelay: `${index * 50}ms` }}
-                >
-                  {link.label}
-                </Link>
+                link.label === 'Services' ? (
+                  <div key={link.href}>
+                    <button
+                      onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
+                      className="w-full flex items-center justify-between py-3.5 px-4 text-lg text-gray-800 font-medium border-b border-gray-100 hover:text-brand hover:bg-gray-50 transition-colors"
+                    >
+                      {link.label}
+                      <ChevronDown className={cn(
+                        'w-5 h-5 transition-transform duration-200',
+                        isMobileServicesOpen && 'rotate-180'
+                      )} />
+                    </button>
+                    <div className={cn(
+                      'overflow-hidden transition-all duration-300',
+                      isMobileServicesOpen ? 'max-h-[500px]' : 'max-h-0'
+                    )}>
+                      <div className="py-2 pl-4 space-y-1">
+                        {services.map((service) => {
+                          const Icon = serviceIcons[service.slug as keyof typeof serviceIcons] || Home;
+                          return (
+                            <Link
+                              key={service.id}
+                              href={`/services/${service.slug}`}
+                              onClick={closeMenu}
+                              className="flex items-center gap-3 py-3 px-4 text-gray-600 hover:text-brand hover:bg-gray-50 rounded-lg transition-colors"
+                            >
+                              <Icon className="w-5 h-5 text-accent" />
+                              {service.title}
+                            </Link>
+                          );
+                        })}
+                        <Link
+                          href="/services"
+                          onClick={closeMenu}
+                          className="flex items-center gap-2 py-3 px-4 text-brand font-medium"
+                        >
+                          View All Services
+                          <ArrowRight className="w-4 h-4" />
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={closeMenu}
+                    className="py-3.5 px-4 text-lg text-gray-800 font-medium border-b border-gray-100 hover:text-brand hover:bg-gray-50 transition-colors"
+                    style={{ animationDelay: `${index * 50}ms` }}
+                  >
+                    {link.label}
+                  </Link>
+                )
               ))}
             </div>
 

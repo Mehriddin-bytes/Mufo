@@ -32,7 +32,7 @@ export default function ServicesSection() {
               <Link
                 key={service.id}
                 href={`/services/${service.slug}`}
-                className="group relative block aspect-[3/4] rounded-xl overflow-hidden"
+                className="group relative block aspect-[3/4] overflow-hidden"
               >
                 {/* Background Image Placeholder */}
                 <div className="absolute inset-0 bg-gradient-to-br from-brand-light to-brand group-hover:scale-105 transition-transform duration-500" />
