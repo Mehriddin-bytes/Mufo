@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { ArrowRight, Gem, Eye, Clock, Shield, Users, Award, Target, Heart } from 'lucide-react';
 import { ScrollAnimation, StaggerAnimation } from '@/components/ui';
-import { siteConfig, stats, valueProps } from '@/lib/data/siteData';
+import { stats, valueProps } from '@/lib/data/siteData';
 import { PageCTASection } from '@/components/shared';
 
 export const metadata = {
@@ -15,29 +15,6 @@ const valueIcons = {
   Clock: Clock,
   Shield: Shield,
 };
-
-const teamMembers = [
-  {
-    name: 'Michael Foley',
-    role: 'Founder & Lead Designer',
-    bio: 'With over 20 years in renovation, Michael founded Mufo with a vision to bring exceptional craftsmanship to every home.',
-  },
-  {
-    name: 'Sarah Chen',
-    role: 'Project Manager',
-    bio: 'Sarah ensures every project runs smoothly, coordinating teams and keeping clients informed at every step.',
-  },
-  {
-    name: 'David Martinez',
-    role: 'Master Craftsman',
-    bio: 'David leads our carpentry team with precision and an eye for detail that defines our quality standard.',
-  },
-  {
-    name: 'Emily Watson',
-    role: 'Interior Design Consultant',
-    bio: 'Emily helps clients envision their spaces, bringing fresh ideas and design expertise to every consultation.',
-  },
-];
 
 const milestones = [
   { year: '2012', title: 'Founded in Toronto', description: 'Started with a small team and a commitment to quality.' },
@@ -262,8 +239,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Our Journey / Timeline */}
-      <section className="section-padding bg-white">
+      {/* Our Journey / Timeline - Horizontal */}
+      <section className="section-padding bg-white overflow-hidden">
         <div className="container-custom">
           <ScrollAnimation direction="up">
             <div className="text-center max-w-2xl mx-auto mb-12">
@@ -280,77 +257,31 @@ export default function AboutPage() {
             </div>
           </ScrollAnimation>
 
-          <div className="max-w-3xl mx-auto">
-            <StaggerAnimation direction="up" staggerDelay={100} className="space-y-0">
-              {milestones.map((milestone, index) => (
-                <div key={milestone.year} className="relative pl-8 pb-10 last:pb-0 border-l-2 border-gray-200 last:border-transparent">
+          {/* Horizontal Timeline */}
+          <div className="relative">
+            {/* Timeline line */}
+            <div className="absolute top-6 left-0 right-0 h-0.5 bg-gray-200 hidden lg:block" />
+
+            <StaggerAnimation direction="up" staggerDelay={100} className="grid grid-cols-2 lg:grid-cols-5 gap-6 lg:gap-4">
+              {milestones.map((milestone) => (
+                <div key={milestone.year} className="relative text-center">
                   {/* Timeline dot */}
-                  <div className="absolute left-0 top-0 w-4 h-4 -translate-x-1/2 bg-accent" />
-                  {/* Content */}
-                  <div className="ml-6">
-                    <span className="text-accent font-display text-lg font-medium">
+                  <div className="w-12 h-12 mx-auto bg-accent flex items-center justify-center mb-4 relative z-10">
+                    <span className="text-brand-dark font-display font-semibold text-sm">
                       {milestone.year}
                     </span>
-                    <h3 className="font-display text-xl font-medium text-gray-900 mt-1 mb-2">
-                      {milestone.title}
-                    </h3>
-                    <p className="text-gray-600">
-                      {milestone.description}
-                    </p>
                   </div>
+                  {/* Content */}
+                  <h3 className="font-display text-lg font-medium text-gray-900 mb-2">
+                    {milestone.title}
+                  </h3>
+                  <p className="text-gray-600 text-sm">
+                    {milestone.description}
+                  </p>
                 </div>
               ))}
             </StaggerAnimation>
           </div>
-        </div>
-      </section>
-
-      {/* Team Section */}
-      <section id="team" className="section-padding bg-gray-50">
-        <div className="container-custom">
-          <ScrollAnimation direction="up">
-            <div className="text-center max-w-2xl mx-auto mb-12">
-              <span className="inline-flex items-center gap-3 justify-center mb-4">
-                <span className="w-10 h-px bg-accent" />
-                <span className="text-accent-hover text-sm font-medium tracking-[0.2em] uppercase">
-                  Our Team
-                </span>
-                <span className="w-10 h-px bg-accent" />
-              </span>
-              <h2 className="font-display text-3xl lg:text-4xl font-medium text-gray-900">
-                Meet the Experts
-              </h2>
-              <p className="text-gray-600 mt-4">
-                Our talented team brings decades of combined experience to every project.
-              </p>
-            </div>
-          </ScrollAnimation>
-
-          <StaggerAnimation direction="up" staggerDelay={100} className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {teamMembers.map((member) => (
-              <div key={member.name} className="bg-white overflow-hidden group">
-                {/* Photo placeholder */}
-                <div className="aspect-square bg-gradient-to-br from-brand via-brand-light to-secondary flex items-center justify-center">
-                  <div className="text-center text-white/40">
-                    <Users className="w-16 h-16 mx-auto mb-2" strokeWidth={1} />
-                    <span className="text-xs">Photo</span>
-                  </div>
-                </div>
-                {/* Info */}
-                <div className="p-6">
-                  <h3 className="font-display text-lg font-medium text-gray-900 mb-1">
-                    {member.name}
-                  </h3>
-                  <p className="text-accent-hover text-sm font-medium mb-3">
-                    {member.role}
-                  </p>
-                  <p className="text-gray-600 text-sm leading-relaxed">
-                    {member.bio}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </StaggerAnimation>
         </div>
       </section>
 
@@ -359,6 +290,7 @@ export default function AboutPage() {
         label="Ready to Start?"
         title="Let's Build Something Beautiful Together"
         description="Whether you're planning a small update or a complete transformation, our team is ready to bring your vision to life. Contact us today for a free consultation."
+        showPhone={false}
       />
     </main>
   );
