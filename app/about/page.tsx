@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { ArrowRight, Gem, Eye, Clock, Shield, Users, Award, Target, Heart } from 'lucide-react';
 import { ScrollAnimation, StaggerAnimation } from '@/components/ui';
 import { stats, valueProps } from '@/lib/data/siteData';
-import { PageCTASection } from '@/components/shared';
+import { TimelineSection, CertificationsSection } from '@/components/shared';
 
 export const metadata = {
   title: 'About Us | Mufo Renovation',
@@ -239,59 +239,11 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Our Journey / Timeline - Horizontal */}
-      <section className="section-padding bg-white overflow-hidden">
-        <div className="container-custom">
-          <ScrollAnimation direction="up">
-            <div className="text-center max-w-2xl mx-auto mb-12">
-              <span className="inline-flex items-center gap-3 justify-center mb-4">
-                <span className="w-10 h-px bg-accent" />
-                <span className="text-accent-hover text-sm font-medium tracking-[0.2em] uppercase">
-                  Our Journey
-                </span>
-                <span className="w-10 h-px bg-accent" />
-              </span>
-              <h2 className="font-display text-3xl lg:text-4xl font-medium text-gray-900">
-                Milestones Along the Way
-              </h2>
-            </div>
-          </ScrollAnimation>
+      {/* Our Journey / Timeline */}
+      <TimelineSection milestones={milestones} />
 
-          {/* Horizontal Timeline */}
-          <div className="relative">
-            {/* Timeline line */}
-            <div className="absolute top-6 left-0 right-0 h-0.5 bg-gray-200 hidden lg:block" />
-
-            <StaggerAnimation direction="up" staggerDelay={100} className="grid grid-cols-2 lg:grid-cols-5 gap-6 lg:gap-4">
-              {milestones.map((milestone) => (
-                <div key={milestone.year} className="relative text-center">
-                  {/* Timeline dot */}
-                  <div className="w-12 h-12 mx-auto bg-accent flex items-center justify-center mb-4 relative z-10">
-                    <span className="text-brand-dark font-display font-semibold text-sm">
-                      {milestone.year}
-                    </span>
-                  </div>
-                  {/* Content */}
-                  <h3 className="font-display text-lg font-medium text-gray-900 mb-2">
-                    {milestone.title}
-                  </h3>
-                  <p className="text-gray-600 text-sm">
-                    {milestone.description}
-                  </p>
-                </div>
-              ))}
-            </StaggerAnimation>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <PageCTASection
-        label="Ready to Start?"
-        title="Let's Build Something Beautiful Together"
-        description="Whether you're planning a small update or a complete transformation, our team is ready to bring your vision to life. Contact us today for a free consultation."
-        showPhone={false}
-      />
+      {/* Certifications Section */}
+      <CertificationsSection />
     </main>
   );
 }

@@ -43,31 +43,6 @@ export default function Navbar() {
           : 'bg-transparent'
       )}
     >
-      {/* Top bar - visible on desktop when not scrolled */}
-      <div
-        className={cn(
-          'hidden lg:block border-b transition-all duration-500 overflow-hidden',
-          isScrolled
-            ? 'max-h-0 opacity-0 border-transparent'
-            : 'max-h-12 opacity-100 border-white/10'
-        )}
-      >
-        <div className="container-custom">
-          <div className="flex items-center justify-between py-2.5 text-sm">
-            <div className="flex items-center gap-6 text-white/70">
-              <span>Mon - Sat: 8:00 AM - 6:00 PM</span>
-            </div>
-            <a
-              href={`tel:${siteConfig.contact.phone.replace(/\D/g, '')}`}
-              className="flex items-center gap-2 text-white/90 hover:text-accent transition-colors"
-            >
-              <Phone className="w-3.5 h-3.5" />
-              {siteConfig.contact.phone}
-            </a>
-          </div>
-        </div>
-      </div>
-
       <nav className="container-custom">
         <div className="flex items-center justify-between h-[70px] lg:h-[80px]">
           {/* Logo */}
