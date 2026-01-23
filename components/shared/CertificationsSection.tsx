@@ -1,13 +1,16 @@
 'use client';
 
 import { useEffect, useState, useRef } from 'react';
+import Image from 'next/image';
 import { ScrollAnimation } from '@/components/ui';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface Certification {
   name: string;
   abbr: string;
+  logo: string;
   url: string;
+  darkBg?: boolean;
 }
 
 interface CertificationsSectionProps {
@@ -19,18 +22,75 @@ interface CertificationsSectionProps {
 }
 
 const defaultCertifications: Certification[] = [
-  { name: 'Workplace Safety & Insurance Board', abbr: 'WSIB', url: 'https://www.wsib.ca' },
-  { name: 'Tarion Warranty Corporation', abbr: 'Tarion', url: 'https://www.tarion.com' },
-  { name: 'Building Industry and Land Development', abbr: 'BILD', url: 'https://www.bildgta.ca' },
-  { name: 'Ontario Home Builders Association', abbr: 'OHBA', url: 'https://www.ohba.ca' },
-  { name: 'RenoMark Certified', abbr: 'RenoMark', url: 'https://www.renomark.ca' },
-  { name: 'Home Construction Regulatory Authority', abbr: 'HCRA', url: 'https://www.hcraontario.ca' },
-  { name: 'National Kitchen & Bath Association', abbr: 'NKBA', url: 'https://nkba.org' },
-  { name: 'Better Business Bureau', abbr: 'BBB', url: 'https://www.bbb.org' },
-  { name: 'Technical Standards & Safety Authority', abbr: 'TSSA', url: 'https://www.tssa.org' },
-  { name: 'Electrical Safety Authority', abbr: 'ESA', url: 'https://esasafe.com' },
-  { name: 'Canadian Construction Association', abbr: 'CCA', url: 'https://www.cca-acc.com' },
-  { name: 'Homestars Verified', abbr: 'Homestars', url: 'https://homestars.com' },
+  {
+    name: 'Home Construction Regulatory Authority',
+    abbr: 'HCRA',
+    logo: '/certifications/hcra.png',
+    url: 'https://www.hcraontario.ca'
+  },
+  {
+    name: 'Workplace Safety & Insurance Board',
+    abbr: 'WSIB',
+    logo: '/certifications/wsib.svg',
+    url: 'https://www.wsib.ca'
+  },
+  {
+    name: 'Tarion Warranty Corporation',
+    abbr: 'Tarion',
+    logo: '/certifications/tarion.svg',
+    url: 'https://www.tarion.com'
+  },
+  {
+    name: 'Building Industry and Land Development',
+    abbr: 'BILD',
+    logo: '/certifications/bild.png',
+    url: 'https://www.bildgta.ca'
+  },
+  {
+    name: 'Ontario Home Builders Association',
+    abbr: 'OHBA',
+    logo: '/certifications/ohba.svg',
+    url: 'https://www.ohba.ca',
+    darkBg: true
+  },
+  {
+    name: 'ACMO Associate Member',
+    abbr: 'ACMO',
+    logo: '/certifications/acmo.png',
+    url: 'https://www.acmo.org'
+  },
+  {
+    name: 'Siding and Window Association',
+    abbr: 'SWA',
+    logo: '/certifications/swa.jpg',
+    url: 'https://www.swacanada.ca'
+  },
+  {
+    name: 'Toronto Construction Association',
+    abbr: 'TCA',
+    logo: '/certifications/tca.svg',
+    url: 'https://www.tcaconnect.com',
+    darkBg: true
+  },
+  {
+    name: 'Canadian Condominium Institute',
+    abbr: 'CCI',
+    logo: '/certifications/cci.svg',
+    url: 'https://ccitoronto.ca',
+    darkBg: true
+  },
+  {
+    name: 'Federation of Rental-housing Providers',
+    abbr: 'FRPO',
+    logo: '/certifications/frpo.jpg',
+    url: 'https://frpo.org'
+  },
+  {
+    name: 'Canadian Federation of Apartment Associations',
+    abbr: 'CFAA',
+    logo: '/certifications/cfaa.png',
+    url: 'https://rentalhousingcanada.ca'
+  },
 ];
 
 export default function CertificationsSection({
@@ -41,42 +101,66 @@ export default function CertificationsSection({
   className = '',
 }: CertificationsSectionProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [itemWidth, setItemWidth] = useState(0);
 
-  const itemsToShow = 6; // Number of visible items
   const totalItems = certifications.length;
+  // Triple the items for infinite scroll
+  const extendedCerts = [...certifications, ...certifications, ...certifications];
+
+  // Calculate item width on mount and resize
+  useEffect(() => {
+    const calculateWidth = () => {
+      if (trackRef.current) {
+        const containerWidth = trackRef.current.parentElement?.offsetWidth || 0;
+        const gap = 16; // gap-4
+        const visibleItems = 6;
+        const width = (containerWidth - (gap * (visibleItems - 1))) / visibleItems;
+        setItemWidth(width);
+      }
+    };
+
+    calculateWidth();
+    window.addEventListener('resize', calculateWidth);
+    return () => window.removeEventListener('resize', calculateWidth);
+  }, []);
 
   // Auto-rotate
   useEffect(() => {
-    if (!isAutoPlaying) return;
-
     const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % totalItems);
-    }, 3000);
+      setCurrentIndex((prev) => {
+        const next = prev + 1;
+        // Reset to middle when we've gone through one full set
+        if (next >= totalItems * 2) {
+          return totalItems;
+        }
+        return next;
+      });
+    }, 2500);
 
     return () => clearInterval(interval);
-  }, [isAutoPlaying, totalItems]);
+  }, [totalItems]);
+
+  // Start from middle set
+  useEffect(() => {
+    setCurrentIndex(totalItems);
+  }, [totalItems]);
 
   const handlePrev = () => {
-    setIsAutoPlaying(false);
-    setCurrentIndex((prev) => (prev - 1 + totalItems) % totalItems);
+    setCurrentIndex((prev) => {
+      if (prev <= 0) return totalItems;
+      return prev - 1;
+    });
   };
 
   const handleNext = () => {
-    setIsAutoPlaying(false);
-    setCurrentIndex((prev) => (prev + 1) % totalItems);
+    setCurrentIndex((prev) => {
+      if (prev >= totalItems * 2) return totalItems;
+      return prev + 1;
+    });
   };
 
-  // Get visible items with wrap-around
-  const getVisibleItems = () => {
-    const items = [];
-    for (let i = 0; i < itemsToShow; i++) {
-      const index = (currentIndex + i) % totalItems;
-      items.push({ ...certifications[index], originalIndex: index });
-    }
-    return items;
-  };
+  const translateX = currentIndex * (itemWidth + 16); // itemWidth + gap
 
   return (
     <section className={`py-12 lg:py-16 bg-gray-50 ${className}`}>
@@ -100,11 +184,11 @@ export default function CertificationsSection({
         </ScrollAnimation>
 
         {/* Carousel */}
-        <div className="relative">
+        <div className="relative px-12 lg:px-16">
           {/* Navigation Arrows */}
           <button
             onClick={handlePrev}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 lg:-translate-x-6 z-10 w-10 h-10 bg-white border border-gray-200 flex items-center justify-center text-gray-600 hover:text-brand hover:border-accent transition-colors"
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white border border-gray-200 flex items-center justify-center text-gray-600 hover:text-brand hover:border-accent transition-colors"
             aria-label="Previous"
           >
             <ChevronLeft className="w-5 h-5" />
@@ -112,59 +196,49 @@ export default function CertificationsSection({
 
           <button
             onClick={handleNext}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 lg:translate-x-6 z-10 w-10 h-10 bg-white border border-gray-200 flex items-center justify-center text-gray-600 hover:text-brand hover:border-accent transition-colors"
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white border border-gray-200 flex items-center justify-center text-gray-600 hover:text-brand hover:border-accent transition-colors"
             aria-label="Next"
           >
             <ChevronRight className="w-5 h-5" />
           </button>
 
           {/* Carousel Track */}
-          <div
-            ref={scrollRef}
-            className="overflow-hidden mx-6"
-            onMouseEnter={() => setIsAutoPlaying(false)}
-            onMouseLeave={() => setIsAutoPlaying(true)}
-          >
-            <div className="flex gap-4 transition-transform duration-500 ease-in-out">
-              {getVisibleItems().map((cert, idx) => (
+          <div className="overflow-hidden">
+            <div
+              ref={trackRef}
+              className="flex gap-4 transition-transform duration-700 ease-in-out"
+              style={{
+                transform: `translateX(-${translateX}px)`,
+              }}
+            >
+              {extendedCerts.map((cert, idx) => (
                 <a
                   key={`${cert.abbr}-${idx}`}
                   href={cert.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-shrink-0 w-[calc((100%-5*1rem)/6)] min-w-[120px] group"
+                  className="flex-shrink-0 group"
+                  style={{ width: itemWidth > 0 ? `${itemWidth}px` : 'calc((100% - 5rem) / 6)' }}
                   title={cert.name}
                 >
-                  <div className="h-20 lg:h-24 bg-white border border-gray-100 hover:border-accent/40 hover:shadow-md flex flex-col items-center justify-center p-4 transition-all duration-300">
-                    <span className="font-display text-lg lg:text-xl font-semibold text-gray-700 group-hover:text-brand transition-colors">
-                      {cert.abbr}
-                    </span>
-                    <span className="text-[10px] text-gray-400 text-center mt-1 line-clamp-2 leading-tight">
-                      {cert.name}
-                    </span>
+                  <div className={`h-20 lg:h-24 border border-gray-100 hover:border-accent/40 hover:shadow-md flex items-center justify-center p-4 transition-all duration-300 ${
+                    cert.darkBg ? 'bg-brand' : 'bg-white'
+                  }`}>
+                    <Image
+                      src={cert.logo}
+                      alt={cert.name}
+                      width={120}
+                      height={60}
+                      className={`max-h-12 lg:max-h-14 w-auto object-contain transition-all duration-300 ${
+                        cert.darkBg
+                          ? 'opacity-90 group-hover:opacity-100'
+                          : 'grayscale group-hover:grayscale-0 opacity-70 group-hover:opacity-100'
+                      }`}
+                    />
                   </div>
                 </a>
               ))}
             </div>
-          </div>
-
-          {/* Progress Dots */}
-          <div className="flex justify-center gap-1.5 mt-6">
-            {certifications.map((_, idx) => (
-              <button
-                key={idx}
-                onClick={() => {
-                  setIsAutoPlaying(false);
-                  setCurrentIndex(idx);
-                }}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  idx === currentIndex
-                    ? 'bg-accent w-6'
-                    : 'bg-gray-300 hover:bg-gray-400'
-                }`}
-                aria-label={`Go to slide ${idx + 1}`}
-              />
-            ))}
           </div>
         </div>
       </div>
