@@ -1,0 +1,434 @@
+'use client';
+
+import { useState, useRef } from 'react';
+import { Phone, Mail, MapPin, Upload, X, CheckCircle, Send, Loader2, ImageIcon, FileText } from 'lucide-react';
+import { ScrollAnimation } from '@/components/ui';
+import { siteConfig, services } from '@/lib/data/siteData';
+
+interface FormData {
+  name: string;
+  email: string;
+  phone: string;
+  service: string;
+  budget: string;
+  message: string;
+}
+
+interface UploadedFile {
+  name: string;
+  size: number;
+  type: string;
+  file: File;
+}
+
+const budgetRanges = [
+  { value: 'under-25k', label: 'Under $25K' },
+  { value: '25k-50k', label: '$25K - $50K' },
+  { value: '50k-100k', label: '$50K - $100K' },
+  { value: '100k+', label: '$100K+' },
+];
+
+export default function ContactPage() {
+  const [formData, setFormData] = useState<FormData>({
+    name: '',
+    email: '',
+    phone: '',
+    service: '',
+    budget: '',
+    message: '',
+  });
+  const [files, setFiles] = useState<UploadedFile[]>([]);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [dragActive, setDragActive] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleBudgetSelect = (value: string) => {
+    setFormData((prev) => ({ ...prev, budget: prev.budget === value ? '' : value }));
+  };
+
+  const handleServiceSelect = (value: string) => {
+    setFormData((prev) => ({ ...prev, service: prev.service === value ? '' : value }));
+  };
+
+  const handleDrag = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (e.type === 'dragenter' || e.type === 'dragover') {
+      setDragActive(true);
+    } else if (e.type === 'dragleave') {
+      setDragActive(false);
+    }
+  };
+
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setDragActive(false);
+    if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+      handleFiles(e.dataTransfer.files);
+    }
+  };
+
+  const handleFileInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      handleFiles(e.target.files);
+    }
+  };
+
+  const handleFiles = (fileList: FileList) => {
+    const newFiles: UploadedFile[] = [];
+    const maxSize = 10 * 1024 * 1024;
+    const allowedTypes = ['image/jpeg', 'image/png', 'image/webp', 'application/pdf'];
+
+    Array.from(fileList).forEach((file) => {
+      if (file.size > maxSize) return;
+      if (!allowedTypes.includes(file.type)) return;
+      if (files.length + newFiles.length >= 5) return;
+      newFiles.push({ name: file.name, size: file.size, type: file.type, file });
+    });
+
+    setFiles((prev) => [...prev, ...newFiles]);
+  };
+
+  const removeFile = (index: number) => {
+    setFiles((prev) => prev.filter((_, i) => i !== index));
+  };
+
+  const formatFileSize = (bytes: number) => {
+    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(0) + 'KB';
+    return (bytes / (1024 * 1024)).toFixed(1) + 'MB';
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+    setIsSubmitting(false);
+    setIsSubmitted(true);
+  };
+
+  if (isSubmitted) {
+    return (
+      <main className="min-h-screen bg-brand">
+        <section className="min-h-screen flex items-center justify-center py-20">
+          <div className="container-custom">
+            <div className="max-w-md mx-auto text-center">
+              <div className="w-20 h-20 bg-accent rounded-full flex items-center justify-center mx-auto mb-8">
+                <CheckCircle className="w-10 h-10 text-brand-dark" />
+              </div>
+              <h1 className="font-display text-3xl lg:text-4xl font-medium text-white mb-4">
+                Request Received!
+              </h1>
+              <p className="text-white/70 text-lg mb-8">
+                We&apos;ll review your project and get back to you within 24 hours.
+              </p>
+              <a
+                href="/"
+                className="inline-flex items-center justify-center px-8 py-4 bg-accent text-brand-dark font-medium hover:bg-accent-hover transition-colors"
+              >
+                Back to Home
+              </a>
+            </div>
+          </div>
+        </section>
+      </main>
+    );
+  }
+
+  return (
+    <main>
+      {/* Split Layout */}
+      <section className="min-h-screen grid lg:grid-cols-5">
+        {/* Left Side - Info */}
+        <div className="lg:col-span-2 bg-brand relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-brand-dark via-brand to-brand-light opacity-50" />
+          <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.03%22%3E%3Cpath%20d%3D%22M36%2034v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6%2034v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6%204V0H4v4H0v2h4v4h2V6h4V4H6z%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E')] opacity-50" />
+
+          <div className="relative z-10 h-full flex flex-col justify-center px-8 lg:px-12 xl:px-16 py-32 lg:py-20">
+            <ScrollAnimation direction="left">
+              <span className="inline-flex items-center gap-3 mb-6">
+                <span className="w-10 h-px bg-accent" />
+                <span className="text-accent text-xs font-medium tracking-[0.2em] uppercase">
+                  Get Started
+                </span>
+              </span>
+
+              <h1 className="font-display text-4xl lg:text-5xl xl:text-6xl font-medium text-white leading-tight mb-6">
+                Let&apos;s Build
+                <br />
+                <span className="text-accent-light">Something Great</span>
+              </h1>
+
+              <p className="text-white/60 text-lg mb-12 max-w-md">
+                Tell us about your vision and we&apos;ll make it happen. Free consultation, no obligations.
+              </p>
+
+              {/* Contact Cards */}
+              <div className="space-y-4">
+                <a
+                  href={`tel:${siteConfig.contact.phone.replace(/\D/g, '')}`}
+                  className="group flex items-center gap-4 p-4 bg-white/5 hover:bg-white/10 border border-white/10 transition-all"
+                >
+                  <div className="w-12 h-12 bg-accent/20 flex items-center justify-center">
+                    <Phone className="w-5 h-5 text-accent" />
+                  </div>
+                  <div>
+                    <div className="text-xs text-white/40 uppercase tracking-wider">Call Us</div>
+                    <div className="text-white font-medium group-hover:text-accent transition-colors">
+                      {siteConfig.contact.phone}
+                    </div>
+                  </div>
+                </a>
+
+                <a
+                  href={`mailto:${siteConfig.contact.email}`}
+                  className="group flex items-center gap-4 p-4 bg-white/5 hover:bg-white/10 border border-white/10 transition-all"
+                >
+                  <div className="w-12 h-12 bg-accent/20 flex items-center justify-center">
+                    <Mail className="w-5 h-5 text-accent" />
+                  </div>
+                  <div>
+                    <div className="text-xs text-white/40 uppercase tracking-wider">Email</div>
+                    <div className="text-white font-medium group-hover:text-accent transition-colors">
+                      {siteConfig.contact.email}
+                    </div>
+                  </div>
+                </a>
+
+                <div className="flex items-center gap-4 p-4 bg-white/5 border border-white/10">
+                  <div className="w-12 h-12 bg-accent/20 flex items-center justify-center">
+                    <MapPin className="w-5 h-5 text-accent" />
+                  </div>
+                  <div>
+                    <div className="text-xs text-white/40 uppercase tracking-wider">Location</div>
+                    <div className="text-white font-medium">
+                      {siteConfig.contact.address.city}, {siteConfig.contact.address.province}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ScrollAnimation>
+          </div>
+        </div>
+
+        {/* Right Side - Form */}
+        <div className="lg:col-span-3 bg-gray-50 flex items-center">
+          <div className="w-full max-w-2xl mx-auto px-6 lg:px-12 xl:px-20 py-16 lg:py-20">
+            <ScrollAnimation direction="right">
+              <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Service Selection */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-3">
+                    What can we help you with?
+                  </label>
+                  <div className="grid grid-cols-2 gap-2">
+                    {services.map((service) => (
+                      <button
+                        key={service.id}
+                        type="button"
+                        onClick={() => handleServiceSelect(service.slug)}
+                        className={`p-3 text-sm font-medium text-left border transition-all ${
+                          formData.service === service.slug
+                            ? 'bg-brand text-white border-brand'
+                            : 'bg-white text-gray-700 border-gray-200 hover:border-brand hover:text-brand'
+                        }`}
+                      >
+                        {service.shortTitle}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Contact Info Row */}
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                      Full Name *
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      required
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 bg-white border border-gray-200 focus:border-brand focus:ring-1 focus:ring-brand outline-none transition-colors"
+                      placeholder="John Smith"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+                      Phone *
+                    </label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      required
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 bg-white border border-gray-200 focus:border-brand focus:ring-1 focus:ring-brand outline-none transition-colors"
+                      placeholder="(416) 555-0123"
+                    />
+                  </div>
+                </div>
+
+                {/* Email */}
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                    Email *
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 bg-white border border-gray-200 focus:border-brand focus:ring-1 focus:ring-brand outline-none transition-colors"
+                    placeholder="john@example.com"
+                  />
+                </div>
+
+                {/* Budget Selection */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-3">
+                    Estimated Budget
+                  </label>
+                  <div className="flex flex-wrap gap-2">
+                    {budgetRanges.map((range) => (
+                      <button
+                        key={range.value}
+                        type="button"
+                        onClick={() => handleBudgetSelect(range.value)}
+                        className={`px-4 py-2 text-sm font-medium border transition-all ${
+                          formData.budget === range.value
+                            ? 'bg-brand text-white border-brand'
+                            : 'bg-white text-gray-600 border-gray-200 hover:border-brand hover:text-brand'
+                        }`}
+                      >
+                        {range.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Message */}
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                    Tell us about your project *
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    required
+                    rows={3}
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 bg-white border border-gray-200 focus:border-brand focus:ring-1 focus:ring-brand outline-none transition-colors resize-none"
+                    placeholder="Describe your project, timeline, and any specific requirements..."
+                  />
+                </div>
+
+                {/* File Upload */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Attachments <span className="text-gray-400 font-normal">(optional)</span>
+                  </label>
+
+                  <div
+                    className={`relative border-2 border-dashed transition-all ${
+                      dragActive ? 'border-brand bg-brand/5' : 'border-gray-200 hover:border-gray-300 bg-white'
+                    }`}
+                    onDragEnter={handleDrag}
+                    onDragLeave={handleDrag}
+                    onDragOver={handleDrag}
+                    onDrop={handleDrop}
+                  >
+                    <input
+                      ref={fileInputRef}
+                      type="file"
+                      multiple
+                      accept="image/jpeg,image/png,image/webp,application/pdf"
+                      onChange={handleFileInput}
+                      className="hidden"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => fileInputRef.current?.click()}
+                      className="w-full p-4 flex items-center justify-center gap-3 text-gray-500 hover:text-brand transition-colors"
+                    >
+                      <Upload className="w-5 h-5" />
+                      <span className="text-sm">
+                        Drop files or <span className="text-brand font-medium">browse</span>
+                      </span>
+                    </button>
+                  </div>
+
+                  {/* File List */}
+                  {files.length > 0 && (
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      {files.map((file, index) => (
+                        <div
+                          key={index}
+                          className="inline-flex items-center gap-2 px-3 py-1.5 bg-white border border-gray-200 text-sm"
+                        >
+                          {file.type.startsWith('image/') ? (
+                            <ImageIcon className="w-3.5 h-3.5 text-gray-400" />
+                          ) : (
+                            <FileText className="w-3.5 h-3.5 text-gray-400" />
+                          )}
+                          <span className="text-gray-700 max-w-[120px] truncate">{file.name}</span>
+                          <span className="text-gray-400 text-xs">{formatFileSize(file.size)}</span>
+                          <button
+                            type="button"
+                            onClick={() => removeFile(index)}
+                            className="text-gray-400 hover:text-red-500 transition-colors"
+                          >
+                            <X className="w-3.5 h-3.5" />
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                {/* Submit */}
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full flex items-center justify-center gap-3 px-8 py-4 bg-brand text-white font-medium hover:bg-brand-hover transition-colors disabled:opacity-70"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="w-5 h-5 animate-spin" />
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-5 h-5" />
+                      Get Free Quote
+                    </>
+                  )}
+                </button>
+
+                <p className="text-center text-xs text-gray-400">
+                  By submitting, you agree to our{' '}
+                  <a href="/privacy" className="text-brand hover:underline">Privacy Policy</a>
+                </p>
+              </form>
+            </ScrollAnimation>
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+}

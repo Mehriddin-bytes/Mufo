@@ -26,24 +26,24 @@ export default function GallerySection({
   className = '',
 }: GallerySectionProps) {
   return (
-    <section className={`section-padding bg-gray-50 ${className}`}>
+    <section className={`py-12 lg:py-16 bg-gray-50 ${className}`}>
       <div className="container-custom">
         <ScrollAnimation direction="up">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="inline-flex items-center gap-3 justify-center mb-4">
-              <span className="w-10 h-px bg-accent" />
-              <span className="text-accent-hover text-sm font-medium tracking-[0.2em] uppercase">
+          <div className="text-center max-w-2xl mx-auto mb-8">
+            <span className="inline-flex items-center gap-3 justify-center mb-3">
+              <span className="w-8 h-px bg-accent" />
+              <span className="text-accent-hover text-xs font-medium tracking-[0.2em] uppercase">
                 {label}
               </span>
-              <span className="w-10 h-px bg-accent" />
+              <span className="w-8 h-px bg-accent" />
             </span>
-            <h2 className="font-display text-3xl lg:text-4xl font-medium text-gray-900">
+            <h2 className="font-display text-2xl lg:text-3xl font-medium text-gray-900">
               {title}
             </h2>
           </div>
         </ScrollAnimation>
 
-        <StaggerAnimation direction="up" staggerDelay={100} className="grid grid-cols-2 md:grid-cols-3 gap-4 lg:gap-6">
+        <StaggerAnimation direction="up" staggerDelay={100} className="grid grid-cols-2 md:grid-cols-3 gap-3 lg:gap-4">
           {images.map((img, index) => (
             <div
               key={index}
@@ -67,15 +67,15 @@ export default function GallerySection({
                 {/* Caption - shows on hover */}
                 <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   {img.caption && (
-                    <span className="text-white font-medium text-lg">{img.caption}</span>
+                    <span className="text-white font-medium text-base">{img.caption}</span>
                   )}
-                  <span className="text-white/60 text-sm mt-1">{img.alt}</span>
+                  <span className="text-white/60 text-xs mt-1">{img.alt}</span>
                 </div>
 
                 {/* Always visible caption on mobile */}
                 {img.caption && (
-                  <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/60 to-transparent md:hidden">
-                    <span className="text-white text-sm font-medium">{img.caption}</span>
+                  <div className="absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black/60 to-transparent md:hidden">
+                    <span className="text-white text-xs font-medium">{img.caption}</span>
                   </div>
                 )}
               </div>
@@ -85,10 +85,10 @@ export default function GallerySection({
 
         {viewAllLink && (
           <ScrollAnimation direction="up">
-            <div className="text-center mt-10">
+            <div className="text-center mt-8">
               <Link
                 href={viewAllLink}
-                className="group inline-flex items-center gap-2 px-6 py-3 border border-gray-300 text-gray-700 font-medium rounded-lg hover:border-brand hover:text-brand transition-all"
+                className="group inline-flex items-center gap-2 px-5 py-2.5 border border-gray-300 text-gray-700 text-sm font-medium hover:border-brand hover:text-brand transition-all"
               >
                 {viewAllText}
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

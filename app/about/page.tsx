@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowRight, Gem, Eye, Clock, Shield, Users, Award, Target, Heart } from 'lucide-react';
+import { ArrowRight, Gem, Eye, Clock, Shield, Users, Award } from 'lucide-react';
 import { ScrollAnimation, StaggerAnimation } from '@/components/ui';
 import { stats, valueProps } from '@/lib/data/siteData';
 import { TimelineSection, CertificationsSection } from '@/components/shared';
@@ -57,15 +57,15 @@ export default function AboutPage() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-12 bg-white border-b border-gray-100">
+      <section className="py-8 bg-white border-b border-gray-100">
         <div className="container-custom">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
             {stats.map((stat) => (
               <div key={stat.id} className="text-center">
-                <div className="font-display text-4xl lg:text-5xl font-medium text-brand mb-2">
+                <div className="font-display text-3xl lg:text-4xl font-medium text-brand mb-1">
                   {stat.value}{stat.suffix}
                 </div>
-                <div className="text-gray-600 text-sm">{stat.label}</div>
+                <div className="text-gray-600 text-xs">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -73,25 +73,25 @@ export default function AboutPage() {
       </section>
 
       {/* Our Story Section */}
-      <section className="section-padding bg-white">
+      <section className="py-12 lg:py-16 bg-white">
         <div className="container-custom">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             <ScrollAnimation direction="left">
               <div className="relative">
                 {/* Main Image */}
                 <div className="aspect-[4/3] overflow-hidden">
                   <div className="w-full h-full bg-gradient-to-br from-brand via-brand-light to-secondary flex items-center justify-center">
                     <div className="text-center text-white/40">
-                      <Users className="w-20 h-20 mx-auto mb-3" strokeWidth={1} />
-                      <span className="text-sm">Team Photo</span>
+                      <Users className="w-16 h-16 mx-auto mb-2" strokeWidth={1} />
+                      <span className="text-xs">Team Photo</span>
                     </div>
                   </div>
                 </div>
                 {/* Second Image */}
-                <div className="absolute -bottom-8 -right-8 lg:-right-12 w-48 lg:w-64 aspect-square overflow-hidden shadow-xl">
+                <div className="absolute -bottom-6 -right-6 lg:-right-8 w-36 lg:w-48 aspect-square overflow-hidden shadow-xl">
                   <div className="w-full h-full bg-gradient-to-br from-secondary via-brand to-brand-dark flex items-center justify-center">
                     <div className="text-center text-white/40">
-                      <Award className="w-12 h-12 mx-auto mb-2" strokeWidth={1} />
+                      <Award className="w-10 h-10 mx-auto mb-1" strokeWidth={1} />
                       <span className="text-xs">Workshop</span>
                     </div>
                   </div>
@@ -101,39 +101,37 @@ export default function AboutPage() {
 
             <ScrollAnimation direction="right">
               <div>
-                <span className="inline-flex items-center gap-3 mb-4">
-                  <span className="w-10 h-px bg-accent" />
-                  <span className="text-accent-hover text-sm font-medium tracking-[0.2em] uppercase">
+                <span className="inline-flex items-center gap-3 mb-3">
+                  <span className="w-8 h-px bg-accent" />
+                  <span className="text-accent-hover text-xs font-medium tracking-[0.2em] uppercase">
                     Who We Are
                   </span>
                 </span>
-                <h2 className="font-display text-3xl lg:text-4xl font-medium text-gray-900 mb-6">
+                <h2 className="font-display text-2xl lg:text-3xl font-medium text-gray-900 mb-4">
                   A Legacy of Quality
-                  <br />
-                  <span className="text-accent-hover">Craftsmanship</span>
+                  <span className="text-accent-hover"> Craftsmanship</span>
                 </h2>
-                <p className="text-gray-600 text-lg leading-relaxed mb-6">
+                <p className="text-gray-600 leading-relaxed mb-4">
                   Founded in 2012, Mufo Renovation began with a simple belief: every home
                   deserves the finest craftsmanship. What started as a small team of passionate
                   craftsmen has grown into one of Toronto&apos;s most trusted renovation companies.
                 </p>
-                <p className="text-gray-600 leading-relaxed mb-8">
+                <p className="text-gray-600 text-sm leading-relaxed mb-6">
                   Our founder, Michael Foley, brought together a team of skilled artisans who
                   share his commitment to excellence. Today, we continue that tradition, treating
-                  every project—whether a bathroom update or a complete home transformation—with
-                  the same dedication to quality that defined our first renovation over a decade ago.
+                  every project with the same dedication to quality.
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4">
+                <div className="flex flex-col sm:flex-row gap-3">
                   <Link
                     href="/contact"
-                    className="group inline-flex items-center justify-center gap-2 px-6 py-3 bg-brand text-white font-medium hover:bg-brand-hover transition-all"
+                    className="group inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-brand text-white text-sm font-medium hover:bg-brand-hover transition-all"
                   >
                     Start Your Project
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </Link>
                   <Link
                     href="/projects"
-                    className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-gray-300 text-gray-700 font-medium hover:border-brand hover:text-brand transition-all"
+                    className="inline-flex items-center justify-center gap-2 px-5 py-2.5 border border-gray-300 text-gray-700 text-sm font-medium hover:border-brand hover:text-brand transition-all"
                   >
                     View Our Work
                   </Link>
@@ -144,92 +142,36 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Mission & Vision */}
-      <section className="section-padding bg-gray-50">
-        <div className="container-custom">
-          <ScrollAnimation direction="up">
-            <div className="text-center max-w-2xl mx-auto mb-12">
-              <span className="inline-flex items-center gap-3 justify-center mb-4">
-                <span className="w-10 h-px bg-accent" />
-                <span className="text-accent-hover text-sm font-medium tracking-[0.2em] uppercase">
-                  Our Purpose
-                </span>
-                <span className="w-10 h-px bg-accent" />
-              </span>
-              <h2 className="font-display text-3xl lg:text-4xl font-medium text-gray-900">
-                Mission & Vision
-              </h2>
-            </div>
-          </ScrollAnimation>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            <ScrollAnimation direction="left">
-              <div className="bg-white p-8 lg:p-10 h-full">
-                <div className="w-14 h-14 bg-brand/10 flex items-center justify-center mb-6">
-                  <Target className="w-7 h-7 text-brand" />
-                </div>
-                <h3 className="font-display text-2xl font-medium text-gray-900 mb-4">
-                  Our Mission
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  To deliver exceptional renovation experiences that transform living spaces
-                  and exceed client expectations. We achieve this through expert craftsmanship,
-                  transparent communication, and an unwavering commitment to quality in every
-                  detail of every project.
-                </p>
-              </div>
-            </ScrollAnimation>
-
-            <ScrollAnimation direction="right">
-              <div className="bg-white p-8 lg:p-10 h-full">
-                <div className="w-14 h-14 bg-accent/20 flex items-center justify-center mb-6">
-                  <Heart className="w-7 h-7 text-accent-hover" />
-                </div>
-                <h3 className="font-display text-2xl font-medium text-gray-900 mb-4">
-                  Our Vision
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  To be the most trusted name in home renovation across the Greater Toronto Area,
-                  known for creating beautiful, functional spaces that bring joy to families for
-                  generations. We envision a future where every home reflects the unique personality
-                  and needs of those who live in it.
-                </p>
-              </div>
-            </ScrollAnimation>
-          </div>
-        </div>
-      </section>
-
       {/* Why Choose Us */}
-      <section className="section-padding bg-brand">
+      <section className="py-12 lg:py-16 bg-brand">
         <div className="container-custom">
           <ScrollAnimation direction="up">
-            <div className="text-center max-w-2xl mx-auto mb-12">
-              <span className="inline-flex items-center gap-3 justify-center mb-4">
-                <span className="w-10 h-px bg-accent" />
-                <span className="text-accent text-sm font-medium tracking-[0.2em] uppercase">
+            <div className="text-center max-w-2xl mx-auto mb-8">
+              <span className="inline-flex items-center gap-3 justify-center mb-3">
+                <span className="w-8 h-px bg-accent" />
+                <span className="text-accent text-xs font-medium tracking-[0.2em] uppercase">
                   Why Choose Us
                 </span>
-                <span className="w-10 h-px bg-accent" />
+                <span className="w-8 h-px bg-accent" />
               </span>
-              <h2 className="font-display text-3xl lg:text-4xl font-medium text-white">
+              <h2 className="font-display text-2xl lg:text-3xl font-medium text-white">
                 What Sets Us Apart
               </h2>
             </div>
           </ScrollAnimation>
 
-          <StaggerAnimation direction="up" staggerDelay={100} className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <StaggerAnimation direction="up" staggerDelay={100} className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {valueProps.map((prop) => {
               const Icon = valueIcons[prop.icon as keyof typeof valueIcons] || Gem;
               return (
-                <div key={prop.id} className="bg-white/10 p-6 lg:p-8 hover:bg-white/15 transition-colors">
-                  <div className="w-12 h-12 bg-accent/20 flex items-center justify-center mb-5">
-                    <Icon className="w-6 h-6 text-accent" />
+                <div key={prop.id} className="bg-white/10 p-5 hover:bg-white/15 transition-colors">
+                  <div className="w-10 h-10 bg-accent/20 flex items-center justify-center mb-4">
+                    <Icon className="w-5 h-5 text-accent" />
                   </div>
-                  <h3 className="font-display text-xl font-medium text-white mb-3">
+                  <h3 className="font-display text-lg font-medium text-white mb-2">
                     {prop.title}
                   </h3>
-                  <p className="text-white/70 text-sm leading-relaxed">
+                  <p className="text-white/70 text-xs leading-relaxed">
                     {prop.description}
                   </p>
                 </div>

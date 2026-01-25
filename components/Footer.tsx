@@ -3,51 +3,57 @@ import { Phone, Mail, MapPin, ArrowUpRight } from 'lucide-react';
 import { siteConfig, navLinks, services } from '@/lib/data/siteData';
 import { getCurrentYear } from '@/lib/utils';
 
-export default function Footer() {
+interface FooterProps {
+  showCTA?: boolean;
+}
+
+export default function Footer({ showCTA = true }: FooterProps) {
   return (
     <footer className="bg-brand-dark text-white">
       {/* CTA Section */}
-      <div className="bg-brand">
-        <div className="container-custom py-16 lg:py-20">
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
-            <div className="text-center lg:text-left">
-              <h2 className="font-display text-3xl lg:text-4xl font-medium text-white mb-3">
-                Ready to Transform Your Space?
-              </h2>
-              <p className="text-white/70 text-lg">
-                Let&apos;s discuss your renovation project today.
-              </p>
-            </div>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <a
-                href={`tel:${siteConfig.contact.phone.replace(/\D/g, '')}`}
-                className="group flex items-center gap-3 px-8 py-4 bg-white/10 border border-white/20 text-white font-medium hover:bg-white/20 transition-all"
-              >
-                <Phone className="w-5 h-5" />
-                {siteConfig.contact.phone}
-              </a>
-              <Link
-                href="/contact"
-                className="group flex items-center justify-center gap-2 px-8 py-4 bg-accent text-brand-dark font-medium hover:bg-accent-hover transition-all"
-              >
-                Get Free Quote
-                <ArrowUpRight className="w-5 h-5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-              </Link>
+      {showCTA && (
+        <div className="bg-brand">
+          <div className="container-custom py-16 lg:py-20">
+            <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
+              <div className="text-center lg:text-left">
+                <h2 className="font-display text-3xl lg:text-4xl font-medium text-white mb-3">
+                  Ready to Transform Your Space?
+                </h2>
+                <p className="text-white/70 text-lg">
+                  Let&apos;s discuss your renovation project today.
+                </p>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <a
+                  href={`tel:${siteConfig.contact.phone.replace(/\D/g, '')}`}
+                  className="group flex items-center gap-3 px-8 py-4 bg-white/10 border border-white/20 text-white font-medium hover:bg-white/20 transition-all"
+                >
+                  <Phone className="w-5 h-5" />
+                  {siteConfig.contact.phone}
+                </a>
+                <Link
+                  href="/contact"
+                  className="group flex items-center justify-center gap-2 px-8 py-4 bg-accent text-brand-dark font-medium hover:bg-accent-hover transition-all"
+                >
+                  Get Free Quote
+                  <ArrowUpRight className="w-5 h-5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                </Link>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
 
       {/* Main Footer */}
       <div className="container-custom py-16 lg:py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8">
           {/* Company Info */}
           <div className="lg:col-span-4">
-            <Link href="/" className="inline-flex flex-col mb-6">
-              <span className="font-display text-3xl font-semibold tracking-wide">
+            <Link href="/" className="inline-flex flex-col gap-0.5 mb-6">
+              <span className="font-[family-name:var(--font-logo)] text-2xl lg:text-3xl font-light italic leading-none">
                 Mufo
               </span>
-              <span className="text-[0.7rem] uppercase tracking-[0.3em] text-accent-light">
+              <span className="text-[0.8rem] lg:text-[0.9rem] uppercase tracking-[0.3em] text-accent-light leading-none">
                 Renovation
               </span>
             </Link>

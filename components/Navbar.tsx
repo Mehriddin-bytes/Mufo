@@ -44,16 +44,16 @@ export default function Navbar() {
       )}
     >
       <nav className="container-custom">
-        <div className="flex items-center justify-between h-[70px] lg:h-[80px]">
+        <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <Link
             href="/"
-            className="flex flex-col leading-none"
+            className="flex flex-col gap-0.5"
             onClick={closeMenu}
           >
             <span
               className={cn(
-                'font-display text-2xl lg:text-[1.75rem] font-semibold tracking-wide transition-colors duration-300',
+                'font-[family-name:var(--font-logo)] text-2xl lg:text-3xl font-light italic leading-none transition-colors duration-300',
                 isScrolled ? 'text-brand' : 'text-white'
               )}
             >
@@ -61,7 +61,7 @@ export default function Navbar() {
             </span>
             <span
               className={cn(
-                'text-[0.65rem] uppercase tracking-[0.3em] font-medium transition-colors duration-300',
+                'text-[0.8rem] lg:text-[0.9rem] uppercase tracking-[0.3em] font-medium leading-none transition-colors duration-300',
                 isScrolled ? 'text-accent-hover' : 'text-accent-light'
               )}
             >
@@ -232,11 +232,11 @@ export default function Navbar() {
         {/* Mobile Navigation */}
         <div
           className={cn(
-            'lg:hidden fixed inset-x-0 top-[70px] bg-white border-t border-gray-200 transition-all duration-300 overflow-hidden',
-            isOpen ? 'max-h-[calc(100vh-70px)] opacity-100' : 'max-h-0 opacity-0'
+            'lg:hidden fixed inset-x-0 top-16 bg-white border-t border-gray-200 transition-all duration-300 overflow-hidden',
+            isOpen ? 'max-h-[calc(100vh-4rem)] opacity-100' : 'max-h-0 opacity-0'
           )}
         >
-          <div className="container-custom py-6 max-h-[calc(100vh-70px)] overflow-y-auto">
+          <div className="container-custom py-6 max-h-[calc(100vh-4rem)] overflow-y-auto">
             <div className="flex flex-col gap-1">
               {navLinks.map((link, index) => (
                 link.label === 'Services' ? (

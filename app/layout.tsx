@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
-import { DM_Sans, Cormorant_Garamond } from 'next/font/google';
+import { DM_Sans, Cormorant_Garamond, Merriweather } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
+import FooterWrapper from '@/components/FooterWrapper';
 import { siteConfig } from '@/lib/data/siteData';
 
 const dmSans = DM_Sans({
@@ -15,6 +15,13 @@ const cormorant = Cormorant_Garamond({
   variable: '--font-cormorant',
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
+});
+
+const merriweather = Merriweather({
+  variable: '--font-logo',
+  subsets: ['latin'],
+  weight: ['300'],
+  style: ['italic'],
 });
 
 export const metadata: Metadata = {
@@ -33,10 +40,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${dmSans.variable} ${cormorant.variable} antialiased`}>
+      <body className={`${dmSans.variable} ${cormorant.variable} ${merriweather.variable} antialiased`}>
         <Navbar />
         <main>{children}</main>
-        <Footer />
+        <FooterWrapper />
       </body>
     </html>
   );
