@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowRight, Home, Bath, Warehouse, Building2, LucideIcon } from 'lucide-react';
+import { ArrowRight, Car, Building2, Home, Layers, PaintBucket, Building, Warehouse, Paintbrush, Droplets, LucideIcon } from 'lucide-react';
 import { ScrollAnimation, StaggerAnimation } from '@/components/ui';
 
 interface RelatedService {
@@ -17,10 +17,15 @@ interface RelatedServicesSectionProps {
 }
 
 const serviceIcons: Record<string, LucideIcon> = {
-  'kitchen-renovation': Home,
-  'bathroom-renovation': Bath,
-  'basement-finishing': Warehouse,
-  'full-home-renovation': Building2,
+  'parking-restoration': Car,
+  'swing-stage-services': Building2,
+  'balcony-restoration': Home,
+  'masonry-services': Layers,
+  'stucco-services': PaintBucket,
+  'high-rise-renovation': Building,
+  'underground-parking': Warehouse,
+  'interior-exterior': Paintbrush,
+  'waterproofing': Droplets,
 };
 
 export default function RelatedServicesSection({
@@ -54,20 +59,20 @@ export default function RelatedServicesSection({
               <Link
                 key={service.id}
                 href={`/services/${service.slug}`}
-                className="group bg-gray-50 p-5 hover:bg-brand hover:shadow-md transition-all"
+                className="group bg-gray-50 p-5 hover:bg-brand transition-all duration-300"
               >
-                <div className="w-10 h-10 bg-brand/10 flex items-center justify-center mb-3 group-hover:bg-white/20 transition-colors">
-                  <Icon className="w-5 h-5 text-brand group-hover:text-white transition-colors" />
+                <div className="flex items-center gap-3 mb-3">
+                  <Icon className="w-5 h-5 text-brand group-hover:text-accent transition-colors duration-300" />
+                  <h3 className="font-display text-lg font-medium text-gray-900 group-hover:text-white transition-colors duration-300">
+                    {service.title}
+                  </h3>
                 </div>
-                <h3 className="font-display text-lg font-medium text-gray-900 mb-1.5 group-hover:text-white transition-colors">
-                  {service.title}
-                </h3>
-                <p className="text-gray-600 text-xs mb-3 group-hover:text-white/70 transition-colors line-clamp-2">
+                <p className="text-gray-600 text-sm mb-3 group-hover:text-white/80 transition-colors duration-300 line-clamp-2">
                   {service.description}
                 </p>
-                <span className="inline-flex items-center gap-2 text-brand font-medium text-xs group-hover:text-accent transition-colors">
+                <span className="inline-flex items-center gap-2 text-brand font-medium text-sm group-hover:text-accent transition-colors duration-300">
                   Learn More
-                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
                 </span>
               </Link>
             );

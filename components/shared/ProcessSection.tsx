@@ -1,4 +1,4 @@
-import { ScrollAnimation } from '@/components/ui';
+import { ScrollAnimation, StaggerAnimation } from '@/components/ui';
 
 interface ProcessStep {
   step: number;
@@ -42,38 +42,39 @@ export default function ProcessSection({
           </div>
         </ScrollAnimation>
 
-        <div className="max-w-3xl mx-auto">
-          <div className="relative">
-            {/* Vertical line */}
-            <div className="absolute left-5 top-0 bottom-0 w-px bg-gray-200" />
+        {/* Horizontal Layout */}
+        <div className="relative">
+          {/* Horizontal connecting line - visible on lg screens */}
+          <div className="hidden lg:block absolute top-6 left-0 right-0 h-px bg-gray-200" style={{ left: '10%', right: '10%' }} />
 
-            <div className="space-y-0">
-              {steps.map((step, index) => (
-                <ScrollAnimation key={step.step} direction="left" delay={index * 100}>
-                  <div className="relative flex gap-5 group">
-                    {/* Step Number */}
-                    <div className="relative z-10 flex-shrink-0">
-                      <div className="w-10 h-10 rounded-full bg-brand flex items-center justify-center group-hover:bg-accent transition-colors">
-                        <span className="font-display text-sm font-semibold text-white">
-                          {String(step.step).padStart(2, '0')}
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Content */}
-                    <div className="flex-1 pb-8 pt-1">
-                      <h3 className="font-display text-lg font-medium text-gray-900 mb-1 group-hover:text-brand transition-colors">
-                        {step.title}
-                      </h3>
-                      <p className="text-gray-600 text-sm leading-relaxed">
-                        {step.description}
-                      </p>
-                    </div>
+          <StaggerAnimation
+            direction="up"
+            staggerDelay={100}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 lg:gap-4"
+          >
+            {steps.map((step) => (
+              <div key={step.step} className="group relative text-center">
+                {/* Step Number */}
+                <div className="relative z-10 mx-auto mb-4">
+                  <div className="w-12 h-12 rounded-full bg-brand flex items-center justify-center mx-auto group-hover:bg-accent transition-colors shadow-md">
+                    <span className="font-display text-sm font-semibold text-white">
+                      {String(step.step).padStart(2, '0')}
+                    </span>
                   </div>
-                </ScrollAnimation>
-              ))}
-            </div>
-          </div>
+                </div>
+
+                {/* Content */}
+                <div className="px-2">
+                  <h3 className="font-display text-base font-medium text-gray-900 mb-2 group-hover:text-brand transition-colors">
+                    {step.title}
+                  </h3>
+                  <p className="text-gray-600 text-xs leading-relaxed">
+                    {step.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </StaggerAnimation>
         </div>
       </div>
     </section>

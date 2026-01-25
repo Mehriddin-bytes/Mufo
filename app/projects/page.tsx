@@ -16,24 +16,25 @@ export default function ProjectsPage() {
   return (
     <main>
       {/* Hero Section */}
-      <section className="relative pt-28 pb-16 lg:pt-32 lg:pb-20 bg-brand overflow-hidden">
+      <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 bg-brand overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-brand-dark via-brand to-brand-light opacity-50" />
         <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.05%22%3E%3Cpath%20d%3D%22M36%2034v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6%2034v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6%204V0H4v4H0v2h4v4h2V6h4V4H6z%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E')] opacity-30" />
 
         <div className="container-custom relative z-10">
           <ScrollAnimation direction="up">
             <div className="max-w-3xl">
-              <span className="inline-flex items-center gap-3 mb-4">
-                <span className="w-10 h-px bg-accent" />
-                <span className="text-accent text-xs font-medium tracking-[0.2em] uppercase">
+              <span className="inline-flex items-center gap-3 mb-6">
+                <span className="w-12 h-px bg-accent" />
+                <span className="text-accent text-sm font-medium tracking-[0.2em] uppercase">
                   Our Portfolio
                 </span>
               </span>
-              <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-medium text-white leading-tight mb-4">
+              <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-medium text-white leading-tight mb-6">
                 Projects That
-                <span className="text-accent-light"> Inspire</span>
+                <br />
+                <span className="text-accent-light">Inspire</span>
               </h1>
-              <p className="text-base lg:text-lg text-white/70 max-w-xl leading-relaxed">
+              <p className="text-lg text-white/70 max-w-xl">
                 From building envelope repairs to large-scale renovations, our work reflects
                 the quality, precision, and expertise we bring to every job.
               </p>

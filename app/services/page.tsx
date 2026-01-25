@@ -1,13 +1,18 @@
 import Link from 'next/link';
-import { ArrowRight, Home, Bath, Warehouse, Building2, Check } from 'lucide-react';
+import { ArrowRight, Car, Building2, Home, Layers, PaintBucket, Building, Warehouse, Paintbrush, Droplets, Check } from 'lucide-react';
 import { services } from '@/lib/data/siteData';
 import { ScrollAnimation, StaggerAnimation } from '@/components/ui';
 
 const serviceIcons = {
-  'kitchen-renovation': Home,
-  'bathroom-renovation': Bath,
-  'basement-finishing': Warehouse,
-  'full-home-renovation': Building2,
+  'parking-restoration': Car,
+  'swing-stage-services': Building2,
+  'balcony-restoration': Home,
+  'masonry-services': Layers,
+  'stucco-services': PaintBucket,
+  'high-rise-renovation': Building,
+  'underground-parking': Warehouse,
+  'interior-exterior': Paintbrush,
+  'waterproofing': Droplets,
 };
 
 // Different gradient placeholders for variety

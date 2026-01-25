@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { ScrollAnimation } from '@/components/ui';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface Milestone {
   year: string;
@@ -25,13 +26,13 @@ export default function TimelineSection({
   className = '',
 }: TimelineSectionProps) {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
 
-  const handleSelect = (index: number) => {
-    if (index === activeIndex || isAnimating) return;
-    setIsAnimating(true);
-    setActiveIndex(index);
-    setTimeout(() => setIsAnimating(false), 400);
+  const handlePrev = () => {
+    setActiveIndex((prev) => (prev > 0 ? prev - 1 : milestones.length - 1));
+  };
+
+  const handleNext = () => {
+    setActiveIndex((prev) => (prev < milestones.length - 1 ? prev + 1 : 0));
   };
 
   // Auto-advance every 5 seconds
@@ -43,166 +44,141 @@ export default function TimelineSection({
   }, [milestones.length]);
 
   return (
-    <section className={`py-12 lg:py-16 bg-brand overflow-hidden ${className}`}>
+    <section className={`py-16 lg:py-24 bg-white overflow-hidden ${className}`}>
       <div className="container-custom">
         {/* Header */}
         <ScrollAnimation direction="up">
-          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-8 lg:mb-10">
-            <div>
-              <span className="inline-flex items-center gap-3 mb-3">
-                <span className="w-8 h-px bg-accent" />
-                <span className="text-accent text-xs font-medium tracking-[0.2em] uppercase">
-                  {label}
-                </span>
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <span className="inline-flex items-center gap-3 justify-center mb-4">
+              <span className="w-10 h-px bg-accent" />
+              <span className="text-accent-hover text-sm font-medium tracking-[0.2em] uppercase">
+                {label}
               </span>
-              <h2 className="font-display text-2xl lg:text-3xl font-medium text-white">
-                {title}
-              </h2>
-            </div>
+              <span className="w-10 h-px bg-accent" />
+            </span>
+            <h2 className="font-display text-3xl lg:text-4xl font-medium text-gray-900">
+              {title}
+            </h2>
             {subtitle && (
-              <p className="text-white/60 lg:max-w-sm lg:text-right text-xs">
-                {subtitle}
-              </p>
+              <p className="text-gray-600 mt-3">{subtitle}</p>
             )}
           </div>
         </ScrollAnimation>
 
-        {/* Timeline Container */}
+        {/* Horizontal Timeline */}
         <div className="relative">
-          {/* Large Year Display */}
-          <div className="absolute top-0 right-0 lg:right-10 pointer-events-none select-none">
-            <span
-              key={activeIndex}
-              className="font-display text-[80px] lg:text-[140px] font-bold text-white/5 leading-none animate-fade-in"
+          {/* Navigation Buttons */}
+          <div className="hidden lg:flex absolute -left-4 top-1/2 -translate-y-1/2 z-10">
+            <button
+              onClick={handlePrev}
+              className="w-12 h-12 rounded-full bg-white shadow-lg border border-gray-100 flex items-center justify-center text-gray-600 hover:text-brand hover:border-brand transition-colors"
+              aria-label="Previous milestone"
             >
-              {milestones[activeIndex].year}
-            </span>
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+          </div>
+          <div className="hidden lg:flex absolute -right-4 top-1/2 -translate-y-1/2 z-10">
+            <button
+              onClick={handleNext}
+              className="w-12 h-12 rounded-full bg-white shadow-lg border border-gray-100 flex items-center justify-center text-gray-600 hover:text-brand hover:border-brand transition-colors"
+              aria-label="Next milestone"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
-            {/* Left: Timeline Navigation */}
-            <div className="relative">
-              {/* Vertical Line */}
-              <div className="absolute left-[9px] top-0 bottom-0 w-px bg-white/20" />
+          {/* Timeline Track */}
+          <div className="relative px-4 lg:px-16">
+            {/* Horizontal Line */}
+            <div className="absolute left-4 right-4 lg:left-16 lg:right-16 top-[28px] h-0.5 bg-gray-200" />
 
-              {/* Progress Fill */}
-              <div
-                className="absolute left-[9px] top-0 w-px bg-accent transition-all duration-500 ease-out"
-                style={{
-                  height: `${((activeIndex + 1) / milestones.length) * 100}%`,
-                }}
-              />
+            {/* Progress Line */}
+            <div
+              className="absolute left-4 lg:left-16 top-[28px] h-0.5 bg-brand transition-all duration-500"
+              style={{
+                width: `calc(${(activeIndex / (milestones.length - 1)) * 100}% * (100% - 8rem) / 100%)`,
+              }}
+            />
 
-              {/* Milestone Items */}
-              <div className="space-y-0">
-                {milestones.map((milestone, index) => (
-                  <button
-                    key={milestone.year}
-                    onClick={() => handleSelect(index)}
-                    className={`relative flex items-start gap-4 w-full text-left py-3 group transition-all duration-300 ${
-                      index === activeIndex ? 'opacity-100' : 'opacity-50 hover:opacity-80'
+            {/* Milestone Points */}
+            <div className="relative flex justify-between">
+              {milestones.map((milestone, index) => (
+                <button
+                  key={milestone.year}
+                  onClick={() => setActiveIndex(index)}
+                  className="group flex flex-col items-center"
+                >
+                  {/* Year Circle */}
+                  <div
+                    className={`relative z-10 w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300 ${
+                      index === activeIndex
+                        ? 'bg-brand text-white scale-110 shadow-lg shadow-brand/30'
+                        : index < activeIndex
+                        ? 'bg-brand text-white'
+                        : 'bg-white border-2 border-gray-200 text-gray-500 group-hover:border-brand group-hover:text-brand'
                     }`}
                   >
-                    {/* Dot */}
-                    <div className="relative z-10 flex-shrink-0">
-                      <div
-                        className={`w-5 h-5 rounded-full border-2 transition-all duration-300 flex items-center justify-center ${
-                          index === activeIndex
-                            ? 'border-accent bg-accent scale-100'
-                            : 'border-white/40 bg-transparent scale-75 group-hover:scale-90 group-hover:border-white/60'
-                        }`}
-                      >
-                        {index === activeIndex && (
-                          <div className="w-1.5 h-1.5 rounded-full bg-brand-dark" />
-                        )}
-                      </div>
-                      {index === activeIndex && (
-                        <div className="absolute inset-0 rounded-full bg-accent/30 animate-ping" />
-                      )}
-                    </div>
-
-                    {/* Content */}
-                    <div className="flex-1 -mt-0.5">
-                      <span
-                        className={`font-display text-xs font-semibold transition-colors ${
-                          index === activeIndex ? 'text-accent' : 'text-white/50'
-                        }`}
-                      >
-                        {milestone.year}
-                      </span>
-                      <h3
-                        className={`font-display text-sm font-medium transition-colors ${
-                          index === activeIndex ? 'text-white' : 'text-white/70'
-                        }`}
-                      >
-                        {milestone.title}
-                      </h3>
-                    </div>
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Right: Active Content */}
-            <div className="lg:sticky lg:top-24">
-              <div
-                key={activeIndex}
-                className="animate-slide-up"
-              >
-                {/* Year Badge */}
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-accent/10 border border-accent/20 mb-4">
-                  <div className="w-1.5 h-1.5 bg-accent rounded-full" />
-                  <span className="text-accent text-xs font-medium">
-                    {milestones[activeIndex].year}
-                  </span>
-                </div>
-
-                {/* Title */}
-                <h3 className="font-display text-xl lg:text-2xl font-medium text-white mb-3">
-                  {milestones[activeIndex].title}
-                </h3>
-
-                {/* Description */}
-                <p className="text-white/70 leading-relaxed text-sm">
-                  {milestones[activeIndex].description}
-                </p>
-
-                {/* Progress */}
-                <div className="mt-6 pt-6 border-t border-white/10">
-                  <div className="flex items-center gap-6">
-                    <div>
-                      <div className="font-display text-2xl font-semibold text-accent">
-                        {activeIndex + 1}/{milestones.length}
-                      </div>
-                      <div className="text-white/50 text-xs">Milestone</div>
-                    </div>
-                    <div className="flex-1 h-1 bg-white/10 overflow-hidden">
-                      <div
-                        className="h-full bg-accent transition-all duration-500"
-                        style={{ width: `${((activeIndex + 1) / milestones.length) * 100}%` }}
-                      />
-                    </div>
+                    <span className="font-display text-xs font-semibold">{milestone.year}</span>
+                    {index === activeIndex && (
+                      <div className="absolute inset-0 rounded-full bg-brand/30 animate-ping" />
+                    )}
                   </div>
-                </div>
-              </div>
+
+                  {/* Title (visible on larger screens) */}
+                  <div className={`hidden lg:block mt-4 text-center transition-all duration-300 ${
+                    index === activeIndex ? 'opacity-100' : 'opacity-60'
+                  }`}>
+                    <h4 className={`font-display text-sm font-medium whitespace-nowrap ${
+                      index === activeIndex ? 'text-brand' : 'text-gray-700'
+                    }`}>
+                      {milestone.title}
+                    </h4>
+                  </div>
+                </button>
+              ))}
             </div>
+          </div>
+
+          {/* Active Milestone Content */}
+          <div className="mt-12 lg:mt-16">
+            <div
+              key={activeIndex}
+              className="max-w-2xl mx-auto text-center animate-fade-up"
+            >
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-brand/10 rounded-full mb-4">
+                <div className="w-2 h-2 bg-brand rounded-full" />
+                <span className="text-brand text-sm font-semibold">
+                  {milestones[activeIndex].year}
+                </span>
+              </div>
+              <h3 className="font-display text-2xl lg:text-3xl font-medium text-gray-900 mb-4">
+                {milestones[activeIndex].title}
+              </h3>
+              <p className="text-gray-600 text-lg leading-relaxed">
+                {milestones[activeIndex].description}
+              </p>
+            </div>
+          </div>
+
+          {/* Mobile Navigation Dots */}
+          <div className="flex lg:hidden justify-center gap-2 mt-8">
+            {milestones.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setActiveIndex(index)}
+                className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                  index === activeIndex ? 'bg-brand w-8' : 'bg-gray-300'
+                }`}
+                aria-label={`Go to milestone ${index + 1}`}
+              />
+            ))}
           </div>
         </div>
       </div>
 
       {/* Custom animations */}
       <style jsx>{`
-        @keyframes fade-in {
-          from {
-            opacity: 0;
-            transform: translateY(-20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        @keyframes slide-up {
+        @keyframes fade-up {
           from {
             opacity: 0;
             transform: translateY(20px);
@@ -212,11 +188,8 @@ export default function TimelineSection({
             transform: translateY(0);
           }
         }
-        .animate-fade-in {
-          animation: fade-in 0.5s ease-out;
-        }
-        .animate-slide-up {
-          animation: slide-up 0.4s ease-out;
+        .animate-fade-up {
+          animation: fade-up 0.4s ease-out;
         }
       `}</style>
     </section>

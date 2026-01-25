@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { ArrowRight, Gem, Eye, Clock, Shield, Users, Award } from 'lucide-react';
-import { ScrollAnimation, StaggerAnimation } from '@/components/ui';
+import { ScrollAnimation } from '@/components/ui';
 import { stats, valueProps } from '@/lib/data/siteData';
 import { TimelineSection, CertificationsSection } from '@/components/shared';
 
@@ -142,42 +142,81 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Why Choose Us */}
-      <section className="py-12 lg:py-16 bg-brand">
+      {/* Why Choose Us - Redesigned */}
+      <section className="py-16 lg:py-24 bg-gray-50">
         <div className="container-custom">
-          <ScrollAnimation direction="up">
-            <div className="text-center max-w-2xl mx-auto mb-8">
-              <span className="inline-flex items-center gap-3 justify-center mb-3">
-                <span className="w-8 h-px bg-accent" />
-                <span className="text-accent text-xs font-medium tracking-[0.2em] uppercase">
-                  Why Choose Us
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            {/* Left Content */}
+            <ScrollAnimation direction="left">
+              <div>
+                <span className="inline-flex items-center gap-3 mb-4">
+                  <span className="w-10 h-px bg-accent" />
+                  <span className="text-accent-hover text-sm font-medium tracking-[0.2em] uppercase">
+                    Why Choose Us
+                  </span>
                 </span>
-                <span className="w-8 h-px bg-accent" />
-              </span>
-              <h2 className="font-display text-2xl lg:text-3xl font-medium text-white">
-                What Sets Us Apart
-              </h2>
-            </div>
-          </ScrollAnimation>
+                <h2 className="font-display text-3xl lg:text-4xl font-medium text-gray-900 mb-6">
+                  What Sets Us
+                  <span className="text-brand"> Apart</span>
+                </h2>
+                <p className="text-gray-600 leading-relaxed mb-8">
+                  We don&apos;t just renovate buildings – we restore confidence. Our commitment to excellence,
+                  combined with decades of industry experience, makes us the trusted choice for property
+                  managers and building owners across the GTA.
+                </p>
 
-          <StaggerAnimation direction="up" staggerDelay={100} className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {valueProps.map((prop) => {
-              const Icon = valueIcons[prop.icon as keyof typeof valueIcons] || Gem;
-              return (
-                <div key={prop.id} className="bg-white/10 p-5 hover:bg-white/15 transition-colors">
-                  <div className="w-10 h-10 bg-accent/20 flex items-center justify-center mb-4">
-                    <Icon className="w-5 h-5 text-accent" />
+                {/* Stats Highlight */}
+                <div className="grid grid-cols-2 gap-6">
+                  <div className="border-l-4 border-brand pl-4">
+                    <div className="font-display text-3xl font-semibold text-brand">12+</div>
+                    <div className="text-gray-600 text-sm">Years Experience</div>
                   </div>
-                  <h3 className="font-display text-lg font-medium text-white mb-2">
-                    {prop.title}
-                  </h3>
-                  <p className="text-white/70 text-xs leading-relaxed">
-                    {prop.description}
-                  </p>
+                  <div className="border-l-4 border-accent pl-4">
+                    <div className="font-display text-3xl font-semibold text-brand">350+</div>
+                    <div className="text-gray-600 text-sm">Projects Completed</div>
+                  </div>
                 </div>
-              );
-            })}
-          </StaggerAnimation>
+              </div>
+            </ScrollAnimation>
+
+            {/* Right - Value Props Grid */}
+            <ScrollAnimation direction="right">
+              <div className="grid grid-cols-2 gap-4">
+                {valueProps.map((prop, index) => {
+                  const Icon = valueIcons[prop.icon as keyof typeof valueIcons] || Gem;
+                  const isLarge = index === 0;
+                  return (
+                    <div
+                      key={prop.id}
+                      className={`group relative overflow-hidden rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${
+                        isLarge ? 'col-span-2 bg-brand' : 'bg-white shadow-md'
+                      }`}
+                    >
+                      <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${
+                        isLarge ? 'bg-accent' : 'bg-brand/10'
+                      }`}>
+                        <Icon className={`w-6 h-6 ${isLarge ? 'text-brand-dark' : 'text-brand'}`} />
+                      </div>
+                      <h3 className={`font-display text-lg font-medium mb-2 ${
+                        isLarge ? 'text-white' : 'text-gray-900'
+                      }`}>
+                        {prop.title}
+                      </h3>
+                      <p className={`text-sm leading-relaxed ${
+                        isLarge ? 'text-white/80' : 'text-gray-600'
+                      }`}>
+                        {prop.description}
+                      </p>
+                      {/* Decorative Element */}
+                      <div className={`absolute -bottom-4 -right-4 w-24 h-24 rounded-full opacity-10 ${
+                        isLarge ? 'bg-white' : 'bg-brand'
+                      }`} />
+                    </div>
+                  );
+                })}
+              </div>
+            </ScrollAnimation>
+          </div>
         </div>
       </section>
 

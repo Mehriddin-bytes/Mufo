@@ -1,19 +1,26 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import Link from 'next/link';
-import { Menu, X, Phone, ArrowRight, ChevronDown, Home, Bath, Warehouse, Building2 } from 'lucide-react';
+import { Menu, X, Phone, ArrowRight, ChevronDown, Car, Building2, Home, Layers, PaintBucket, Building, Warehouse, Paintbrush, Droplets } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { siteConfig, navLinks, services } from '@/lib/data/siteData';
 
 const serviceIcons = {
-  'kitchen-renovation': Home,
-  'bathroom-renovation': Bath,
-  'basement-finishing': Warehouse,
-  'full-home-renovation': Building2,
+  'parking-restoration': Car,
+  'swing-stage-services': Building2,
+  'balcony-restoration': Home,
+  'masonry-services': Layers,
+  'stucco-services': PaintBucket,
+  'high-rise-renovation': Building,
+  'underground-parking': Warehouse,
+  'interior-exterior': Paintbrush,
+  'waterproofing': Droplets,
 };
 
 export default function Navbar() {
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
@@ -32,6 +39,14 @@ export default function Navbar() {
   const closeMenu = () => {
     setIsOpen(false);
     setIsMobileServicesOpen(false);
+  };
+
+  // Check if a link is active
+  const isLinkActive = (href: string) => {
+    if (href === '/') {
+      return pathname === '/';
+    }
+    return pathname.startsWith(href);
   };
 
   return (
@@ -84,11 +99,11 @@ export default function Navbar() {
                     className={cn(
                       'relative flex items-center gap-1 px-5 py-2 text-[0.9375rem] font-medium transition-colors duration-300',
                       'after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2',
-                      'after:w-0 after:h-[2px] after:bg-accent after:transition-all after:duration-300',
-                      'hover:after:w-6',
+                      'after:h-[2px] after:bg-accent after:transition-all after:duration-300',
+                      isLinkActive(link.href) ? 'after:w-6' : 'after:w-0 hover:after:w-6',
                       isScrolled
-                        ? 'text-gray-700 hover:text-brand'
-                        : 'text-white/90 hover:text-white'
+                        ? isLinkActive(link.href) ? 'text-brand' : 'text-gray-700 hover:text-brand'
+                        : isLinkActive(link.href) ? 'text-white' : 'text-white/90 hover:text-white'
                     )}
                   >
                     {link.label}
@@ -98,64 +113,82 @@ export default function Navbar() {
                     )} />
                   </Link>
 
-                  {/* Dropdown */}
+                  {/* Mega Menu Dropdown */}
                   <div
                     className={cn(
-                      'absolute top-full left-1/2 -translate-x-1/2 pt-4 transition-all duration-200',
+                      'fixed left-0 right-0 top-full pt-2 transition-all duration-300',
                       isServicesOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'
                     )}
                   >
-                    <div className="bg-white rounded-xl shadow-xl border border-gray-100 p-6 min-w-[480px]">
-                      {/* Dropdown Header */}
-                      <div className="flex items-center justify-between mb-4 pb-4 border-b border-gray-100">
-                        <div>
-                          <h3 className="font-display text-lg font-semibold text-gray-900">Our Services</h3>
-                          <p className="text-sm text-gray-500">Expert renovation solutions</p>
-                        </div>
-                        <Link
-                          href="/services"
-                          className="text-sm text-brand font-medium hover:text-brand-hover flex items-center gap-1"
-                        >
-                          View All
-                          <ArrowRight className="w-3.5 h-3.5" />
-                        </Link>
-                      </div>
-
-                      {/* Services Grid */}
-                      <div className="grid grid-cols-2 gap-3">
-                        {services.map((service) => {
-                          const Icon = serviceIcons[service.slug as keyof typeof serviceIcons] || Home;
-                          return (
+                    <div className="bg-white shadow-2xl border-t border-gray-100">
+                      <div className="container-custom py-8">
+                        <div className="grid grid-cols-12 gap-8">
+                          {/* Left Column - Featured */}
+                          <div className="col-span-3 bg-gradient-to-br from-brand to-brand-dark rounded-2xl p-6 text-white">
+                            <span className="text-xs font-medium tracking-[0.2em] uppercase text-accent-light">
+                              Our Expertise
+                            </span>
+                            <h3 className="font-display text-2xl font-medium mt-2 mb-3">
+                              Professional Building Restoration
+                            </h3>
+                            <p className="text-white/70 text-sm leading-relaxed mb-6">
+                              Trusted by property managers across the GTA for quality workmanship and reliable service.
+                            </p>
                             <Link
-                              key={service.id}
-                              href={`/services/${service.slug}`}
-                              className="group flex items-start gap-4 p-3 rounded-lg hover:bg-gray-50 transition-colors"
+                              href="/services"
+                              className="inline-flex items-center gap-2 px-5 py-2.5 bg-accent text-brand-dark text-sm font-medium rounded-lg hover:bg-accent-hover transition-colors"
                             >
-                              <div className="w-10 h-10 rounded-lg bg-brand/10 flex items-center justify-center flex-shrink-0 group-hover:bg-brand group-hover:text-white transition-colors">
-                                <Icon className="w-5 h-5 text-brand group-hover:text-white" />
-                              </div>
-                              <div>
-                                <h4 className="font-medium text-gray-900 group-hover:text-brand transition-colors">
-                                  {service.title}
-                                </h4>
-                                <p className="text-sm text-gray-500 line-clamp-1">
-                                  {service.features[0]}
-                                </p>
-                              </div>
+                              View All Services
+                              <ArrowRight className="w-4 h-4" />
                             </Link>
-                          );
-                        })}
-                      </div>
+                          </div>
 
-                      {/* Dropdown Footer */}
-                      <div className="mt-4 pt-4 border-t border-gray-100">
-                        <Link
-                          href="/contact"
-                          className="flex items-center justify-center gap-2 w-full py-3 bg-brand text-white text-sm font-medium rounded-lg hover:bg-brand-hover transition-colors"
-                        >
-                          Get a Free Quote
-                          <ArrowRight className="w-4 h-4" />
-                        </Link>
+                          {/* Right Column - Services Grid */}
+                          <div className="col-span-9">
+                            <div className="grid grid-cols-3 gap-x-6 gap-y-4">
+                              {services.map((service) => {
+                                const Icon = serviceIcons[service.slug as keyof typeof serviceIcons] || Home;
+                                return (
+                                  <Link
+                                    key={service.id}
+                                    href={`/services/${service.slug}`}
+                                    className="group flex items-center gap-3 py-3 px-4 rounded-xl hover:bg-gray-50 transition-all duration-200"
+                                  >
+                                    <div className="w-11 h-11 rounded-xl bg-gray-100 flex items-center justify-center flex-shrink-0 group-hover:bg-brand transition-colors duration-200">
+                                      <Icon className="w-5 h-5 text-brand group-hover:text-white transition-colors duration-200" />
+                                    </div>
+                                    <div className="min-w-0">
+                                      <h4 className="font-medium text-gray-900 group-hover:text-brand transition-colors text-sm">
+                                        {service.title}
+                                      </h4>
+                                      <p className="text-xs text-gray-500 truncate">
+                                        {service.features[0]}
+                                      </p>
+                                    </div>
+                                  </Link>
+                                );
+                              })}
+                            </div>
+
+                            {/* Bottom CTA Bar */}
+                            <div className="mt-6 pt-6 border-t border-gray-100 flex items-center justify-between">
+                              <div className="flex items-center gap-3 text-sm text-gray-600">
+                                <Phone className="w-4 h-4 text-brand" />
+                                <span>Need help choosing? Call us at</span>
+                                <a href={`tel:${siteConfig.contact.phone.replace(/\D/g, '')}`} className="font-medium text-brand hover:text-brand-hover">
+                                  {siteConfig.contact.phone}
+                                </a>
+                              </div>
+                              <Link
+                                href="/contact"
+                                className="inline-flex items-center gap-2 px-5 py-2.5 bg-brand text-white text-sm font-medium rounded-lg hover:bg-brand-hover transition-colors"
+                              >
+                                Get Free Quote
+                                <ArrowRight className="w-4 h-4" />
+                              </Link>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -167,11 +200,11 @@ export default function Navbar() {
                   className={cn(
                     'relative px-5 py-2 text-[0.9375rem] font-medium transition-colors duration-300',
                     'after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2',
-                    'after:w-0 after:h-[2px] after:bg-accent after:transition-all after:duration-300',
-                    'hover:after:w-6',
+                    'after:h-[2px] after:bg-accent after:transition-all after:duration-300',
+                    isLinkActive(link.href) ? 'after:w-6' : 'after:w-0 hover:after:w-6',
                     isScrolled
-                      ? 'text-gray-700 hover:text-brand'
-                      : 'text-white/90 hover:text-white'
+                      ? isLinkActive(link.href) ? 'text-brand' : 'text-gray-700 hover:text-brand'
+                      : isLinkActive(link.href) ? 'text-white' : 'text-white/90 hover:text-white'
                   )}
                 >
                   {link.label}
@@ -243,9 +276,17 @@ export default function Navbar() {
                   <div key={link.href}>
                     <button
                       onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
-                      className="w-full flex items-center justify-between py-3.5 px-4 text-lg text-gray-800 font-medium border-b border-gray-100 hover:text-brand hover:bg-gray-50 transition-colors"
+                      className={cn(
+                        'w-full flex items-center justify-between py-3.5 px-4 text-lg font-medium border-b border-gray-100 hover:bg-gray-50 transition-colors',
+                        isLinkActive(link.href) ? 'text-brand' : 'text-gray-800 hover:text-brand'
+                      )}
                     >
-                      {link.label}
+                      <span className="flex items-center gap-2">
+                        {link.label}
+                        {isLinkActive(link.href) && (
+                          <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+                        )}
+                      </span>
                       <ChevronDown className={cn(
                         'w-5 h-5 transition-transform duration-200',
                         isMobileServicesOpen && 'rotate-180'
@@ -286,10 +327,16 @@ export default function Navbar() {
                     key={link.href}
                     href={link.href}
                     onClick={closeMenu}
-                    className="py-3.5 px-4 text-lg text-gray-800 font-medium border-b border-gray-100 hover:text-brand hover:bg-gray-50 transition-colors"
+                    className={cn(
+                      'py-3.5 px-4 text-lg font-medium border-b border-gray-100 hover:bg-gray-50 transition-colors flex items-center gap-2',
+                      isLinkActive(link.href) ? 'text-brand' : 'text-gray-800 hover:text-brand'
+                    )}
                     style={{ animationDelay: `${index * 50}ms` }}
                   >
                     {link.label}
+                    {isLinkActive(link.href) && (
+                      <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+                    )}
                   </Link>
                 )
               ))}
