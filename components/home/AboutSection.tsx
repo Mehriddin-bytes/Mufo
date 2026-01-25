@@ -12,21 +12,21 @@ export default function AboutSection() {
   return (
     <section className="section-padding bg-gray-50">
       <div className="container-custom">
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-          {/* Image Side */}
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-24 items-center">
+          {/* Image Side - Full width on mobile */}
           <ScrollAnimation direction="left">
-            <div className="relative">
+            <div className="relative mb-8 lg:mb-0">
               {/* Main Image */}
-              <div className="aspect-[4/5] bg-gray-200 overflow-hidden">
+              <div className="aspect-[4/3] lg:aspect-[4/5] bg-gray-200 overflow-hidden">
                 <div className="w-full h-full bg-gradient-to-br from-secondary to-brand flex items-center justify-center text-white/30 text-sm">
                   Image Placeholder
                 </div>
               </div>
 
-              {/* Floating accent box */}
-              <div className="absolute -bottom-8 -right-8 lg:-right-12 w-48 lg:w-56 bg-accent p-6 lg:p-8">
-                <div className="font-display text-4xl lg:text-5xl text-brand-dark font-medium">12+</div>
-                <div className="text-brand-dark/70 text-sm mt-1">Years of Excellence</div>
+              {/* Floating accent box - smaller and repositioned on mobile */}
+              <div className="absolute -bottom-6 right-4 sm:-bottom-8 sm:-right-8 lg:-right-12 w-32 sm:w-48 lg:w-56 bg-accent p-4 sm:p-6 lg:p-8">
+                <div className="font-display text-3xl sm:text-4xl lg:text-5xl text-brand-dark font-medium">12+</div>
+                <div className="text-brand-dark/70 text-xs sm:text-sm mt-0.5 sm:mt-1">Years of Excellence</div>
               </div>
 
               {/* Decorative line */}
@@ -34,37 +34,37 @@ export default function AboutSection() {
             </div>
           </ScrollAnimation>
 
-          {/* Content Side */}
+          {/* Content Side - Centered on mobile */}
           <ScrollAnimation direction="right">
-            <div>
+            <div className="text-center lg:text-left">
               <span className="section-label">About Us</span>
-              <h2 className="section-heading mt-4 mb-6">
+              <h2 className="section-heading mt-4 mb-4 sm:mb-6">
                 We Create Spaces
                 <br />
                 <span className="text-accent-hover">That Inspire</span>
               </h2>
 
-              <p className="text-gray-600 text-lg mb-8 leading-relaxed">
+              <p className="text-gray-600 text-base sm:text-lg mb-6 sm:mb-8 leading-relaxed">
                 At Mufo Renovation, we believe that every home tells a story. For over a decade,
                 we&apos;ve been helping families transform their living spaces into beautiful,
                 functional environments that reflect their unique lifestyles.
               </p>
 
-              <p className="text-gray-500 mb-10 leading-relaxed">
+              <p className="text-gray-500 text-sm sm:text-base mb-8 sm:mb-10 leading-relaxed">
                 Our approach combines traditional craftsmanship with modern design sensibilities,
                 ensuring every project we undertake exceeds expectations and stands the test of time.
               </p>
 
-              {/* Highlights */}
-              <div className="space-y-6 mb-10">
+              {/* Highlights - Grid on mobile */}
+              <div className="grid sm:grid-cols-3 lg:grid-cols-1 gap-4 sm:gap-6 mb-8 sm:mb-10 text-left">
                 {highlights.map((item) => (
-                  <div key={item.number} className="flex gap-5 group">
-                    <span className="font-display text-2xl text-accent/40 group-hover:text-accent transition-colors">
+                  <div key={item.number} className="flex gap-3 sm:gap-5 group">
+                    <span className="font-display text-xl sm:text-2xl text-accent/40 group-hover:text-accent transition-colors">
                       {item.number}
                     </span>
                     <div>
-                      <h3 className="font-semibold text-gray-900 mb-1">{item.title}</h3>
-                      <p className="text-gray-500 text-sm">{item.desc}</p>
+                      <h3 className="font-semibold text-gray-900 text-sm sm:text-base mb-0.5 sm:mb-1">{item.title}</h3>
+                      <p className="text-gray-500 text-xs sm:text-sm">{item.desc}</p>
                     </div>
                   </div>
                 ))}

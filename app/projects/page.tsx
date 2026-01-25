@@ -22,8 +22,8 @@ export default function ProjectsPage() {
 
         <div className="container-custom relative z-10">
           <ScrollAnimation direction="up">
-            <div className="max-w-3xl">
-              <span className="inline-flex items-center gap-3 mb-6">
+            <div className="max-w-3xl mx-auto text-center lg:mx-0 lg:text-left">
+              <span className="inline-flex items-center gap-3 mb-6 justify-center lg:justify-start">
                 <span className="w-12 h-px bg-accent" />
                 <span className="text-accent text-sm font-medium tracking-[0.2em] uppercase">
                   Our Portfolio
@@ -34,7 +34,7 @@ export default function ProjectsPage() {
                 <br />
                 <span className="text-accent-light">Inspire</span>
               </h1>
-              <p className="text-lg text-white/70 max-w-xl">
+              <p className="text-lg text-white/70 max-w-xl mx-auto lg:mx-0">
                 From building envelope repairs to large-scale renovations, our work reflects
                 the quality, precision, and expertise we bring to every job.
               </p>
@@ -46,13 +46,13 @@ export default function ProjectsPage() {
       {/* Stats Bar */}
       <section className="py-6 bg-white border-b border-gray-100">
         <div className="container-custom">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {stats.map((stat) => (
-              <div key={stat.id} className="text-center">
-                <div className="font-display text-2xl lg:text-3xl font-medium text-brand mb-0.5">
+              <div key={stat.id} className="text-center px-2">
+                <div className="font-display text-xl sm:text-2xl lg:text-3xl font-medium text-brand mb-0.5">
                   {stat.value}{stat.suffix}
                 </div>
-                <div className="text-gray-500 text-xs">{stat.label}</div>
+                <div className="text-gray-500 text-[10px] sm:text-xs">{stat.label}</div>
               </div>
             ))}
           </div>

@@ -38,8 +38,8 @@ export default function ServicesPage() {
 
         <div className="container-custom relative z-10">
           <ScrollAnimation direction="up">
-            <div className="max-w-3xl">
-              <span className="inline-flex items-center gap-3 mb-6">
+            <div className="max-w-3xl mx-auto text-center lg:mx-0 lg:text-left">
+              <span className="inline-flex items-center gap-3 mb-6 justify-center lg:justify-start">
                 <span className="w-12 h-px bg-accent" />
                 <span className="text-accent text-sm font-medium tracking-[0.2em] uppercase">
                   What We Do
@@ -50,7 +50,7 @@ export default function ServicesPage() {
                 <br />
                 <span className="text-accent-light">Services</span>
               </h1>
-              <p className="text-lg text-white/70 max-w-xl">
+              <p className="text-lg text-white/70 max-w-xl mx-auto lg:mx-0">
                 From kitchens to complete home makeovers, we bring expertise and craftsmanship
                 to every project. Explore our services and find the perfect solution for your home.
               </p>
@@ -65,7 +65,7 @@ export default function ServicesPage() {
           <StaggerAnimation
             direction="up"
             staggerDelay={150}
-            className="space-y-20"
+            className="space-y-16 lg:space-y-20"
           >
             {services.map((service, index) => {
               const Icon = serviceIcons[service.slug as keyof typeof serviceIcons] || Home;
@@ -74,13 +74,13 @@ export default function ServicesPage() {
               return (
                 <div
                   key={service.id}
-                  className={`grid lg:grid-cols-2 gap-10 lg:gap-16 items-center ${
+                  className={`grid lg:grid-cols-2 gap-8 lg:gap-16 items-center ${
                     isEven ? '' : 'lg:flex-row-reverse'
                   }`}
                 >
-                  {/* Image Side */}
+                  {/* Image Side - Full width on mobile */}
                   <div className={`relative ${isEven ? 'lg:order-1' : 'lg:order-2'}`}>
-                    <div className="relative aspect-[4/3] overflow-hidden">
+                    <div className="relative aspect-[16/10] sm:aspect-[4/3] overflow-hidden">
                       {/* Gradient Placeholder */}
                       <div className={`absolute inset-0 bg-gradient-to-br ${imagePlaceholders[index % imagePlaceholders.length]}`} />
 
@@ -90,54 +90,56 @@ export default function ServicesPage() {
                       {/* Placeholder text */}
                       <div className="absolute inset-0 flex items-center justify-center">
                         <div className="text-center text-white/40">
-                          <Icon className="w-16 h-16 mx-auto mb-3" strokeWidth={1} />
-                          <span className="text-sm">Image Placeholder</span>
+                          <Icon className="w-12 sm:w-16 h-12 sm:h-16 mx-auto mb-2 sm:mb-3" strokeWidth={1} />
+                          <span className="text-xs sm:text-sm">Image Placeholder</span>
                         </div>
                       </div>
                     </div>
 
-                    {/* Floating number */}
-                    <div className="absolute -bottom-6 -right-6 lg:-right-10 w-20 h-20 lg:w-24 lg:h-24 bg-accent flex items-center justify-center shadow-lg">
-                      <span className="font-display text-3xl lg:text-4xl text-brand-dark font-semibold">
+                    {/* Floating number - smaller on mobile */}
+                    <div className="absolute -bottom-4 right-4 sm:-bottom-6 sm:-right-6 lg:-right-10 w-14 h-14 sm:w-20 sm:h-20 lg:w-24 lg:h-24 bg-accent flex items-center justify-center shadow-lg">
+                      <span className="font-display text-xl sm:text-3xl lg:text-4xl text-brand-dark font-semibold">
                         {String(index + 1).padStart(2, '0')}
                       </span>
                     </div>
                   </div>
 
-                  {/* Content Side */}
-                  <div className={isEven ? 'lg:order-2' : 'lg:order-1'}>
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="w-12 h-12 bg-brand/10 flex items-center justify-center">
-                        <Icon className="w-6 h-6 text-brand" />
+                  {/* Content Side - Centered on mobile */}
+                  <div className={`text-center lg:text-left mt-6 lg:mt-0 ${isEven ? 'lg:order-2' : 'lg:order-1'}`}>
+                    {/* Side by side labels with title centered below */}
+                    <div className="mb-4 sm:mb-6">
+                      <div className="flex items-center justify-center lg:justify-start gap-3 sm:gap-4 mb-2 sm:mb-3">
+                        <div className="w-8 h-8 sm:w-10 sm:h-10 bg-brand/10 flex items-center justify-center">
+                          <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-brand" />
+                        </div>
+                        <span className="text-xs sm:text-sm font-medium text-accent uppercase tracking-wider">
+                          {service.shortTitle || service.title.split(' ').slice(0, 2).join(' ')}
+                        </span>
                       </div>
-                      <span className="text-sm font-medium text-gray-400 uppercase tracking-wider">
-                        Service {String(index + 1).padStart(2, '0')}
-                      </span>
+                      <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-medium text-gray-900">
+                        {service.title}
+                      </h2>
                     </div>
 
-                    <h2 className="font-display text-3xl lg:text-4xl font-medium text-gray-900 mb-4">
-                      {service.title}
-                    </h2>
-
-                    <p className="text-gray-600 text-lg mb-6 leading-relaxed">
+                    <p className="text-gray-600 text-sm sm:text-base lg:text-lg mb-4 sm:mb-6 leading-relaxed">
                       {service.description}
                     </p>
 
-                    {/* Features */}
-                    <ul className="space-y-3 mb-8">
-                      {service.features.map((feature) => (
-                        <li key={feature} className="flex items-center gap-3">
-                          <span className="w-5 h-5 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0">
-                            <Check className="w-3 h-3 text-accent" />
+                    {/* Features - 2 columns on mobile */}
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-2 sm:gap-3 mb-6 sm:mb-8 text-left">
+                      {service.features.slice(0, 4).map((feature) => (
+                        <li key={feature} className="flex items-center gap-2 sm:gap-3">
+                          <span className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0">
+                            <Check className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-accent" />
                           </span>
-                          <span className="text-gray-600">{feature}</span>
+                          <span className="text-gray-600 text-sm">{feature}</span>
                         </li>
                       ))}
                     </ul>
 
                     <Link
                       href={`/services/${service.slug}`}
-                      className="group inline-flex items-center gap-3 px-6 py-3 bg-brand text-white font-medium hover:bg-brand-hover transition-all"
+                      className="group inline-flex items-center gap-2 sm:gap-3 px-5 sm:px-6 py-2.5 sm:py-3 bg-brand text-white text-sm sm:text-base font-medium hover:bg-brand-hover transition-all"
                     >
                       Learn More
                       <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

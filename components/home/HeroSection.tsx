@@ -23,7 +23,7 @@ export default function HeroSection() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container-custom pt-32 pb-20 lg:pt-40 lg:pb-28">
+      <div className="relative z-10 container-custom pt-32 pb-40 sm:pb-32 lg:pt-40 lg:pb-28">
         <div className="max-w-3xl">
           {/* Label */}
           <div className="inline-flex items-center gap-3 mb-8">
@@ -74,25 +74,25 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Bottom stats bar */}
-      <div className="absolute bottom-0 left-0 right-0 bg-brand-dark/80 backdrop-blur-sm border-t border-white/10">
-        <div className="container-custom py-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+      {/* Bottom stats bar - positioned with safe area for mobile */}
+      <div className="absolute bottom-0 left-0 right-0 bg-brand-dark/80 backdrop-blur-sm border-t border-white/10 pb-safe">
+        <div className="container-custom py-4 sm:py-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8">
             <div className="text-center">
-              <div className="font-display text-3xl lg:text-4xl text-white font-medium">12+</div>
-              <div className="text-white/50 text-sm mt-1">Years Experience</div>
+              <div className="font-display text-2xl sm:text-3xl lg:text-4xl text-white font-medium">12+</div>
+              <div className="text-white/50 text-xs sm:text-sm mt-0.5 sm:mt-1">Years Experience</div>
             </div>
             <div className="text-center">
-              <div className="font-display text-3xl lg:text-4xl text-white font-medium">350+</div>
-              <div className="text-white/50 text-sm mt-1">Projects Done</div>
+              <div className="font-display text-2xl sm:text-3xl lg:text-4xl text-white font-medium">350+</div>
+              <div className="text-white/50 text-xs sm:text-sm mt-0.5 sm:mt-1">Projects Done</div>
             </div>
             <div className="text-center">
-              <div className="font-display text-3xl lg:text-4xl text-white font-medium">98%</div>
-              <div className="text-white/50 text-sm mt-1">Happy Clients</div>
+              <div className="font-display text-2xl sm:text-3xl lg:text-4xl text-white font-medium">98%</div>
+              <div className="text-white/50 text-xs sm:text-sm mt-0.5 sm:mt-1">Happy Clients</div>
             </div>
             <div className="text-center">
-              <div className="font-display text-3xl lg:text-4xl text-white font-medium">25+</div>
-              <div className="text-white/50 text-sm mt-1">Expert Team</div>
+              <div className="font-display text-2xl sm:text-3xl lg:text-4xl text-white font-medium">25+</div>
+              <div className="text-white/50 text-xs sm:text-sm mt-0.5 sm:mt-1">Expert Team</div>
             </div>
           </div>
         </div>

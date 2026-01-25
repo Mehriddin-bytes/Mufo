@@ -224,12 +224,31 @@ export default function ContactPage() {
           <div className="w-full max-w-2xl mx-auto px-6 lg:px-12 xl:px-20 py-16 lg:py-20">
             <ScrollAnimation direction="right">
               <form onSubmit={handleSubmit} className="space-y-6">
-                {/* Service Selection */}
+                {/* Service Selection - Dropdown on mobile, grid on desktop */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-3">
                     What can we help you with?
                   </label>
-                  <div className="grid grid-cols-2 gap-2">
+
+                  {/* Mobile: Dropdown */}
+                  <div className="sm:hidden">
+                    <select
+                      value={formData.service}
+                      onChange={(e) => setFormData((prev) => ({ ...prev, service: e.target.value }))}
+                      className="w-full px-4 py-3 bg-white border border-gray-200 focus:border-brand focus:ring-1 focus:ring-brand outline-none transition-colors appearance-none"
+                      style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236b7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 12px center', backgroundSize: '20px' }}
+                    >
+                      <option value="">Select a service...</option>
+                      {services.map((service) => (
+                        <option key={service.id} value={service.slug}>
+                          {service.shortTitle}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  {/* Desktop: Grid of buttons */}
+                  <div className="hidden sm:grid grid-cols-2 gap-2">
                     {services.map((service) => (
                       <button
                         key={service.id}

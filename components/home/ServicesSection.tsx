@@ -1,7 +1,10 @@
+'use client';
+
 import Link from 'next/link';
-import { Home, Bath, Warehouse, Building2 } from 'lucide-react';
+import { Home, Bath, Warehouse, Building2, ChevronLeft, ChevronRight } from 'lucide-react';
 import { ScrollAnimation, StaggerAnimation } from '@/components/ui';
 import { services } from '@/lib/data/siteData';
+import { useRef, useState, useEffect } from 'react';
 
 const iconMap = {
   'kitchen-renovation': Home,
@@ -11,6 +14,37 @@ const iconMap = {
 };
 
 export default function ServicesSection() {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+
+  const checkScrollPosition = () => {
+    if (scrollContainerRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
+      setCanScrollLeft(scrollLeft > 0);
+      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
+    }
+  };
+
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (container) {
+      container.addEventListener('scroll', checkScrollPosition);
+      checkScrollPosition();
+      return () => container.removeEventListener('scroll', checkScrollPosition);
+    }
+  }, []);
+
+  const scroll = (direction: 'left' | 'right') => {
+    if (scrollContainerRef.current) {
+      const scrollAmount = scrollContainerRef.current.clientWidth * 0.8;
+      scrollContainerRef.current.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth',
+      });
+    }
+  };
+
   return (
     <section className="section-padding bg-gray-50">
       <div className="container-custom">
@@ -19,11 +53,77 @@ export default function ServicesSection() {
           <h2 className="section-heading">Our Services</h2>
         </ScrollAnimation>
 
-        {/* Services Grid */}
+        {/* Mobile Horizontal Scroll */}
+        <div className="md:hidden relative">
+          {/* Scroll Indicators */}
+          {canScrollLeft && (
+            <button
+              onClick={() => scroll('left')}
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white/90 shadow-lg flex items-center justify-center"
+              aria-label="Scroll left"
+            >
+              <ChevronLeft className="w-5 h-5 text-brand" />
+            </button>
+          )}
+          {canScrollRight && (
+            <button
+              onClick={() => scroll('right')}
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white/90 shadow-lg flex items-center justify-center"
+              aria-label="Scroll right"
+            >
+              <ChevronRight className="w-5 h-5 text-brand" />
+            </button>
+          )}
+
+          {/* Scrollable Container */}
+          <div
+            ref={scrollContainerRef}
+            className="flex gap-4 overflow-x-auto scroll-snap-x no-scrollbar pb-4"
+          >
+            {services.map((service) => {
+              const Icon = iconMap[service.slug as keyof typeof iconMap] || Home;
+
+              return (
+                <Link
+                  key={service.id}
+                  href={`/services/${service.slug}`}
+                  className="group relative flex-shrink-0 w-[75vw] max-w-[280px] aspect-[3/4] overflow-hidden scroll-snap-start"
+                >
+                  {/* Background Image Placeholder */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-brand-light to-brand group-hover:scale-105 transition-transform duration-500" />
+
+                  {/* Overlay gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+
+                  {/* Content */}
+                  <div className="absolute inset-x-0 bottom-0 p-5">
+                    {/* Icon */}
+                    <div className="mb-3">
+                      <Icon className="w-7 h-7 text-white/80" strokeWidth={1.5} />
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="font-display text-lg text-white font-medium leading-tight">
+                      {service.title}
+                    </h3>
+                  </div>
+
+                  {/* Hover overlay */}
+                  <div className="absolute inset-0 bg-brand/0 group-hover:bg-brand/40 transition-colors duration-300" />
+                </Link>
+              );
+            })}
+          </div>
+
+          {/* Scroll hint text */}
+          <p className="text-center text-xs text-gray-400 mt-3">Swipe to see more services</p>
+        </div>
+
+        {/* Desktop Grid */}
         <StaggerAnimation
           direction="up"
           staggerDelay={100}
-          className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
+          className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-6"
         >
           {services.map((service) => {
             const Icon = iconMap[service.slug as keyof typeof iconMap] || Home;

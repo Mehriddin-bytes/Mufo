@@ -34,8 +34,8 @@ export default function AboutPage() {
 
         <div className="container-custom relative z-10">
           <ScrollAnimation direction="up">
-            <div className="max-w-3xl">
-              <span className="inline-flex items-center gap-3 mb-6">
+            <div className="max-w-3xl mx-auto text-center lg:mx-0 lg:text-left">
+              <span className="inline-flex items-center gap-3 mb-6 justify-center lg:justify-start">
                 <span className="w-12 h-px bg-accent" />
                 <span className="text-accent text-sm font-medium tracking-[0.2em] uppercase">
                   Our Story
@@ -46,7 +46,7 @@ export default function AboutPage() {
                 <br />
                 <span className="text-accent-light">One Home at a Time</span>
               </h1>
-              <p className="text-lg text-white/70 max-w-xl">
+              <p className="text-lg text-white/70 max-w-xl mx-auto lg:mx-0">
                 For over 12 years, Mufo Renovation has been transforming houses into homes.
                 We combine traditional craftsmanship with modern design to create spaces
                 that inspire and endure.
@@ -57,15 +57,15 @@ export default function AboutPage() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-8 bg-white border-b border-gray-100">
+      <section className="py-6 sm:py-8 bg-white border-b border-gray-100">
         <div className="container-custom">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {stats.map((stat) => (
-              <div key={stat.id} className="text-center">
-                <div className="font-display text-3xl lg:text-4xl font-medium text-brand mb-1">
+              <div key={stat.id} className="text-center px-2">
+                <div className="font-display text-2xl sm:text-3xl lg:text-4xl font-medium text-brand mb-0.5 sm:mb-1">
                   {stat.value}{stat.suffix}
                 </div>
-                <div className="text-gray-600 text-xs">{stat.label}</div>
+                <div className="text-gray-600 text-[10px] sm:text-xs">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -75,33 +75,35 @@ export default function AboutPage() {
       {/* Our Story Section */}
       <section className="py-12 lg:py-16 bg-white">
         <div className="container-custom">
-          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+            {/* Image - Full width on mobile */}
             <ScrollAnimation direction="left">
-              <div className="relative">
+              <div className="relative mb-8 lg:mb-0">
                 {/* Main Image */}
-                <div className="aspect-[4/3] overflow-hidden">
+                <div className="aspect-[4/3] lg:aspect-[4/3] overflow-hidden">
                   <div className="w-full h-full bg-gradient-to-br from-brand via-brand-light to-secondary flex items-center justify-center">
                     <div className="text-center text-white/40">
-                      <Users className="w-16 h-16 mx-auto mb-2" strokeWidth={1} />
+                      <Users className="w-12 sm:w-16 h-12 sm:h-16 mx-auto mb-2" strokeWidth={1} />
                       <span className="text-xs">Team Photo</span>
                     </div>
                   </div>
                 </div>
-                {/* Second Image */}
-                <div className="absolute -bottom-6 -right-6 lg:-right-8 w-36 lg:w-48 aspect-square overflow-hidden shadow-xl">
+                {/* Second Image - smaller on mobile */}
+                <div className="absolute -bottom-4 right-4 lg:-bottom-6 lg:-right-8 w-24 sm:w-36 lg:w-48 aspect-square overflow-hidden shadow-xl">
                   <div className="w-full h-full bg-gradient-to-br from-secondary via-brand to-brand-dark flex items-center justify-center">
                     <div className="text-center text-white/40">
-                      <Award className="w-10 h-10 mx-auto mb-1" strokeWidth={1} />
-                      <span className="text-xs">Workshop</span>
+                      <Award className="w-8 sm:w-10 h-8 sm:h-10 mx-auto mb-1" strokeWidth={1} />
+                      <span className="text-[10px] sm:text-xs">Workshop</span>
                     </div>
                   </div>
                 </div>
               </div>
             </ScrollAnimation>
 
+            {/* Content - Centered on mobile */}
             <ScrollAnimation direction="right">
-              <div>
-                <span className="inline-flex items-center gap-3 mb-3">
+              <div className="text-center lg:text-left">
+                <span className="inline-flex items-center gap-3 mb-3 justify-center lg:justify-start">
                   <span className="w-8 h-px bg-accent" />
                   <span className="text-accent-hover text-xs font-medium tracking-[0.2em] uppercase">
                     Who We Are
@@ -111,7 +113,7 @@ export default function AboutPage() {
                   A Legacy of Quality
                   <span className="text-accent-hover"> Craftsmanship</span>
                 </h2>
-                <p className="text-gray-600 leading-relaxed mb-4">
+                <p className="text-gray-600 leading-relaxed mb-4 text-sm sm:text-base">
                   Founded in 2012, Mufo Renovation began with a simple belief: every home
                   deserves the finest craftsmanship. What started as a small team of passionate
                   craftsmen has grown into one of Toronto&apos;s most trusted renovation companies.
@@ -121,7 +123,7 @@ export default function AboutPage() {
                   share his commitment to excellence. Today, we continue that tradition, treating
                   every project with the same dedication to quality.
                 </p>
-                <div className="flex flex-col sm:flex-row gap-3">
+                <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
                   <Link
                     href="/contact"
                     className="group inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-brand text-white text-sm font-medium hover:bg-brand-hover transition-all"
