@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { ArrowRight, Phone, Home, Bath, Warehouse, Building2 } from 'lucide-react';
+import Image from 'next/image';
+import { ArrowRight, Phone, Home, Bath, Warehouse, Building2, Car, Layers, PaintBucket, Building, Paintbrush, Droplets } from 'lucide-react';
 import { services, siteConfig } from '@/lib/data/siteData';
 import { ScrollAnimation } from '@/components/ui';
 import {
@@ -13,10 +14,118 @@ import {
 } from '@/components/shared';
 
 const serviceIcons = {
-  'kitchen-renovation': Home,
-  'bathroom-renovation': Bath,
-  'basement-finishing': Warehouse,
-  'full-home-renovation': Building2,
+  'parking-restoration': Car,
+  'swing-stage-services': Building2,
+  'balcony-restoration': Home,
+  'masonry-services': Layers,
+  'stucco-services': PaintBucket,
+  'high-rise-renovation': Building,
+  'underground-parking': Warehouse,
+  'interior-exterior': Paintbrush,
+  'waterproofing': Droplets,
+};
+
+// Map service slugs to actual images (hero image first, then content images - all different)
+const serviceImageSets: Record<string, { hero: string; content: string[] }> = {
+  'parking-restoration': {
+    hero: '/images/parking/parking-structure.jpg',
+    content: [
+      '/images/parking/parking-1.jpg',
+      '/images/parking/parking-3.jpg',
+      '/images/parking/parking-5.jpg',
+      '/images/parking/parking-7.jpg',
+      '/images/parking/parking-9.jpg',
+      '/images/parking/parking-web-1.jpg',
+    ],
+  },
+  'swing-stage-services': {
+    hero: '/images/roof/roof-1.jpg',
+    content: [
+      '/images/stage/stage-1.jpg',
+      '/images/stage/stage-assembly.jpg',
+      '/images/stage/stage-weight.jpg',
+      '/images/roof/roof-2.jpg',
+      '/images/roof/roof-4.jpg',
+      '/images/roof/roof-6.jpg',
+    ],
+  },
+  'balcony-restoration': {
+    hero: '/images/balcony/balcony-web-5.jpg',
+    content: [
+      '/images/balcony/balcony-1.jpg',
+      '/images/balcony/balcony-2.jpg',
+      '/images/balcony/balcony-3.jpg',
+      '/images/balcony/balcony-web-2.jpg',
+      '/images/balcony/balcony-web-3.jpg',
+      '/images/balcony/balcony-web-6.jpg',
+    ],
+  },
+  'masonry-services': {
+    hero: '/images/masonry/masonry-web-1.jpg',
+    content: [
+      '/images/masonry/masonry-2.jpg',
+      '/images/masonry/masonry-5.jpg',
+      '/images/masonry/masonry-8.jpg',
+      '/images/masonry/masonry-12.jpg',
+      '/images/masonry/masonry-16.jpg',
+      '/images/masonry/masonry-20.jpg',
+    ],
+  },
+  'stucco-services': {
+    hero: '/images/caulking/caulking-web-1.jpg',
+    content: [
+      '/images/stucco/stucco-1.jpg',
+      '/images/stucco/stucco-2.jpg',
+      '/images/caulking/caulking-1.jpg',
+      '/images/caulking/caulking-3.jpg',
+      '/images/tile/tile-1.jpg',
+      '/images/tile/tile-2.jpg',
+    ],
+  },
+  'high-rise-renovation': {
+    hero: '/images/gallery/highrise-1.jpg',
+    content: [
+      '/images/gallery/highrise-2.jpg',
+      '/images/gallery/highrise-3.jpg',
+      '/images/gallery/highrise-4.jpg',
+      '/images/wallpanel/wallpanel-1.jpg',
+      '/images/wallpanel/wallpanel-3.jpg',
+      '/images/windows/windows-1.jpg',
+    ],
+  },
+  'underground-parking': {
+    hero: '/images/parking/garage-1.jpg',
+    content: [
+      '/images/parking/garage-2.jpg',
+      '/images/parking/garage-3.jpg',
+      '/images/parking/parking-patching.jpg',
+      '/images/parking/parking-rebar.jpg',
+      '/images/parking/parking-2.jpg',
+      '/images/parking/parking-4.jpg',
+    ],
+  },
+  'interior-exterior': {
+    hero: '/images/siding/siding-1.jpg',
+    content: [
+      '/images/coating/coating-2.jpg',
+      '/images/coating/coating-4.jpg',
+      '/images/coating/coating-6.jpg',
+      '/images/siding/siding-3.jpg',
+      '/images/siding/siding-4.jpg',
+      '/images/siding/siding-5.jpg',
+    ],
+  },
+  'waterproofing': {
+    hero: '/images/parking/parking-waterproofing.jpg',
+    content: [
+      '/images/parking/parking-waterproofing-membrane.jpg',
+      '/images/caulking/caulking-coating.jpg',
+      '/images/coating/coating-3.jpg',
+      '/images/coating/coating-5.jpg',
+      '/images/coating/coating-7.jpg',
+      '/images/coating/coating-9.jpg',
+    ],
+  },
 };
 
 // Generate static params for all services
@@ -57,12 +166,25 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   const nextService = currentIndex < services.length - 1 ? services[currentIndex + 1] : null;
   const otherServices = services.filter((s) => s.slug !== slug);
 
+  // Get images for this service
+  const imageSet = serviceImageSets[slug] || serviceImageSets['parking-restoration'];
+  const heroImage = imageSet.hero;
+  const contentImages = imageSet.content;
+
   return (
     <main>
       {/* Hero Section */}
       <section className="relative pt-28 pb-16 lg:pt-32 lg:pb-20 bg-brand overflow-hidden">
+        {/* Background Image - use hero image */}
+        <Image
+          src={heroImage}
+          alt={`${service.title} background`}
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-brand/85" />
         <div className="absolute inset-0 bg-gradient-to-br from-brand-dark via-brand to-brand-light opacity-50" />
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.05%22%3E%3Cpath%20d%3D%22M36%2034v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6%2034v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6%204V0H4v4H0v2h4v4h2V6h4V4H6z%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E')] opacity-30" />
 
         <div className="container-custom relative z-10">
           <ScrollAnimation direction="up">
@@ -123,22 +245,31 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               {/* Main Image with smaller images */}
               <div className="relative">
                 {/* Main large image */}
-                <div className="relative aspect-[4/3] overflow-hidden mb-3">
-                  <div className="absolute inset-0 bg-gradient-to-br from-brand via-brand-light to-secondary" />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-center text-white/40">
-                      <Icon className="w-14 h-14 mx-auto mb-2" strokeWidth={1} />
-                      <span className="text-xs">{service.gallery[0]?.caption || 'Main Image'}</span>
-                    </div>
+                <div className="relative aspect-[4/3] overflow-hidden mb-3 rounded-lg">
+                  <Image
+                    src={contentImages[0]}
+                    alt={service.gallery[0]?.alt || service.title}
+                    fill
+                    className="object-cover"
+                  />
+                  {/* Caption overlay */}
+                  <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/60 to-transparent">
+                    <span className="text-white text-sm font-medium">{service.gallery[0]?.caption || 'Featured Work'}</span>
                   </div>
                 </div>
                 {/* Two smaller images below */}
                 <div className="grid grid-cols-2 gap-3">
-                  {service.gallery.slice(1, 3).map((img, index) => (
-                    <div key={index} className="relative aspect-[4/3] overflow-hidden">
-                      <div className="absolute inset-0 bg-gradient-to-br from-secondary via-brand to-brand-dark" />
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <span className="text-white/40 text-xs">{img.caption}</span>
+                  {[1, 2].map((index) => (
+                    <div key={index} className="relative aspect-[4/3] overflow-hidden rounded-lg">
+                      <Image
+                        src={contentImages[index]}
+                        alt={service.gallery[index]?.alt || `${service.title} work ${index + 1}`}
+                        fill
+                        className="object-cover"
+                      />
+                      {/* Caption overlay */}
+                      <div className="absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black/60 to-transparent">
+                        <span className="text-white text-xs font-medium">{service.gallery[index]?.caption || `Project ${index + 1}`}</span>
                       </div>
                     </div>
                   ))}
@@ -187,7 +318,11 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
       {/* Gallery Section */}
       <GallerySection
         title={`${service.shortTitle} Project Gallery`}
-        images={service.gallery}
+        images={contentImages.map((src: string, index: number) => ({
+          src,
+          alt: service.gallery[index]?.alt || `${service.title} project ${index + 1}`,
+          caption: service.gallery[index]?.caption || `Project ${index + 1}`,
+        }))}
       />
 
       {/* FAQ Section */}

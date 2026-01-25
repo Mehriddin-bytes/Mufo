@@ -57,8 +57,16 @@ export default function GalleryPage() {
     <main>
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 bg-brand overflow-hidden">
+        {/* Background Image */}
+        <Image
+          src="/images/balcony/balcony-1.jpg"
+          alt="Gallery background"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-brand/85" />
         <div className="absolute inset-0 bg-gradient-to-br from-brand-dark via-brand to-brand-light opacity-50" />
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.05%22%3E%3Cpath%20d%3D%22M36%2034v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6%2034v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6%204V0H4v4H0v2h4v4h2V6h4V4H6z%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E')] opacity-30" />
 
         <div className="container-custom relative z-10">
           <ScrollAnimation direction="up">
@@ -169,27 +177,23 @@ export default function GalleryPage() {
 
           {/* Gallery Grid */}
           {viewMode === 'grid' ? (
-            <StaggerAnimation
-              direction="up"
-              staggerDelay={50}
-              className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4"
-            >
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
               {filteredImages.map((image) => (
                 <button
                   key={image.id}
                   onClick={() => setSelectedImage(image)}
-                  className="group relative aspect-square overflow-hidden rounded-lg sm:rounded-xl bg-gray-100"
+                  className="group relative aspect-square overflow-hidden rounded-lg sm:rounded-xl bg-gray-200"
                 >
                   {/* Gallery Image */}
                   <Image
                     src={image.src}
                     alt={image.alt}
                     fill
-                    className="object-cover"
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
                   />
 
                   {/* Overlay */}
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300" />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-colors duration-300" />
 
                   {/* Content on hover */}
                   <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -202,13 +206,9 @@ export default function GalleryPage() {
                   </div>
                 </button>
               ))}
-            </StaggerAnimation>
+            </div>
           ) : (
-            <StaggerAnimation
-              direction="up"
-              staggerDelay={50}
-              className="columns-2 sm:columns-3 lg:columns-4 gap-3 sm:gap-4 space-y-3 sm:space-y-4"
-            >
+            <div className="columns-2 sm:columns-3 lg:columns-4 gap-3 sm:gap-4">
               {filteredImages.map((image, index) => {
                 // Vary heights for masonry effect
                 const heights = ['aspect-square', 'aspect-[3/4]', 'aspect-[4/3]', 'aspect-[3/4]'];
@@ -218,18 +218,18 @@ export default function GalleryPage() {
                   <button
                     key={image.id}
                     onClick={() => setSelectedImage(image)}
-                    className={`group relative w-full ${heightClass} overflow-hidden rounded-lg sm:rounded-xl bg-gray-100 break-inside-avoid`}
+                    className={`group relative w-full ${heightClass} overflow-hidden rounded-lg sm:rounded-xl bg-gray-200 mb-3 sm:mb-4 block`}
                   >
                     {/* Gallery Image */}
                     <Image
                       src={image.src}
                       alt={image.alt}
                       fill
-                      className="object-cover"
+                      className="object-cover transition-transform duration-300 group-hover:scale-105"
                     />
 
                     {/* Overlay */}
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300" />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-colors duration-300" />
 
                     {/* Content on hover */}
                     <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -243,7 +243,7 @@ export default function GalleryPage() {
                   </button>
                 );
               })}
-            </StaggerAnimation>
+            </div>
           )}
 
           {/* Empty State */}

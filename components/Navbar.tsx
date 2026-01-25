@@ -90,7 +90,7 @@ export default function Navbar() {
               link.label === 'Services' ? (
                 <div
                   key={link.href}
-                  className="relative"
+                  className="relative group"
                   onMouseEnter={() => setIsServicesOpen(true)}
                   onMouseLeave={() => setIsServicesOpen(false)}
                 >
@@ -113,11 +113,18 @@ export default function Navbar() {
                     )} />
                   </Link>
 
+                  {/* Invisible bridge to prevent gap between link and dropdown */}
+                  <div className={cn(
+                    'absolute left-0 right-0 h-4',
+                    isScrolled ? 'top-full' : 'top-full'
+                  )} />
+
                   {/* Mega Menu Dropdown */}
                   <div
                     className={cn(
-                      'fixed left-0 right-0 top-full pt-2 transition-all duration-300',
-                      isServicesOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'
+                      'fixed left-0 right-0 transition-all duration-300',
+                      isScrolled ? 'top-20' : 'top-16',
+                      isServicesOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2 pointer-events-none'
                     )}
                   >
                     <div className="bg-white shadow-2xl border-t border-gray-100">

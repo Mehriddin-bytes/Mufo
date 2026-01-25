@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 import { ScrollAnimation, StaggerAnimation } from '@/components/ui';
 
@@ -47,19 +48,18 @@ export default function GallerySection({
           {images.map((img, index) => (
             <div
               key={index}
-              className={`group relative overflow-hidden cursor-pointer ${
+              className={`group relative overflow-hidden cursor-pointer rounded-lg ${
                 index === 0 ? 'md:col-span-2 md:row-span-2' : ''
               }`}
             >
               <div className={`relative ${index === 0 ? 'aspect-square md:aspect-[4/3]' : 'aspect-square'}`}>
-                {/* Gradient placeholder - replace with actual images */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${
-                  index % 3 === 0
-                    ? 'from-brand via-brand-light to-secondary'
-                    : index % 3 === 1
-                      ? 'from-secondary via-brand to-brand-dark'
-                      : 'from-brand-dark via-secondary to-brand-light'
-                } group-hover:scale-105 transition-transform duration-500`} />
+                {/* Real image */}
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
 
                 {/* Overlay on hover */}
                 <div className="absolute inset-0 bg-brand-dark/0 group-hover:bg-brand-dark/60 transition-all duration-300" />
