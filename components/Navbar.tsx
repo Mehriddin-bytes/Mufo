@@ -59,7 +59,7 @@ export default function Navbar() {
       )}
     >
       <nav className="container-custom">
-        <div className="flex items-center justify-between h-16 lg:h-20">
+        <div className="flex items-center justify-between h-18 lg:h-24">
           {/* Logo */}
           <Link
             href="/"
@@ -97,10 +97,10 @@ export default function Navbar() {
                   <Link
                     href={link.href}
                     className={cn(
-                      'relative flex items-center gap-1 px-5 py-2 text-[0.9375rem] font-medium transition-colors duration-300',
-                      'after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2',
+                      'relative flex items-center gap-1.5 px-5 py-3 text-base font-medium transition-colors duration-300',
+                      'after:absolute after:bottom-1 after:left-1/2 after:-translate-x-1/2',
                       'after:h-[2px] after:bg-accent after:transition-all after:duration-300',
-                      isLinkActive(link.href) ? 'after:w-6' : 'after:w-0 hover:after:w-6',
+                      isLinkActive(link.href) ? 'after:w-10' : 'after:w-0 hover:after:w-10',
                       isScrolled
                         ? isLinkActive(link.href) ? 'text-brand' : 'text-gray-700 hover:text-brand'
                         : isLinkActive(link.href) ? 'text-white' : 'text-white/90 hover:text-white'
@@ -123,7 +123,7 @@ export default function Navbar() {
                   <div
                     className={cn(
                       'fixed left-0 right-0 transition-all duration-300',
-                      isScrolled ? 'top-20' : 'top-16',
+                      isScrolled ? 'top-24' : 'top-[4.5rem]',
                       isServicesOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2 pointer-events-none'
                     )}
                   >
@@ -205,10 +205,10 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   className={cn(
-                    'relative px-5 py-2 text-[0.9375rem] font-medium transition-colors duration-300',
-                    'after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2',
+                    'relative px-5 py-3 text-base font-medium transition-colors duration-300',
+                    'after:absolute after:bottom-1 after:left-1/2 after:-translate-x-1/2',
                     'after:h-[2px] after:bg-accent after:transition-all after:duration-300',
-                    isLinkActive(link.href) ? 'after:w-6' : 'after:w-0 hover:after:w-6',
+                    isLinkActive(link.href) ? 'after:w-10' : 'after:w-0 hover:after:w-10',
                     isScrolled
                       ? isLinkActive(link.href) ? 'text-brand' : 'text-gray-700 hover:text-brand'
                       : isLinkActive(link.href) ? 'text-white' : 'text-white/90 hover:text-white'
@@ -272,11 +272,11 @@ export default function Navbar() {
         {/* Mobile Navigation */}
         <div
           className={cn(
-            'lg:hidden fixed inset-x-0 top-16 bg-white border-t border-gray-200 transition-all duration-300 overflow-hidden',
-            isOpen ? 'max-h-[calc(100vh-4rem)] opacity-100' : 'max-h-0 opacity-0'
+            'lg:hidden fixed inset-x-0 top-[4.5rem] bg-white border-t border-gray-200 transition-all duration-300 overflow-hidden',
+            isOpen ? 'max-h-[calc(100vh-4.5rem)] opacity-100' : 'max-h-0 opacity-0'
           )}
         >
-          <div className="container-custom py-6 max-h-[calc(100vh-4rem)] overflow-y-auto">
+          <div className="container-custom py-6 max-h-[calc(100vh-4.5rem)] overflow-y-auto">
             <div className="flex flex-col gap-1">
               {navLinks.map((link, index) => (
                 link.label === 'Services' ? (
