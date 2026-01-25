@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { Home, Bath, Warehouse, Building2, ChevronLeft, ChevronRight } from 'lucide-react';
 import { ScrollAnimation, StaggerAnimation } from '@/components/ui';
 import { services } from '@/lib/data/siteData';
@@ -11,6 +12,18 @@ const iconMap = {
   'bathroom-renovation': Bath,
   'basement-finishing': Warehouse,
   'full-home-renovation': Building2,
+};
+
+const serviceImages: Record<string, string> = {
+  'parking-restoration': '/images/parking/parking-1.jpg',
+  'swing-stage-services': '/images/stage/stage-1.jpg',
+  'balcony-restoration': '/images/balcony/balcony-1.jpg',
+  'masonry-services': '/images/masonry/masonry-1.jpg',
+  'stucco-services': '/images/stucco/stucco-1.jpg',
+  'high-rise-renovation': '/images/coating/coating-2.jpg',
+  'underground-parking': '/images/parking/parking-8.jpg',
+  'interior-exterior': '/images/coating/coating-6.jpg',
+  'waterproofing': '/images/parking/parking-waterproofing.jpg',
 };
 
 export default function ServicesSection() {
@@ -89,8 +102,13 @@ export default function ServicesSection() {
                   href={`/services/${service.slug}`}
                   className="group relative flex-shrink-0 w-[75vw] max-w-[280px] aspect-[3/4] overflow-hidden scroll-snap-start"
                 >
-                  {/* Background Image Placeholder */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-brand-light to-brand group-hover:scale-105 transition-transform duration-500" />
+                  {/* Background Image */}
+                  <Image
+                    src={serviceImages[service.slug] || '/images/parking/parking-1.jpg'}
+                    alt={service.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
 
                   {/* Overlay gradient */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
@@ -134,8 +152,13 @@ export default function ServicesSection() {
                 href={`/services/${service.slug}`}
                 className="group relative block aspect-[3/4] overflow-hidden"
               >
-                {/* Background Image Placeholder */}
-                <div className="absolute inset-0 bg-gradient-to-br from-brand-light to-brand group-hover:scale-105 transition-transform duration-500" />
+                {/* Background Image */}
+                <Image
+                  src={serviceImages[service.slug] || '/images/parking/parking-1.jpg'}
+                  alt={service.title}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
 
                 {/* Overlay gradient */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />

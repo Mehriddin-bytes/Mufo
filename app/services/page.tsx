@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight, Car, Building2, Home, Layers, PaintBucket, Building, Warehouse, Paintbrush, Droplets, Check } from 'lucide-react';
 import { services } from '@/lib/data/siteData';
 import { ScrollAnimation, StaggerAnimation } from '@/components/ui';
@@ -15,13 +16,18 @@ const serviceIcons = {
   'waterproofing': Droplets,
 };
 
-// Different gradient placeholders for variety
-const imagePlaceholders = [
-  'from-brand via-brand-light to-secondary',
-  'from-secondary via-brand to-brand-dark',
-  'from-brand-dark via-secondary to-brand-light',
-  'from-brand-light via-brand-dark to-brand',
-];
+// Service images mapping
+const serviceImages: Record<string, string> = {
+  'parking-restoration': '/images/parking/parking-1.jpg',
+  'swing-stage-services': '/images/stage/stage-1.jpg',
+  'balcony-restoration': '/images/balcony/balcony-1.jpg',
+  'masonry-services': '/images/masonry/masonry-1.jpg',
+  'stucco-services': '/images/stucco/stucco-1.jpg',
+  'high-rise-renovation': '/images/coating/coating-2.jpg',
+  'underground-parking': '/images/parking/parking-8.jpg',
+  'interior-exterior': '/images/coating/coating-6.jpg',
+  'waterproofing': '/images/parking/parking-waterproofing.jpg',
+};
 
 export const metadata = {
   title: 'Our Services | Mufo Renovation',
@@ -81,19 +87,16 @@ export default function ServicesPage() {
                   {/* Image Side - Full width on mobile */}
                   <div className={`relative ${isEven ? 'lg:order-1' : 'lg:order-2'}`}>
                     <div className="relative aspect-[16/10] sm:aspect-[4/3] overflow-hidden">
-                      {/* Gradient Placeholder */}
-                      <div className={`absolute inset-0 bg-gradient-to-br ${imagePlaceholders[index % imagePlaceholders.length]}`} />
+                      {/* Service Image */}
+                      <Image
+                        src={serviceImages[service.slug] || '/images/parking/parking-1.jpg'}
+                        alt={service.title}
+                        fill
+                        className="object-cover"
+                      />
 
                       {/* Overlay pattern */}
                       <div className="absolute inset-0 bg-black/10" />
-
-                      {/* Placeholder text */}
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="text-center text-white/40">
-                          <Icon className="w-12 sm:w-16 h-12 sm:h-16 mx-auto mb-2 sm:mb-3" strokeWidth={1} />
-                          <span className="text-xs sm:text-sm">Image Placeholder</span>
-                        </div>
-                      </div>
                     </div>
 
                     {/* Floating number - smaller on mobile */}

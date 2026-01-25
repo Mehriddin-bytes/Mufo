@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight, Phone } from 'lucide-react';
 import { siteConfig } from '@/lib/data/siteData';
 
@@ -9,8 +10,14 @@ export default function HeroSection() {
     <section className="relative min-h-screen flex items-center overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0">
-        {/* Gradient background - replace with image later */}
-        <div className="absolute inset-0 bg-gradient-to-br from-brand-dark via-brand to-brand-light" />
+        {/* Background Image */}
+        <Image
+          src="/images/background/hero-bg.jpg"
+          alt="Construction site background"
+          fill
+          className="object-cover"
+          priority
+        />
         {/* Decorative pattern overlay */}
         <div
           className="absolute inset-0 opacity-5"
@@ -18,8 +25,8 @@ export default function HeroSection() {
             backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
           }}
         />
-        {/* Warm overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-brand-dark/50 to-transparent" />
+        {/* Dark overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/95 via-brand-dark/70 to-brand-dark/50" />
       </div>
 
       {/* Content */}

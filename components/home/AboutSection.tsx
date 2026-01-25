@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 import { ScrollAnimation } from '@/components/ui';
 
@@ -17,10 +18,13 @@ export default function AboutSection() {
           <ScrollAnimation direction="left">
             <div className="relative mb-8 lg:mb-0">
               {/* Main Image */}
-              <div className="aspect-[4/3] lg:aspect-[4/5] bg-gray-200 overflow-hidden">
-                <div className="w-full h-full bg-gradient-to-br from-secondary to-brand flex items-center justify-center text-white/30 text-sm">
-                  Image Placeholder
-                </div>
+              <div className="aspect-[4/3] lg:aspect-[4/5] bg-gray-200 overflow-hidden relative">
+                <Image
+                  src="/images/about/about-team.jpg"
+                  alt="Mufo Renovation team at work"
+                  fill
+                  className="object-cover"
+                />
               </div>
 
               {/* Floating accent box - smaller and repositioned on mobile */}

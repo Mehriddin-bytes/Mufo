@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight, MapPin } from 'lucide-react';
 import { ScrollAnimation, StaggerAnimation } from '@/components/ui';
 import { projects, projectCategories, stats } from '@/lib/data/siteData';
@@ -91,11 +92,12 @@ export default function ProjectsPage() {
               >
                 {/* Image */}
                 <div className="relative aspect-[4/3] overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-br from-brand via-brand-light to-secondary" />
-                  {/* Placeholder content - replace with actual Image component when images available */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-white/30 text-xs">{project.title}</span>
-                  </div>
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
                   {/* Overlay on hover */}
                   <div className="absolute inset-0 bg-brand-dark/0 group-hover:bg-brand-dark/40 transition-all duration-300" />
                   {/* Category Badge */}

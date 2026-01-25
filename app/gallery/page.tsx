@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight, X, ChevronLeft, ChevronRight, ChevronDown, Grid3X3, LayoutGrid } from 'lucide-react';
 import { galleryImages, galleryCategories } from '@/lib/data/siteData';
 import { ScrollAnimation, StaggerAnimation } from '@/components/ui';
@@ -179,8 +180,13 @@ export default function GalleryPage() {
                   onClick={() => setSelectedImage(image)}
                   className="group relative aspect-square overflow-hidden rounded-lg sm:rounded-xl bg-gray-100"
                 >
-                  {/* Placeholder gradient - replace with actual images */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-brand via-brand-light to-secondary" />
+                  {/* Gallery Image */}
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    fill
+                    className="object-cover"
+                  />
 
                   {/* Overlay */}
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300" />
@@ -214,8 +220,13 @@ export default function GalleryPage() {
                     onClick={() => setSelectedImage(image)}
                     className={`group relative w-full ${heightClass} overflow-hidden rounded-lg sm:rounded-xl bg-gray-100 break-inside-avoid`}
                   >
-                    {/* Placeholder gradient */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-brand via-brand-light to-secondary" />
+                    {/* Gallery Image */}
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      fill
+                      className="object-cover"
+                    />
 
                     {/* Overlay */}
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300" />
@@ -327,8 +338,15 @@ export default function GalleryPage() {
             className="relative max-w-5xl max-h-[80vh] mx-auto px-12 sm:px-16"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Placeholder - Replace with actual image */}
-            <div className="w-full aspect-[4/3] bg-gradient-to-br from-brand via-brand-light to-secondary rounded-lg" />
+            {/* Lightbox Image */}
+            <div className="relative w-full aspect-[4/3] rounded-lg overflow-hidden">
+              <Image
+                src={selectedImage.src}
+                alt={selectedImage.alt}
+                fill
+                className="object-contain"
+              />
+            </div>
 
             {/* Image Info */}
             <div className="absolute bottom-0 left-12 right-12 sm:left-16 sm:right-16 p-4 sm:p-6 bg-gradient-to-t from-black/80 to-transparent rounded-b-lg">

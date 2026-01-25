@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { ArrowRight, Gem, Eye, Clock, Shield, Users, Award } from 'lucide-react';
+import Image from 'next/image';
+import { ArrowRight, Gem, Eye, Clock, Shield } from 'lucide-react';
 import { ScrollAnimation } from '@/components/ui';
 import { stats, valueProps } from '@/lib/data/siteData';
 import { TimelineSection, CertificationsSection } from '@/components/shared';
@@ -80,22 +81,22 @@ export default function AboutPage() {
             <ScrollAnimation direction="left">
               <div className="relative mb-8 lg:mb-0">
                 {/* Main Image */}
-                <div className="aspect-[4/3] lg:aspect-[4/3] overflow-hidden">
-                  <div className="w-full h-full bg-gradient-to-br from-brand via-brand-light to-secondary flex items-center justify-center">
-                    <div className="text-center text-white/40">
-                      <Users className="w-12 sm:w-16 h-12 sm:h-16 mx-auto mb-2" strokeWidth={1} />
-                      <span className="text-xs">Team Photo</span>
-                    </div>
-                  </div>
+                <div className="aspect-[4/3] lg:aspect-[4/3] overflow-hidden relative">
+                  <Image
+                    src="/images/about/about-team.jpg"
+                    alt="Mufo Renovation team at work"
+                    fill
+                    className="object-cover"
+                  />
                 </div>
                 {/* Second Image - smaller on mobile */}
                 <div className="absolute -bottom-4 right-4 lg:-bottom-6 lg:-right-8 w-24 sm:w-36 lg:w-48 aspect-square overflow-hidden shadow-xl">
-                  <div className="w-full h-full bg-gradient-to-br from-secondary via-brand to-brand-dark flex items-center justify-center">
-                    <div className="text-center text-white/40">
-                      <Award className="w-8 sm:w-10 h-8 sm:h-10 mx-auto mb-1" strokeWidth={1} />
-                      <span className="text-[10px] sm:text-xs">Workshop</span>
-                    </div>
-                  </div>
+                  <Image
+                    src="/images/masonry/masonry-1.jpg"
+                    alt="Mufo Renovation craftsmanship"
+                    fill
+                    className="object-cover"
+                  />
                 </div>
               </div>
             </ScrollAnimation>
