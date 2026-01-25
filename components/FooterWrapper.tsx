@@ -5,8 +5,10 @@ import Footer from './Footer';
 
 export default function FooterWrapper() {
   const pathname = usePathname();
-  // Hide CTA on about, contact, and service detail pages
-  const showCTA = !['/about', '/contact'].includes(pathname) && !pathname.startsWith('/services/');
+  // Hide CTA on pages that have their own CTA sections
+  const showCTA = !['/about', '/contact', '/projects'].includes(pathname)
+    && !pathname.startsWith('/services/')
+    && !pathname.startsWith('/projects/');
 
   return <Footer showCTA={showCTA} />;
 }

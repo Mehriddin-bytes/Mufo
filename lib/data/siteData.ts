@@ -523,6 +523,181 @@ export const valueProps: ValueProp[] = [
   },
 ];
 
+// Projects / Portfolio
+export interface Project {
+  id: string;
+  slug: string;
+  title: string;
+  category: string;
+  categorySlug: string;
+  location: string;
+  description: string;
+  image: string;
+  gallery: {
+    src: string;
+    alt: string;
+    caption?: string;
+  }[];
+  features: string[];
+  completionDate: string;
+  duration: string;
+}
+
+export const projectCategories = [
+  { slug: 'all', label: 'All Projects' },
+  { slug: 'kitchen-renovation', label: 'Kitchen' },
+  { slug: 'bathroom-renovation', label: 'Bathroom' },
+  { slug: 'basement-finishing', label: 'Basement' },
+  { slug: 'full-home-renovation', label: 'Full Home' },
+];
+
+export const projects: Project[] = [
+  {
+    id: '1',
+    slug: 'modern-kitchen-toronto',
+    title: 'Modern Kitchen Transformation',
+    category: 'Kitchen Renovation',
+    categorySlug: 'kitchen-renovation',
+    location: 'Toronto, ON',
+    description: 'Complete kitchen overhaul featuring custom white shaker cabinets, quartz waterfall island, and integrated smart appliances.',
+    image: '/images/projects/kitchen-1.jpg',
+    gallery: [
+      { src: '/images/projects/kitchen-1-1.jpg', alt: 'Kitchen island view', caption: 'Waterfall Island' },
+      { src: '/images/projects/kitchen-1-2.jpg', alt: 'Cabinet detail', caption: 'Custom Cabinetry' },
+      { src: '/images/projects/kitchen-1-3.jpg', alt: 'Backsplash', caption: 'Marble Backsplash' },
+    ],
+    features: ['Custom Cabinetry', 'Quartz Countertops', 'Under-cabinet Lighting', 'Smart Appliances'],
+    completionDate: '2024',
+    duration: '6 weeks',
+  },
+  {
+    id: '2',
+    slug: 'spa-bathroom-oakville',
+    title: 'Spa-Inspired Master Bath',
+    category: 'Bathroom Renovation',
+    categorySlug: 'bathroom-renovation',
+    location: 'Oakville, ON',
+    description: 'Luxurious master bathroom with freestanding soaking tub, rainfall shower, and heated marble floors.',
+    image: '/images/projects/bathroom-1.jpg',
+    gallery: [
+      { src: '/images/projects/bathroom-1-1.jpg', alt: 'Freestanding tub', caption: 'Soaking Tub' },
+      { src: '/images/projects/bathroom-1-2.jpg', alt: 'Walk-in shower', caption: 'Rainfall Shower' },
+      { src: '/images/projects/bathroom-1-3.jpg', alt: 'Double vanity', caption: 'Custom Vanity' },
+    ],
+    features: ['Freestanding Tub', 'Heated Floors', 'Custom Vanity', 'Frameless Glass Shower'],
+    completionDate: '2024',
+    duration: '4 weeks',
+  },
+  {
+    id: '3',
+    slug: 'basement-entertainment-mississauga',
+    title: 'Entertainment Basement Suite',
+    category: 'Basement Finishing',
+    categorySlug: 'basement-finishing',
+    location: 'Mississauga, ON',
+    description: 'Full basement transformation with home theater, wet bar, bedroom, and full bathroom.',
+    image: '/images/projects/basement-1.jpg',
+    gallery: [
+      { src: '/images/projects/basement-1-1.jpg', alt: 'Home theater', caption: 'Theater Room' },
+      { src: '/images/projects/basement-1-2.jpg', alt: 'Wet bar', caption: 'Custom Bar' },
+      { src: '/images/projects/basement-1-3.jpg', alt: 'Guest bedroom', caption: 'Guest Suite' },
+    ],
+    features: ['Home Theater', 'Wet Bar', 'Full Bathroom', 'Guest Bedroom', 'Soundproofing'],
+    completionDate: '2024',
+    duration: '10 weeks',
+  },
+  {
+    id: '4',
+    slug: 'complete-home-burlington',
+    title: 'Complete Home Renovation',
+    category: 'Full Home Renovation',
+    categorySlug: 'full-home-renovation',
+    location: 'Burlington, ON',
+    description: 'Whole-home transformation including open concept main floor, updated kitchen, three bathrooms, and modern finishes throughout.',
+    image: '/images/projects/full-home-1.jpg',
+    gallery: [
+      { src: '/images/projects/full-home-1-1.jpg', alt: 'Open concept living', caption: 'Open Floor Plan' },
+      { src: '/images/projects/full-home-1-2.jpg', alt: 'Kitchen', caption: 'Gourmet Kitchen' },
+      { src: '/images/projects/full-home-1-3.jpg', alt: 'Master suite', caption: 'Master Suite' },
+    ],
+    features: ['Open Concept', 'Kitchen Upgrade', 'Three Bathrooms', 'New Flooring', 'Updated Electrical'],
+    completionDate: '2023',
+    duration: '16 weeks',
+  },
+  {
+    id: '5',
+    slug: 'transitional-kitchen-etobicoke',
+    title: 'Transitional Kitchen Design',
+    category: 'Kitchen Renovation',
+    categorySlug: 'kitchen-renovation',
+    location: 'Etobicoke, ON',
+    description: 'Elegant transitional kitchen with navy blue island, brass hardware, and custom range hood.',
+    image: '/images/projects/kitchen-2.jpg',
+    gallery: [
+      { src: '/images/projects/kitchen-2-1.jpg', alt: 'Navy island', caption: 'Statement Island' },
+      { src: '/images/projects/kitchen-2-2.jpg', alt: 'Range hood', caption: 'Custom Hood' },
+      { src: '/images/projects/kitchen-2-3.jpg', alt: 'Hardware detail', caption: 'Brass Accents' },
+    ],
+    features: ['Two-tone Cabinetry', 'Brass Hardware', 'Custom Range Hood', 'Butcher Block Accent'],
+    completionDate: '2024',
+    duration: '5 weeks',
+  },
+  {
+    id: '6',
+    slug: 'contemporary-bathroom-vaughan',
+    title: 'Contemporary Guest Bath',
+    category: 'Bathroom Renovation',
+    categorySlug: 'bathroom-renovation',
+    location: 'Vaughan, ON',
+    description: 'Sleek contemporary bathroom with floating vanity, large format tiles, and linear drain shower.',
+    image: '/images/projects/bathroom-2.jpg',
+    gallery: [
+      { src: '/images/projects/bathroom-2-1.jpg', alt: 'Floating vanity', caption: 'Floating Vanity' },
+      { src: '/images/projects/bathroom-2-2.jpg', alt: 'Shower', caption: 'Walk-in Shower' },
+      { src: '/images/projects/bathroom-2-3.jpg', alt: 'Tile detail', caption: 'Large Format Tiles' },
+    ],
+    features: ['Floating Vanity', 'Linear Drain', 'Large Format Tiles', 'LED Mirror'],
+    completionDate: '2024',
+    duration: '3 weeks',
+  },
+  {
+    id: '7',
+    slug: 'rec-room-basement-toronto',
+    title: 'Family Recreation Room',
+    category: 'Basement Finishing',
+    categorySlug: 'basement-finishing',
+    location: 'Toronto, ON',
+    description: 'Bright and welcoming basement recreation space with play area, home office, and powder room.',
+    image: '/images/projects/basement-2.jpg',
+    gallery: [
+      { src: '/images/projects/basement-2-1.jpg', alt: 'Recreation area', caption: 'Play Space' },
+      { src: '/images/projects/basement-2-2.jpg', alt: 'Home office', caption: 'Home Office' },
+      { src: '/images/projects/basement-2-3.jpg', alt: 'Powder room', caption: 'Powder Room' },
+    ],
+    features: ['Recreation Area', 'Home Office', 'Powder Room', 'Built-in Storage', 'Egress Window'],
+    completionDate: '2023',
+    duration: '8 weeks',
+  },
+  {
+    id: '8',
+    slug: 'heritage-home-hamilton',
+    title: 'Heritage Home Restoration',
+    category: 'Full Home Renovation',
+    categorySlug: 'full-home-renovation',
+    location: 'Hamilton, ON',
+    description: 'Thoughtful restoration of a heritage home preserving character details while modernizing systems and functionality.',
+    image: '/images/projects/full-home-2.jpg',
+    gallery: [
+      { src: '/images/projects/full-home-2-1.jpg', alt: 'Restored millwork', caption: 'Original Millwork' },
+      { src: '/images/projects/full-home-2-2.jpg', alt: 'Updated kitchen', caption: 'Period Kitchen' },
+      { src: '/images/projects/full-home-2-3.jpg', alt: 'Master bath', caption: 'Vintage-inspired Bath' },
+    ],
+    features: ['Heritage Restoration', 'Modern Systems', 'Period Details', 'Energy Upgrades'],
+    completionDate: '2023',
+    duration: '20 weeks',
+  },
+];
+
 // Footer Quick Links
 export const footerLinks = {
   company: [
