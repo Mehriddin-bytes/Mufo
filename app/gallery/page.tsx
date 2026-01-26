@@ -380,34 +380,25 @@ export default function GalleryPage() {
 
           {/* Image Container */}
           <div
-            className="relative w-full h-full flex items-center justify-center p-4 sm:p-8"
+            className="relative w-full h-full flex items-center justify-center p-16 sm:p-20"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="relative w-full max-w-5xl max-h-[80vh] aspect-auto">
-              <Image
-                src={selectedImage.src}
-                alt={selectedImage.alt}
-                fill
-                className="object-contain"
-                sizes="(max-width: 768px) 100vw, 80vw"
-                priority
-              />
-            </div>
-
-            {/* Image Info */}
-            <div className="absolute bottom-4 sm:bottom-8 left-4 right-4 sm:left-8 sm:right-8 text-center">
-              <h3 className="text-white font-medium text-base sm:text-lg">{selectedImage.title}</h3>
-              <p className="text-white/70 text-xs sm:text-sm">{selectedImage.category}</p>
-            </div>
+            <img
+              src={selectedImage.src}
+              alt={selectedImage.alt}
+              className="max-w-full max-h-full object-contain"
+            />
           </div>
 
-          {/* Image Counter */}
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/60 text-xs sm:text-sm hidden sm:block">
-            {currentIndex + 1} / {filteredImages.length}
+          {/* Image Info */}
+          <div className="absolute bottom-16 sm:bottom-20 left-4 right-4 text-center pointer-events-none">
+            <h3 className="text-white font-medium text-base sm:text-lg">{selectedImage.title}</h3>
+            <p className="text-white/70 text-xs sm:text-sm">{selectedImage.category}</p>
+            <p className="text-white/50 text-xs mt-1">{currentIndex + 1} / {filteredImages.length}</p>
           </div>
 
           {/* Swipe hint for mobile */}
-          <div className="absolute bottom-12 left-1/2 -translate-x-1/2 text-white/40 text-xs sm:hidden">
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/40 text-xs sm:hidden">
             Swipe to navigate
           </div>
         </div>
