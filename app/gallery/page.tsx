@@ -1,11 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, X, ChevronLeft, ChevronRight, ChevronDown, Grid3X3, LayoutGrid } from 'lucide-react';
 import { galleryImages, galleryCategories } from '@/lib/data/siteData';
-import { ScrollAnimation, StaggerAnimation } from '@/components/ui';
+import { ScrollAnimation } from '@/components/ui';
 
 // Number of categories to show on mobile before "View More"
 const MOBILE_VISIBLE_COUNT = 4;
@@ -16,35 +16,90 @@ export default function GalleryPage() {
   const [viewMode, setViewMode] = useState<'grid' | 'masonry'>('grid');
   const [showAllCategories, setShowAllCategories] = useState(false);
 
+  // Touch/swipe state
+  const touchStartX = useRef<number | null>(null);
+  const touchEndX = useRef<number | null>(null);
+
   const filteredImages = activeCategory === 'all'
     ? galleryImages
     : galleryImages.filter(img => img.categorySlug === activeCategory);
+
+  // Make grid even by ensuring we have 4 items per row on lg
+  const evenFilteredImages = filteredImages.length % 4 !== 0
+    ? filteredImages.slice(0, Math.floor(filteredImages.length / 4) * 4)
+    : filteredImages;
 
   const currentIndex = selectedImage
     ? filteredImages.findIndex(img => img.id === selectedImage.id)
     : -1;
 
-  const handlePrev = () => {
+  const handlePrev = useCallback(() => {
     if (currentIndex > 0) {
       setSelectedImage(filteredImages[currentIndex - 1]);
     } else {
       setSelectedImage(filteredImages[filteredImages.length - 1]);
     }
-  };
+  }, [currentIndex, filteredImages]);
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     if (currentIndex < filteredImages.length - 1) {
       setSelectedImage(filteredImages[currentIndex + 1]);
     } else {
       setSelectedImage(filteredImages[0]);
     }
+  }, [currentIndex, filteredImages]);
+
+  // Handle keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!selectedImage) return;
+      if (e.key === 'ArrowLeft') handlePrev();
+      if (e.key === 'ArrowRight') handleNext();
+      if (e.key === 'Escape') setSelectedImage(null);
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedImage, handlePrev, handleNext]);
+
+  // Handle touch events for swipe
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.targetTouches[0].clientX;
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === 'ArrowLeft') handlePrev();
-    if (e.key === 'ArrowRight') handleNext();
-    if (e.key === 'Escape') setSelectedImage(null);
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.targetTouches[0].clientX;
   };
+
+  const handleTouchEnd = () => {
+    if (!touchStartX.current || !touchEndX.current) return;
+
+    const distance = touchStartX.current - touchEndX.current;
+    const minSwipeDistance = 50;
+
+    if (distance > minSwipeDistance) {
+      // Swiped left - go next
+      handleNext();
+    } else if (distance < -minSwipeDistance) {
+      // Swiped right - go prev
+      handlePrev();
+    }
+
+    touchStartX.current = null;
+    touchEndX.current = null;
+  };
+
+  // Prevent body scroll when lightbox is open
+  useEffect(() => {
+    if (selectedImage) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [selectedImage]);
 
   // Categories to display based on screen size and showAllCategories state
   const visibleCategories = showAllCategories
@@ -148,7 +203,7 @@ export default function GalleryPage() {
               {/* View Toggle & Results Count */}
               <div className="flex items-center justify-center gap-4">
                 <p className="text-gray-500 text-sm">
-                  {filteredImages.length} {filteredImages.length === 1 ? 'photo' : 'photos'}
+                  {evenFilteredImages.length} {evenFilteredImages.length === 1 ? 'photo' : 'photos'}
                 </p>
                 <div className="w-px h-4 bg-gray-300" />
                 <div className="flex items-center gap-1 bg-white border border-gray-200 p-1 rounded-lg">
@@ -178,24 +233,19 @@ export default function GalleryPage() {
           {/* Gallery Grid */}
           {viewMode === 'grid' ? (
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
-              {filteredImages.map((image) => (
+              {evenFilteredImages.map((image) => (
                 <button
                   key={image.id}
                   onClick={() => setSelectedImage(image)}
                   className="group relative aspect-square overflow-hidden rounded-lg sm:rounded-xl bg-gray-200"
                 >
-                  {/* Gallery Image */}
                   <Image
                     src={image.src}
                     alt={image.alt}
                     fill
                     className="object-cover transition-transform duration-300 group-hover:scale-105"
                   />
-
-                  {/* Overlay */}
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-colors duration-300" />
-
-                  {/* Content on hover */}
                   <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <span className="text-white font-medium text-sm text-center px-4">
                       {image.title}
@@ -209,8 +259,7 @@ export default function GalleryPage() {
             </div>
           ) : (
             <div className="columns-2 sm:columns-3 lg:columns-4 gap-3 sm:gap-4">
-              {filteredImages.map((image, index) => {
-                // Vary heights for masonry effect
+              {evenFilteredImages.map((image, index) => {
                 const heights = ['aspect-square', 'aspect-[3/4]', 'aspect-[4/3]', 'aspect-[3/4]'];
                 const heightClass = heights[index % heights.length];
 
@@ -220,18 +269,13 @@ export default function GalleryPage() {
                     onClick={() => setSelectedImage(image)}
                     className={`group relative w-full ${heightClass} overflow-hidden rounded-lg sm:rounded-xl bg-gray-200 mb-3 sm:mb-4 block`}
                   >
-                    {/* Gallery Image */}
                     <Image
                       src={image.src}
                       alt={image.alt}
                       fill
                       className="object-cover transition-transform duration-300 group-hover:scale-105"
                     />
-
-                    {/* Overlay */}
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-colors duration-300" />
-
-                    {/* Content on hover */}
                     <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <span className="text-white font-medium text-sm text-center px-4">
                         {image.title}
@@ -247,7 +291,7 @@ export default function GalleryPage() {
           )}
 
           {/* Empty State */}
-          {filteredImages.length === 0 && (
+          {evenFilteredImages.length === 0 && (
             <div className="text-center py-16">
               <p className="text-gray-500 mb-4">No photos found in this category.</p>
               <button
@@ -297,8 +341,9 @@ export default function GalleryPage() {
         <div
           className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center"
           onClick={() => setSelectedImage(null)}
-          onKeyDown={handleKeyDown}
-          tabIndex={0}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
         >
           {/* Close Button */}
           <button
@@ -335,29 +380,35 @@ export default function GalleryPage() {
 
           {/* Image Container */}
           <div
-            className="relative max-w-5xl max-h-[80vh] mx-auto px-12 sm:px-16"
+            className="relative w-full h-full flex items-center justify-center p-4 sm:p-8"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Lightbox Image */}
-            <div className="relative w-full aspect-[4/3] rounded-lg overflow-hidden">
+            <div className="relative w-full max-w-5xl max-h-[80vh] aspect-auto">
               <Image
                 src={selectedImage.src}
                 alt={selectedImage.alt}
                 fill
                 className="object-contain"
+                sizes="(max-width: 768px) 100vw, 80vw"
+                priority
               />
             </div>
 
             {/* Image Info */}
-            <div className="absolute bottom-0 left-12 right-12 sm:left-16 sm:right-16 p-4 sm:p-6 bg-gradient-to-t from-black/80 to-transparent rounded-b-lg">
+            <div className="absolute bottom-4 sm:bottom-8 left-4 right-4 sm:left-8 sm:right-8 text-center">
               <h3 className="text-white font-medium text-base sm:text-lg">{selectedImage.title}</h3>
               <p className="text-white/70 text-xs sm:text-sm">{selectedImage.category}</p>
             </div>
           </div>
 
           {/* Image Counter */}
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/60 text-xs sm:text-sm">
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/60 text-xs sm:text-sm hidden sm:block">
             {currentIndex + 1} / {filteredImages.length}
+          </div>
+
+          {/* Swipe hint for mobile */}
+          <div className="absolute bottom-12 left-1/2 -translate-x-1/2 text-white/40 text-xs sm:hidden">
+            Swipe to navigate
           </div>
         </div>
       )}
