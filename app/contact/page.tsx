@@ -42,7 +42,14 @@ export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [dragActive, setDragActive] = useState(false);
+  const [emailError, setEmailError] = useState('');
+  const [emailTouched, setEmailTouched] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const isValidEmail = (email: string) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -108,9 +115,29 @@ export default function ContactPage() {
     return (bytes / (1024 * 1024)).toFixed(1) + 'MB';
   };
 
-  const isValidEmail = (email: string) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
+  const validateEmail = (email: string) => {
+    if (!email) {
+      setEmailError('');
+      return;
+    }
+    if (!isValidEmail(email)) {
+      setEmailError('Please enter a valid email address');
+    } else {
+      setEmailError('');
+    }
+  };
+
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    setFormData((prev) => ({ ...prev, email: value }));
+    if (emailTouched) {
+      validateEmail(value);
+    }
+  };
+
+  const handleEmailBlur = () => {
+    setEmailTouched(true);
+    validateEmail(formData.email);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -118,7 +145,8 @@ export default function ContactPage() {
 
     // Validate email format
     if (!isValidEmail(formData.email)) {
-      alert('Please enter a valid email address.');
+      setEmailError('Please enter a valid email address');
+      setEmailTouched(true);
       return;
     }
 
@@ -412,10 +440,18 @@ export default function ContactPage() {
                     name="email"
                     required
                     value={formData.email}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-white border border-gray-200 focus:border-brand focus:ring-1 focus:ring-brand outline-none transition-colors"
+                    onChange={handleEmailChange}
+                    onBlur={handleEmailBlur}
+                    className={`w-full px-4 py-3 bg-white border outline-none transition-colors ${
+                      emailError && emailTouched
+                        ? 'border-red-500 focus:border-red-500 focus:ring-1 focus:ring-red-500'
+                        : 'border-gray-200 focus:border-brand focus:ring-1 focus:ring-brand'
+                    }`}
                     placeholder="john@example.com"
                   />
+                  {emailError && emailTouched && (
+                    <p className="mt-1 text-sm text-red-500">{emailError}</p>
+                  )}
                 </div>
 
                 {/* Budget Selection */}
