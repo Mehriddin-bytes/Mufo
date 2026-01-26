@@ -7,6 +7,29 @@ interface Attachment {
   type: string;
 }
 
+// Sanitize input to prevent XSS and injection attacks
+function sanitizeInput(input: string): string {
+  if (typeof input !== 'string') return '';
+  return input
+    .replace(/[<>]/g, '') // Remove < and > to prevent HTML/script injection
+    .replace(/['";]/g, '') // Remove quotes to prevent SQL injection patterns
+    .replace(/--/g, '') // Remove SQL comment syntax
+    .replace(/\/\*/g, '') // Remove SQL block comment start
+    .replace(/\*\//g, '') // Remove SQL block comment end
+    .replace(/\\/g, '') // Remove backslashes
+    .trim()
+    .slice(0, 5000); // Limit length
+}
+
+// Sanitize email specifically (less restrictive but still safe)
+function sanitizeEmail(email: string): string {
+  if (typeof email !== 'string') return '';
+  return email
+    .replace(/[<>'";\s]/g, '') // Remove dangerous chars but keep @ and .
+    .trim()
+    .slice(0, 254); // Max email length per RFC
+}
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
@@ -20,9 +43,17 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Sanitize all inputs
+    const sanitizedName = sanitizeInput(name);
+    const sanitizedEmail = sanitizeEmail(email);
+    const sanitizedPhone = sanitizeInput(phone);
+    const sanitizedService = sanitizeInput(service || '');
+    const sanitizedBudget = sanitizeInput(budget || '');
+    const sanitizedMessage = sanitizeInput(message);
+
     // Validate email format
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
+    if (!emailRegex.test(sanitizedEmail)) {
       return NextResponse.json(
         { error: 'Invalid email format' },
         { status: 400 }
@@ -46,16 +77,16 @@ export async function POST(request: NextRequest) {
 New Quote Request from Mufo Renovation Website
 
 Contact Information:
-- Name: ${name}
-- Email: ${email}
-- Phone: ${phone}
+- Name: ${sanitizedName}
+- Email: ${sanitizedEmail}
+- Phone: ${sanitizedPhone}
 
 Project Details:
-- Service: ${service || 'Not specified'}
-- Budget: ${budget || 'Not specified'}
+- Service: ${sanitizedService || 'Not specified'}
+- Budget: ${sanitizedBudget || 'Not specified'}
 
 Message:
-${message}
+${sanitizedMessage}
 
 ${attachments && attachments.length > 0 ? `\nAttachments: ${attachments.length} file(s) attached` : ''}
 
@@ -73,9 +104,9 @@ This email was sent from the Mufo Renovation website contact form.
     const { data, error } = await resend.emails.send({
       from: 'Mufo Renovation <onboarding@resend.dev>',
       to: ['mufo.ista@gmail.com'],
-      subject: `New Quote Request from ${name}`,
+      subject: `New Quote Request from ${sanitizedName}`,
       text: emailContent,
-      replyTo: email,
+      replyTo: sanitizedEmail,
       attachments: emailAttachments,
     });
 
