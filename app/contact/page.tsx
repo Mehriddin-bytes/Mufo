@@ -160,25 +160,64 @@ export default function ContactPage() {
           fill
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-brand/90" />
+        <div className="absolute inset-0 bg-gradient-to-br from-brand-dark/95 via-brand/90 to-brand-light/85" />
+
+        {/* Animated circles */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent/5 rounded-full blur-3xl animate-pulse delay-1000" />
+        </div>
+
         <section className="relative z-10 min-h-[calc(100vh-4rem)] lg:min-h-[calc(100vh-5rem)] flex items-center justify-center py-12">
           <div className="container-custom">
-            <div className="max-w-md mx-auto text-center">
-              <div className="w-20 h-20 bg-accent rounded-full flex items-center justify-center mx-auto mb-8">
-                <CheckCircle className="w-10 h-10 text-brand-dark" />
+            <div className="max-w-lg mx-auto text-center">
+              {/* Animated success icon */}
+              <div className="relative mb-10">
+                <div className="absolute inset-0 w-28 h-28 mx-auto bg-accent/20 rounded-full animate-ping" style={{ animationDuration: '2s' }} />
+                <div className="relative w-28 h-28 bg-gradient-to-br from-accent to-accent-hover rounded-full flex items-center justify-center mx-auto shadow-2xl shadow-accent/30">
+                  <CheckCircle className="w-14 h-14 text-brand-dark" />
+                </div>
               </div>
-              <h1 className="font-display text-3xl lg:text-4xl font-medium text-white mb-4">
-                Request Received!
+
+              {/* Sparkle decoration */}
+              <div className="flex justify-center gap-2 mb-6">
+                <span className="w-1.5 h-1.5 bg-accent rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+                <span className="w-1.5 h-1.5 bg-accent rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+                <span className="w-1.5 h-1.5 bg-accent rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+              </div>
+
+              <h1 className="font-display text-4xl lg:text-5xl font-medium text-white mb-4">
+                Thank You!
               </h1>
-              <p className="text-white/70 text-lg mb-8">
-                We&apos;ll review your project and get back to you within 24 hours.
+              <p className="text-white/80 text-xl mb-3">
+                Your request has been received.
               </p>
-              <a
-                href="/"
-                className="inline-flex items-center justify-center px-8 py-4 bg-accent text-brand-dark font-medium hover:bg-accent-hover transition-colors"
-              >
-                Back to Home
-              </a>
+              <p className="text-white/60 text-base mb-10">
+                Our team will review your project details and get back to you within 24 hours.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <a
+                  href="/"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-accent text-brand-dark font-medium hover:bg-accent-hover transition-all hover:scale-105 shadow-lg shadow-accent/20"
+                >
+                  Back to Home
+                </a>
+                <a
+                  href={`tel:${siteConfig.contact.phone.replace(/\D/g, '')}`}
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 border border-white/20 text-white font-medium hover:bg-white/10 transition-all"
+                >
+                  <Phone className="w-4 h-4" />
+                  Call Us Now
+                </a>
+              </div>
+
+              {/* Trust badge */}
+              <div className="mt-12 pt-8 border-t border-white/10">
+                <p className="text-white/40 text-sm">
+                  Trusted by 350+ property managers across the GTA
+                </p>
+              </div>
             </div>
           </div>
         </section>
