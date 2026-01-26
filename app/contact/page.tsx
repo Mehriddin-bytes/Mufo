@@ -108,8 +108,20 @@ export default function ContactPage() {
     return (bytes / (1024 * 1024)).toFixed(1) + 'MB';
   };
 
+  const isValidEmail = (email: string) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Validate email format
+    if (!isValidEmail(formData.email)) {
+      alert('Please enter a valid email address.');
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
