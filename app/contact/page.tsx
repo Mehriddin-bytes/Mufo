@@ -161,7 +161,7 @@ export default function ContactPage() {
           className="object-cover"
         />
         <div className="absolute inset-0 bg-brand/90" />
-        <section className="min-h-[calc(100vh-4rem)] lg:min-h-[calc(100vh-5rem)] flex items-center justify-center py-12">
+        <section className="relative z-10 min-h-[calc(100vh-4rem)] lg:min-h-[calc(100vh-5rem)] flex items-center justify-center py-12">
           <div className="container-custom">
             <div className="max-w-md mx-auto text-center">
               <div className="w-20 h-20 bg-accent rounded-full flex items-center justify-center mx-auto mb-8">
