@@ -113,12 +113,28 @@ export default function ContactPage() {
     setIsSubmitting(true);
 
     try {
+      // Convert files to base64 for sending
+      const fileAttachments = await Promise.all(
+        files.map(async (file) => {
+          const buffer = await file.file.arrayBuffer();
+          const base64 = Buffer.from(buffer).toString('base64');
+          return {
+            filename: file.name,
+            content: base64,
+            type: file.type,
+          };
+        })
+      );
+
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          attachments: fileAttachments,
+        }),
       });
 
       if (!response.ok) {

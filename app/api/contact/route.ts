@@ -1,10 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
+interface Attachment {
+  filename: string;
+  content: string; // base64 encoded
+  type: string;
+}
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { name, email, phone, service, budget, message } = body;
+    const { name, email, phone, service, budget, message, attachments } = body;
 
     // Validate required fields
     if (!name || !email || !phone || !message) {
@@ -42,9 +48,17 @@ Project Details:
 Message:
 ${message}
 
+${attachments && attachments.length > 0 ? `\nAttachments: ${attachments.length} file(s) attached` : ''}
+
 ---
 This email was sent from the Mufo Renovation website contact form.
     `.trim();
+
+    // Prepare attachments for Resend
+    const emailAttachments = attachments?.map((att: Attachment) => ({
+      filename: att.filename,
+      content: Buffer.from(att.content, 'base64'),
+    })) || [];
 
     // Send email using Resend
     const { data, error } = await resend.emails.send({
@@ -53,6 +67,7 @@ This email was sent from the Mufo Renovation website contact form.
       subject: `New Quote Request from ${name}`,
       text: emailContent,
       replyTo: email,
+      attachments: emailAttachments,
     });
 
     if (error) {
