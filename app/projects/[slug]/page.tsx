@@ -1,7 +1,8 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight, ArrowLeft, MapPin, Calendar, Clock, Check } from 'lucide-react';
-import { ScrollAnimation, StaggerAnimation } from '@/components/ui';
+import { ScrollAnimation } from '@/components/ui';
 import { projects, siteConfig } from '@/lib/data/siteData';
 
 interface PageProps {
@@ -53,8 +54,15 @@ export default async function ProjectDetailPage({ params }: PageProps) {
     <main>
       {/* Hero Section */}
       <section className="relative pt-28 pb-16 lg:pt-32 lg:pb-20 bg-brand overflow-hidden">
+        <Image
+          src={project.image}
+          alt={project.title}
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-brand/85" />
         <div className="absolute inset-0 bg-gradient-to-br from-brand-dark via-brand to-brand-light opacity-50" />
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.05%22%3E%3Cpath%20d%3D%22M36%2034v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6%2034v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6%204V0H4v4H0v2h4v4h2V6h4V4H6z%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E')] opacity-30" />
 
         <div className="container-custom relative z-10">
           <ScrollAnimation direction="up">
@@ -105,22 +113,29 @@ export default async function ProjectDetailPage({ params }: PageProps) {
         <div className="container-custom">
           <ScrollAnimation direction="up">
             {/* Main Image */}
-            <div className="relative aspect-[16/9] overflow-hidden mb-4">
-              <div className="absolute inset-0 bg-gradient-to-br from-brand via-brand-light to-secondary" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <span className="text-white/30 text-sm">Main Project Image</span>
-              </div>
+            <div className="relative aspect-[16/9] overflow-hidden mb-4 rounded-lg">
+              <Image
+                src={project.image}
+                alt={project.title}
+                fill
+                className="object-cover"
+              />
             </div>
 
             {/* Gallery Grid */}
             <div className="grid grid-cols-3 gap-4">
               {project.gallery.map((image, index) => (
-                <div key={index} className="relative aspect-[4/3] overflow-hidden group cursor-pointer">
-                  <div className="absolute inset-0 bg-gradient-to-br from-secondary via-brand to-brand-dark" />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-white/30 text-xs">{image.caption || image.alt}</span>
+                <div key={index} className="relative aspect-[4/3] overflow-hidden group cursor-pointer rounded-lg">
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    fill
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300" />
+                  <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <span className="text-white text-sm font-medium">{image.caption || image.alt}</span>
                   </div>
-                  <div className="absolute inset-0 bg-brand-dark/0 group-hover:bg-brand-dark/40 transition-all duration-300" />
                 </div>
               ))}
             </div>
@@ -148,7 +163,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                   {project.description}
                 </p>
                 <p className="text-gray-600 leading-relaxed">
-                  Our team worked closely with the homeowners to understand their vision and deliver a space that exceeds expectations. Every detail was carefully considered, from material selection to final finishing touches.
+                  Our team worked closely with the property managers to understand their vision and deliver results that exceed expectations. Every detail was carefully considered, from material selection to final finishing touches.
                 </p>
               </ScrollAnimation>
             </div>
@@ -206,7 +221,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
               </div>
             </ScrollAnimation>
 
-            <StaggerAnimation direction="up" staggerDelay={100} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {relatedProjects.map((relatedProject) => (
                 <Link
                   key={relatedProject.id}
@@ -214,11 +229,13 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                   className="group bg-gray-50 overflow-hidden hover:shadow-md transition-all"
                 >
                   <div className="relative aspect-[4/3] overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-br from-brand via-brand-light to-secondary" />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="text-white/30 text-xs">{relatedProject.title}</span>
-                    </div>
-                    <div className="absolute inset-0 bg-brand-dark/0 group-hover:bg-brand-dark/40 transition-all duration-300" />
+                    <Image
+                      src={relatedProject.image}
+                      alt={relatedProject.title}
+                      fill
+                      className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300" />
                   </div>
                   <div className="p-4">
                     <h3 className="font-display text-base font-medium text-gray-900 mb-1 group-hover:text-brand transition-colors">
@@ -231,7 +248,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                   </div>
                 </Link>
               ))}
-            </StaggerAnimation>
+            </div>
 
             <ScrollAnimation direction="up">
               <div className="text-center mt-8">
