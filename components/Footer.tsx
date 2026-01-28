@@ -228,19 +228,19 @@ export default function Footer({ showCTA = true }: FooterProps) {
       <div className="border-t border-white/10">
         <div className="container-custom py-5">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-sm">
-            <p className="text-white/40 text-center sm:text-left">
+            <p className="text-white/60 text-center sm:text-left">
               © {getCurrentYear()} {siteConfig.name}. All rights reserved.
             </p>
             <div className="flex gap-6">
               <Link
                 href="/privacy"
-                className="text-white/40 hover:text-white transition-colors"
+                className="text-white/60 hover:text-white transition-colors"
               >
                 Privacy Policy
               </Link>
               <Link
                 href="/terms"
-                className="text-white/40 hover:text-white transition-colors"
+                className="text-white/60 hover:text-white transition-colors"
               >
                 Terms of Service
               </Link>

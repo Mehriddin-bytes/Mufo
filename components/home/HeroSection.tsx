@@ -15,6 +15,8 @@ export default function HeroSection() {
           src="/images/background/hero-bg.jpg"
           alt="Construction site background"
           fill
+          sizes="100vw"
+          quality={60}
           className="object-cover"
           priority
         />
@@ -74,7 +76,7 @@ export default function HeroSection() {
 
         {/* Decorative element */}
         <div className="hidden lg:block absolute right-8 bottom-20">
-          <div className="flex flex-col items-end gap-4 text-white/40 text-sm">
+          <div className="flex flex-col items-end gap-4 text-white/60 text-sm">
             <span className="writing-vertical">Scroll to explore</span>
             <div className="w-px h-20 bg-gradient-to-b from-white/40 to-transparent" />
           </div>
@@ -87,19 +89,19 @@ export default function HeroSection() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8">
             <div className="text-center">
               <div className="font-display text-2xl sm:text-3xl lg:text-4xl text-white font-medium">12+</div>
-              <div className="text-white/50 text-xs sm:text-sm mt-0.5 sm:mt-1">Years Experience</div>
+              <div className="text-white/70 text-xs sm:text-sm mt-0.5 sm:mt-1">Years Experience</div>
             </div>
             <div className="text-center">
               <div className="font-display text-2xl sm:text-3xl lg:text-4xl text-white font-medium">350+</div>
-              <div className="text-white/50 text-xs sm:text-sm mt-0.5 sm:mt-1">Projects Done</div>
+              <div className="text-white/70 text-xs sm:text-sm mt-0.5 sm:mt-1">Projects Done</div>
             </div>
             <div className="text-center">
               <div className="font-display text-2xl sm:text-3xl lg:text-4xl text-white font-medium">98%</div>
-              <div className="text-white/50 text-xs sm:text-sm mt-0.5 sm:mt-1">Happy Clients</div>
+              <div className="text-white/70 text-xs sm:text-sm mt-0.5 sm:mt-1">Happy Clients</div>
             </div>
             <div className="text-center">
               <div className="font-display text-2xl sm:text-3xl lg:text-4xl text-white font-medium">25+</div>
-              <div className="text-white/50 text-xs sm:text-sm mt-0.5 sm:mt-1">Expert Team</div>
+              <div className="text-white/70 text-xs sm:text-sm mt-0.5 sm:mt-1">Expert Team</div>
             </div>
           </div>
         </div>

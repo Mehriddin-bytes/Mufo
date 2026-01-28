@@ -203,19 +203,23 @@ export default function TestimonialsSection() {
           </div>
 
           {/* Dots Pagination */}
-          <div className="flex justify-center gap-2 mt-10">
+          <div className="flex justify-center gap-1 mt-10">
             {testimonials.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setActiveIndex(index)}
-                className={cn(
-                  'h-2 rounded-full transition-all duration-300',
-                  index === activeIndex
-                    ? 'bg-brand w-8'
-                    : 'bg-gray-300 w-2 hover:bg-gray-400'
-                )}
+                className="p-3 -m-1"
                 aria-label={`Go to testimonial ${index + 1}`}
-              />
+              >
+                <span
+                  className={cn(
+                    'block h-2 rounded-full transition-all duration-300',
+                    index === activeIndex
+                      ? 'bg-brand w-8'
+                      : 'bg-gray-300 w-2 hover:bg-gray-400'
+                  )}
+                />
+              </button>
             ))}
           </div>
         </div>

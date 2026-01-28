@@ -72,7 +72,7 @@ export default function ServicesSection() {
           {canScrollLeft && (
             <button
               onClick={() => scroll('left')}
-              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white/90 shadow-lg flex items-center justify-center"
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white/90 shadow-lg flex items-center justify-center rounded-full"
               aria-label="Scroll left"
             >
               <ChevronLeft className="w-5 h-5 text-brand" />
@@ -81,7 +81,7 @@ export default function ServicesSection() {
           {canScrollRight && (
             <button
               onClick={() => scroll('right')}
-              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white/90 shadow-lg flex items-center justify-center"
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white/90 shadow-lg flex items-center justify-center rounded-full"
               aria-label="Scroll right"
             >
               <ChevronRight className="w-5 h-5 text-brand" />
@@ -107,6 +107,7 @@ export default function ServicesSection() {
                     src={serviceImages[service.slug] || '/images/parking/parking-1.jpg'}
                     alt={service.title}
                     fill
+                    sizes="(max-width: 768px) 75vw, 280px"
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
 
@@ -157,6 +158,7 @@ export default function ServicesSection() {
                   src={serviceImages[service.slug] || '/images/parking/parking-1.jpg'}
                   alt={service.title}
                   fill
+                  sizes="(max-width: 768px) 50vw, (max-width: 1024px) 25vw, 280px"
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
 

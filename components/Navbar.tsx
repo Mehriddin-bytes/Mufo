@@ -70,7 +70,7 @@ export default function Navbar() {
             <Image
               src="/logo.png"
               alt="Mufo Renovation"
-              width={320}
+              width={140}
               height={100}
               style={{ height: '100px', width: 'auto', filter: isScrolled ? 'none' : 'brightness(0) invert(1)' }}
               priority
