@@ -59,7 +59,7 @@ export default function RelatedServicesSection({
               <Link
                 key={service.id}
                 href={`/services/${service.slug}`}
-                className="group bg-gray-50 p-5 hover:bg-brand transition-all duration-300"
+                className="group block bg-gray-50 p-5 hover:bg-brand transition-colors duration-300"
               >
                 <div className="flex items-center gap-3 mb-3">
                   <Icon className="w-5 h-5 text-brand group-hover:text-accent transition-colors duration-300" />

@@ -10,8 +10,8 @@ export const siteConfig = {
 
   // Contact Information
   contact: {
-    phone: '+1 (416) 555-0123',
-    email: 'hello@muforenovation.com',
+    phone: '+1 (416) 357-6597',
+    email: 'mufo.ista@gmail.com',
     address: {
       street: '456 King Street West',
       city: 'Toronto',
@@ -885,7 +885,7 @@ export interface Stat {
 export const stats: Stat[] = [
   { id: '1', value: '12', suffix: '+', label: 'Years Experience' },
   { id: '2', value: '350', suffix: '+', label: 'Projects Completed' },
-  { id: '3', value: '98', suffix: '%', label: 'Client Satisfaction' },
+  { id: '3', value: '100', suffix: '%', label: 'Client Satisfaction' },
   { id: '4', value: '25', suffix: '+', label: 'Expert Craftsmen' },
 ];
 

@@ -424,7 +424,7 @@ export default function ContactPage() {
                       value={formData.phone}
                       onChange={handleInputChange}
                       className="w-full px-4 py-3 bg-white border border-gray-200 focus:border-brand focus:ring-1 focus:ring-brand outline-none transition-colors"
-                      placeholder="(416) 555-0123"
+                      placeholder="(416) 357-6597"
                     />
                   </div>
                 </div>

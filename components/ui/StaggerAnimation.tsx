@@ -88,7 +88,7 @@ export default function StaggerAnimation({
         <div
           key={index}
           className={cn(
-            'transition-all',
+            'transition-[opacity,transform]',
             isVisible ? styles.animate : styles.initial,
             childClassName
           )}
