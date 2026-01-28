@@ -31,6 +31,11 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   keywords: ['renovation', 'construction', 'home renovation', 'remodeling', 'contractor', 'Toronto'],
+  icons: {
+    icon: '/favicon.png',
+    shortcut: '/favicon.png',
+    apple: '/favicon.png',
+  },
 };
 
 export default function RootLayout({
