@@ -925,6 +925,46 @@ export const testimonials: Testimonial[] = [
     content: 'I regularly recommend Mufo to my clients. Their quality of work is consistently excellent, and they understand how to bring design visions to life.',
     rating: 5,
   },
+  {
+    id: '4',
+    name: 'Michael Chen',
+    role: 'Property Manager',
+    location: 'North York, ON',
+    content: 'We hired Mufo for our condo building balcony restoration project. They completed the work on schedule, maintained excellent communication with residents, and the results speak for themselves.',
+    rating: 5,
+  },
+  {
+    id: '5',
+    name: 'Sarah & James Mitchell',
+    role: 'Homeowners',
+    location: 'Etobicoke, ON',
+    content: 'After getting multiple quotes, we chose Mufo for our parking garage waterproofing. Best decision we made. Professional team, fair pricing, and outstanding workmanship.',
+    rating: 5,
+  },
+  {
+    id: '6',
+    name: 'Robert Kovacs',
+    role: 'Building Superintendent',
+    location: 'Scarborough, ON',
+    content: 'The masonry restoration work Mufo did on our heritage building was exceptional. They matched the original brickwork perfectly and completed everything with minimal disruption to tenants.',
+    rating: 5,
+  },
+  {
+    id: '7',
+    name: 'Amanda Foster',
+    role: 'Condo Board President',
+    location: 'Vaughan, ON',
+    content: 'Mufo handled our high-rise facade renovation flawlessly. Their swing stage team was safe, efficient, and the building looks brand new. Highly recommend for any large-scale project.',
+    rating: 5,
+  },
+  {
+    id: '8',
+    name: 'Tony Rossi',
+    role: 'Commercial Property Owner',
+    location: 'Brampton, ON',
+    content: 'I have used Mufo for three different properties now. Their consistency and reliability is unmatched. They treat every project with the same level of care and professionalism.',
+    rating: 5,
+  },
 ];
 
 // Why Choose Us - Value Propositions
