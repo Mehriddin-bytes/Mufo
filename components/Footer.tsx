@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Phone, Mail, MapPin, ArrowUpRight } from 'lucide-react';
 import { siteConfig, services } from '@/lib/data/siteData';
 import { getCurrentYear } from '@/lib/utils';
@@ -53,13 +54,14 @@ export default function Footer({ showCTA = true }: FooterProps) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8">
           {/* Left: Company Info */}
           <div className="lg:col-span-4">
-            <Link href="/" className="inline-flex flex-col gap-0.5 mb-6">
-              <span className="font-[family-name:var(--font-logo)] text-2xl lg:text-3xl font-light italic leading-none">
-                Mufo
-              </span>
-              <span className="text-[0.8rem] lg:text-[0.9rem] uppercase tracking-[0.3em] text-accent-light leading-none">
-                Renovation
-              </span>
+            <Link href="/" className="block mb-6 max-w-sm">
+              <Image
+                src="/logo.png"
+                alt="Mufo Renovation"
+                width={400}
+                height={120}
+                style={{ height: '120px', width: '100%', objectFit: 'contain', objectPosition: 'left', filter: 'brightness(0) invert(1)' }}
+              />
             </Link>
             <p className="text-white/60 leading-relaxed mb-6 max-w-sm">
               Expert building restoration and renovation services. Quality craftsmanship, lasting results.

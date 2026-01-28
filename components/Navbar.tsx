@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Menu, X, Phone, ArrowRight, ChevronDown, Car, Building2, Home, Layers, PaintBucket, Building, Warehouse, Paintbrush, Droplets } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { siteConfig, navLinks, services } from '@/lib/data/siteData';
@@ -59,29 +60,21 @@ export default function Navbar() {
       )}
     >
       <nav className="container-custom">
-        <div className="flex items-center justify-between h-18 lg:h-24">
+        <div className="flex items-center justify-between h-18 lg:h-24 mx-auto max-w-[1400px]">
           {/* Logo */}
           <Link
             href="/"
-            className="flex flex-col gap-0.5"
+            className="flex items-center"
             onClick={closeMenu}
           >
-            <span
-              className={cn(
-                'font-[family-name:var(--font-logo)] text-2xl lg:text-3xl font-light italic leading-none transition-colors duration-300',
-                isScrolled ? 'text-brand' : 'text-white'
-              )}
-            >
-              Mufo
-            </span>
-            <span
-              className={cn(
-                'text-[0.8rem] lg:text-[0.9rem] uppercase tracking-[0.3em] font-medium leading-none transition-colors duration-300',
-                isScrolled ? 'text-accent-hover' : 'text-accent-light'
-              )}
-            >
-              Renovation
-            </span>
+            <Image
+              src="/logo.png"
+              alt="Mufo Renovation"
+              width={320}
+              height={100}
+              style={{ height: '100px', width: 'auto', filter: isScrolled ? 'none' : 'brightness(0) invert(1)' }}
+              priority
+            />
           </Link>
 
           {/* Desktop Navigation */}
