@@ -34,7 +34,7 @@ function formatPhoneNumber(phone: string): string {
 // Format budget for display
 function formatBudget(budget: string): string {
   const budgetDisplay: Record<string, string> = {
-    '10k-25k': '$10,000 - $25,000',
+    'under-25k': 'Under $25,000',
     '25k-50k': '$25,000 - $50,000',
     '50k-100k': '$50,000 - $100,000',
     '100k+': '$100,000+',
@@ -117,7 +117,7 @@ export async function POST(request: NextRequest) {
     const formattedPhone = formatPhoneNumber(sanitizedPhone);
     const formattedBudget = formatBudget(sanitizedBudget);
 
-    // Format the HTML email content
+    // Format the HTML email content - Clean, professional design matching website (forest green #1a3a2f + gold #c9a227)
     const htmlContent = `
 <!DOCTYPE html>
 <html>
@@ -125,111 +125,105 @@ export async function POST(request: NextRequest) {
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body style="margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f3f4f6;">
-  <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #f3f4f6; padding: 40px 20px;">
+<body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background-color: #f9fafb; line-height: 1.6;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #f9fafb; padding: 48px 24px;">
     <tr>
       <td align="center">
-        <table width="600" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+        <table width="100%" cellpadding="0" cellspacing="0" style="max-width: 560px; background-color: #ffffff;">
 
-          <!-- Header with Logo -->
+          <!-- Header -->
           <tr>
-            <td style="background: linear-gradient(135deg, #1e3a5f 0%, #2d4a6f 100%); padding: 32px 40px; text-align: center;">
-              <img src="https://muforenovation.ca/logo.png" alt="Mufo Renovation" style="height: 50px; margin-bottom: 16px;">
-              <h1 style="color: #ffffff; margin: 0; font-size: 24px; font-weight: 600;">New Quote Request</h1>
-              <p style="color: #d4af37; margin: 8px 0 0 0; font-size: 16px; font-weight: 500;">${serviceName}</p>
+            <td style="background-color: #1a3a2f; padding: 36px 48px; text-align: center;">
+              <img src="https://mufo.ca/logo.png" alt="Mufo Renovation" style="height: 48px; margin-bottom: 20px;">
+              <p style="color: #c9a227; margin: 0 0 8px 0; font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;">New Quote Request</p>
+              <h1 style="color: #ffffff; margin: 0; font-size: 24px; font-weight: 400; font-family: Georgia, 'Times New Roman', serif;">${serviceName}</h1>
             </td>
           </tr>
 
-          <!-- Contact Information Section -->
+          <!-- Gold accent line -->
           <tr>
-            <td style="padding: 32px 40px 24px 40px;">
-              <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #f9fafb; border-radius: 8px; border-left: 4px solid #1e3a5f;">
-                <tr>
-                  <td style="padding: 20px 24px;">
-                    <h2 style="color: #1e3a5f; margin: 0 0 16px 0; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">Contact Information</h2>
+            <td style="background-color: #c9a227; height: 3px; font-size: 0; line-height: 0;">&nbsp;</td>
+          </tr>
 
-                    <table width="100%" cellpadding="0" cellspacing="0">
-                      <tr>
-                        <td style="padding: 8px 0;">
-                          <span style="color: #6b7280; font-size: 13px; display: inline-block; width: 70px;">Name</span>
-                          <span style="color: #111827; font-size: 15px; font-weight: 500;">${sanitizedName}</span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td style="padding: 8px 0;">
-                          <span style="color: #6b7280; font-size: 13px; display: inline-block; width: 70px;">Email</span>
-                          <a href="mailto:${sanitizedEmail}" style="color: #1e3a5f; font-size: 15px; font-weight: 500; text-decoration: none;">${sanitizedEmail}</a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td style="padding: 8px 0;">
-                          <span style="color: #6b7280; font-size: 13px; display: inline-block; width: 70px;">Phone</span>
-                          <a href="tel:${sanitizedPhone.replace(/\D/g, '')}" style="color: #1e3a5f; font-size: 15px; font-weight: 500; text-decoration: none;">${formattedPhone}</a>
-                        </td>
-                      </tr>
-                    </table>
+          <!-- Body Content -->
+          <tr>
+            <td style="padding: 40px 48px;">
+
+              <!-- Client Name -->
+              <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom: 28px;">
+                <tr>
+                  <td style="padding-bottom: 20px; border-bottom: 1px solid #e5e7eb;">
+                    <p style="color: #1a3a2f; margin: 0 0 4px 0; font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;">Client</p>
+                    <p style="color: #111827; margin: 0; font-size: 20px; font-weight: 500;">${sanitizedName}</p>
                   </td>
                 </tr>
               </table>
-            </td>
-          </tr>
 
-          <!-- Project Details Section -->
-          <tr>
-            <td style="padding: 0 40px 24px 40px;">
-              <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #f9fafb; border-radius: 8px; border-left: 4px solid #d4af37;">
+              <!-- Contact Details -->
+              <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom: 28px;">
                 <tr>
-                  <td style="padding: 20px 24px;">
-                    <h2 style="color: #1e3a5f; margin: 0 0 16px 0; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">Project Details</h2>
-
-                    <table width="100%" cellpadding="0" cellspacing="0">
-                      <tr>
-                        <td style="padding: 8px 0;">
-                          <span style="color: #6b7280; font-size: 13px; display: inline-block; width: 70px;">Service</span>
-                          <span style="color: #111827; font-size: 15px; font-weight: 500;">${serviceName}</span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td style="padding: 8px 0;">
-                          <span style="color: #6b7280; font-size: 13px; display: inline-block; width: 70px;">Budget</span>
-                          <span style="color: #d4af37; font-size: 15px; font-weight: 600;">${formattedBudget}</span>
-                        </td>
-                      </tr>
-                    </table>
+                  <td width="50%" style="vertical-align: top; padding-right: 16px;">
+                    <p style="color: #6b7280; margin: 0 0 6px 0; font-size: 12px; font-weight: 500;">Email</p>
+                    <a href="mailto:${sanitizedEmail}" style="color: #1a3a2f; font-size: 14px; text-decoration: none; word-break: break-all;">${sanitizedEmail}</a>
+                  </td>
+                  <td width="50%" style="vertical-align: top; padding-left: 16px;">
+                    <p style="color: #6b7280; margin: 0 0 6px 0; font-size: 12px; font-weight: 500;">Phone</p>
+                    <a href="tel:${sanitizedPhone.replace(/\D/g, '')}" style="color: #1a3a2f; font-size: 14px; text-decoration: none;">${formattedPhone}</a>
                   </td>
                 </tr>
               </table>
-            </td>
-          </tr>
 
-          <!-- Message Section -->
-          <tr>
-            <td style="padding: 0 40px 24px 40px;">
-              <h2 style="color: #1e3a5f; margin: 0 0 12px 0; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">Message</h2>
-              <div style="background-color: #ffffff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 20px;">
-                <p style="color: #374151; margin: 0; font-size: 15px; line-height: 1.6; white-space: pre-wrap;">${sanitizedMessage}</p>
-              </div>
-            </td>
-          </tr>
+              <!-- Project Info -->
+              <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom: 28px; background-color: #f9fafb;">
+                <tr>
+                  <td width="50%" style="padding: 20px; vertical-align: top;">
+                    <p style="color: #6b7280; margin: 0 0 6px 0; font-size: 12px; font-weight: 500;">Service</p>
+                    <p style="color: #111827; margin: 0; font-size: 14px; font-weight: 500;">${serviceName}</p>
+                  </td>
+                  <td width="50%" style="padding: 20px; vertical-align: top; border-left: 1px solid #e5e7eb;">
+                    <p style="color: #6b7280; margin: 0 0 6px 0; font-size: 12px; font-weight: 500;">Budget</p>
+                    <p style="color: #1a3a2f; margin: 0; font-size: 14px; font-weight: 600;">${formattedBudget}</p>
+                  </td>
+                </tr>
+              </table>
 
-          ${attachments && attachments.length > 0 ? `
-          <!-- Attachments Section -->
-          <tr>
-            <td style="padding: 0 40px 24px 40px;">
-              <div style="background-color: #fef3c7; border-radius: 8px; padding: 16px 20px; display: flex; align-items: center;">
-                <span style="color: #92400e; font-size: 14px; font-weight: 500;">📎 ${attachments.length} file(s) attached</span>
-              </div>
+              <!-- Message -->
+              <table width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td>
+                    <p style="color: #6b7280; margin: 0 0 12px 0; font-size: 12px; font-weight: 500;">Message</p>
+                    <p style="color: #374151; margin: 0; font-size: 14px; line-height: 1.7; white-space: pre-wrap;">${sanitizedMessage}</p>
+                  </td>
+                </tr>
+              </table>
+
+              ${attachments && attachments.length > 0 ? `
+              <!-- Attachments -->
+              <table width="100%" cellpadding="0" cellspacing="0" style="margin-top: 24px;">
+                <tr>
+                  <td style="padding: 14px 18px; background-color: #f3f4f6; border-left: 3px solid #c9a227;">
+                    <p style="color: #374151; margin: 0; font-size: 13px;"><strong>${attachments.length}</strong> file${attachments.length > 1 ? 's' : ''} attached</p>
+                  </td>
+                </tr>
+              </table>
+              ` : ''}
+
             </td>
           </tr>
-          ` : ''}
 
           <!-- Footer -->
           <tr>
-            <td style="background-color: #1e3a5f; padding: 24px 40px; text-align: center;">
-              <p style="color: #9ca3af; margin: 0; font-size: 13px;">This quote request was submitted through the Mufo Renovation website contact form.</p>
-              <p style="color: #d4af37; margin: 12px 0 0 0; font-size: 13px;">
-                <a href="https://muforenovation.ca" style="color: #d4af37; text-decoration: none;">muforenovation.ca</a>
-              </p>
+            <td style="padding: 20px 48px; border-top: 1px solid #e5e7eb;">
+              <table width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td>
+                    <p style="color: #9ca3af; margin: 0; font-size: 12px;">Submitted via <a href="https://mufo.ca" style="color: #1a3a2f; text-decoration: none;">mufo.ca</a></p>
+                  </td>
+                  <td style="text-align: right;">
+                    <p style="color: #c9a227; margin: 0; font-size: 12px; font-weight: 600;">Mufo Renovation</p>
+                  </td>
+                </tr>
+              </table>
             </td>
           </tr>
 
@@ -261,7 +255,7 @@ ${attachments && attachments.length > 0 ? `Attachments: ${attachments.length} fi
 
 ---
 This email was sent from the Mufo Renovation website contact form.
-https://muforenovation.ca
+https://mufo.ca
     `.trim();
 
     // Prepare attachments for Resend
