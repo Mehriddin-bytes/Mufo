@@ -56,7 +56,7 @@ export default function Footer({ showCTA = true }: FooterProps) {
           <div className="lg:col-span-4">
             <Link href="/" className="block mb-4 lg:mb-6">
               <Image
-                src="/Logo.png"
+                src="/logo.png"
                 alt="Mufo Renovation"
                 width={160}
                 height={50}

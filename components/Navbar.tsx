@@ -68,7 +68,7 @@ export default function Navbar() {
             onClick={closeMenu}
           >
             <Image
-              src="/Logo.png"
+              src="/logo.png"
               alt="Mufo Renovation"
               width={140}
               height={45}

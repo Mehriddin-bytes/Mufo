@@ -134,7 +134,7 @@ export async function POST(request: NextRequest) {
           <!-- Header -->
           <tr>
             <td style="background-color: #1a3a2f; padding: 24px 48px; text-align: center;">
-              <img src="https://mufo.ca/Logo-white.png" alt="Mufo" style="height: 32px; margin-bottom: 14px;">
+              <img src="https://mufo.ca/logo-white.png" alt="Mufo" style="height: 32px; margin-bottom: 14px;">
               <p style="color: #c9a227; margin: 0 0 4px 0; font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;">New Quote Request</p>
               <h1 style="color: #ffffff; margin: 0; font-size: 18px; font-weight: 500; font-family: Georgia, 'Times New Roman', serif;">${serviceName}</h1>
             </td>
