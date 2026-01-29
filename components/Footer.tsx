@@ -50,20 +50,21 @@ export default function Footer({ showCTA = true }: FooterProps) {
       )}
 
       {/* Main Footer - Centered Layout */}
-      <div className="container-custom py-16 lg:py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8">
+      <div className="container-custom py-10 lg:py-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8">
           {/* Left: Company Info */}
           <div className="lg:col-span-4">
-            <Link href="/" className="block mb-6 max-w-sm">
+            <Link href="/" className="block mb-4 lg:mb-6 max-w-[200px] lg:max-w-sm">
               <Image
                 src="/logo.png"
                 alt="Mufo Renovation"
                 width={400}
                 height={120}
-                style={{ height: '120px', width: '100%', objectFit: 'contain', objectPosition: 'left', filter: 'brightness(0) invert(1)' }}
+                style={{ height: '80px', width: '100%', objectFit: 'contain', objectPosition: 'left', filter: 'brightness(0) invert(1)' }}
+                className="lg:!h-[120px]"
               />
             </Link>
-            <p className="text-white/60 leading-relaxed mb-6 max-w-sm">
+            <p className="text-white/60 leading-relaxed mb-4 lg:mb-6 max-w-sm text-sm lg:text-base">
               Expert building restoration and renovation services. Quality craftsmanship, lasting results.
             </p>
 
@@ -73,7 +74,7 @@ export default function Footer({ showCTA = true }: FooterProps) {
                 href={siteConfig.social.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:bg-accent hover:border-accent hover:text-brand-dark transition-all"
+                className="w-9 h-9 lg:w-10 lg:h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:bg-accent hover:border-accent hover:text-brand-dark transition-all"
                 aria-label="Facebook"
               >
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
@@ -82,7 +83,7 @@ export default function Footer({ showCTA = true }: FooterProps) {
                 href={siteConfig.social.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:bg-accent hover:border-accent hover:text-brand-dark transition-all"
+                className="w-9 h-9 lg:w-10 lg:h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:bg-accent hover:border-accent hover:text-brand-dark transition-all"
                 aria-label="Instagram"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
@@ -91,7 +92,7 @@ export default function Footer({ showCTA = true }: FooterProps) {
                 href={siteConfig.social.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:bg-accent hover:border-accent hover:text-brand-dark transition-all"
+                className="w-9 h-9 lg:w-10 lg:h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:bg-accent hover:border-accent hover:text-brand-dark transition-all"
                 aria-label="LinkedIn"
               >
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
@@ -100,40 +101,40 @@ export default function Footer({ showCTA = true }: FooterProps) {
           </div>
 
           {/* Center: Links in 3 balanced columns */}
-          <div className="lg:col-span-5 grid grid-cols-2 sm:grid-cols-3 gap-8">
+          <div className="lg:col-span-5 grid grid-cols-2 sm:grid-cols-3 gap-6 lg:gap-8">
             {/* Quick Links */}
             <div>
-              <h3 className="text-sm font-semibold uppercase tracking-wider text-accent mb-5">
+              <h3 className="text-xs lg:text-sm font-semibold uppercase tracking-wider text-accent mb-3 lg:mb-5">
                 Quick Links
               </h3>
-              <ul className="space-y-3">
+              <ul className="space-y-2 lg:space-y-3">
                 <li>
-                  <Link href="/" className="text-white/60 hover:text-white transition-colors text-sm">
+                  <Link href="/" className="text-white/60 hover:text-white transition-colors text-xs lg:text-sm">
                     Home
                   </Link>
                 </li>
                 <li>
-                  <Link href="/services" className="text-white/60 hover:text-white transition-colors text-sm">
+                  <Link href="/services" className="text-white/60 hover:text-white transition-colors text-xs lg:text-sm">
                     Services
                   </Link>
                 </li>
                 <li>
-                  <Link href="/projects" className="text-white/60 hover:text-white transition-colors text-sm">
+                  <Link href="/projects" className="text-white/60 hover:text-white transition-colors text-xs lg:text-sm">
                     Projects
                   </Link>
                 </li>
                 <li>
-                  <Link href="/gallery" className="text-white/60 hover:text-white transition-colors text-sm">
+                  <Link href="/gallery" className="text-white/60 hover:text-white transition-colors text-xs lg:text-sm">
                     Gallery
                   </Link>
                 </li>
                 <li>
-                  <Link href="/about" className="text-white/60 hover:text-white transition-colors text-sm">
+                  <Link href="/about" className="text-white/60 hover:text-white transition-colors text-xs lg:text-sm">
                     About Us
                   </Link>
                 </li>
                 <li>
-                  <Link href="/contact" className="text-white/60 hover:text-white transition-colors text-sm">
+                  <Link href="/contact" className="text-white/60 hover:text-white transition-colors text-xs lg:text-sm">
                     Contact
                   </Link>
                 </li>
@@ -142,15 +143,15 @@ export default function Footer({ showCTA = true }: FooterProps) {
 
             {/* Services Column 1 */}
             <div>
-              <h3 className="text-sm font-semibold uppercase tracking-wider text-accent mb-5">
+              <h3 className="text-xs lg:text-sm font-semibold uppercase tracking-wider text-accent mb-3 lg:mb-5">
                 Services
               </h3>
-              <ul className="space-y-3">
+              <ul className="space-y-2 lg:space-y-3">
                 {servicesColumn1.map((service) => (
                   <li key={service.id}>
                     <Link
                       href={`/services/${service.slug}`}
-                      className="text-white/60 hover:text-white transition-colors text-sm"
+                      className="text-white/60 hover:text-white transition-colors text-xs lg:text-sm"
                     >
                       {service.shortTitle}
                     </Link>
@@ -159,17 +160,17 @@ export default function Footer({ showCTA = true }: FooterProps) {
               </ul>
             </div>
 
-            {/* Services Column 2 */}
-            <div>
-              <h3 className="text-sm font-semibold uppercase tracking-wider text-accent mb-5 opacity-0 pointer-events-none">
+            {/* Services Column 2 - Hidden on mobile */}
+            <div className="hidden sm:block">
+              <h3 className="text-xs lg:text-sm font-semibold uppercase tracking-wider text-accent mb-3 lg:mb-5 opacity-0 pointer-events-none">
                 More
               </h3>
-              <ul className="space-y-3">
+              <ul className="space-y-2 lg:space-y-3">
                 {servicesColumn2.map((service) => (
                   <li key={service.id}>
                     <Link
                       href={`/services/${service.slug}`}
-                      className="text-white/60 hover:text-white transition-colors text-sm"
+                      className="text-white/60 hover:text-white transition-colors text-xs lg:text-sm"
                     >
                       {service.shortTitle}
                     </Link>
@@ -181,19 +182,19 @@ export default function Footer({ showCTA = true }: FooterProps) {
 
           {/* Right: Contact Info */}
           <div className="lg:col-span-3">
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-accent mb-5">
+            <h3 className="text-xs lg:text-sm font-semibold uppercase tracking-wider text-accent mb-3 lg:mb-5">
               Contact Us
             </h3>
-            <ul className="space-y-4">
+            <ul className="space-y-3 lg:space-y-4">
               <li>
                 <a
                   href={`tel:${siteConfig.contact.phone.replace(/\D/g, '')}`}
                   className="flex items-center gap-3 group"
                 >
-                  <div className="w-9 h-9 rounded-full bg-white/5 flex items-center justify-center flex-shrink-0 group-hover:bg-accent/20 transition-colors">
-                    <Phone className="w-4 h-4 text-accent" />
+                  <div className="w-8 h-8 lg:w-9 lg:h-9 rounded-full bg-white/5 flex items-center justify-center flex-shrink-0 group-hover:bg-accent/20 transition-colors">
+                    <Phone className="w-3.5 h-3.5 lg:w-4 lg:h-4 text-accent" />
                   </div>
-                  <span className="text-white/70 group-hover:text-white transition-colors text-sm">
+                  <span className="text-white/70 group-hover:text-white transition-colors text-xs lg:text-sm">
                     {siteConfig.contact.phone}
                   </span>
                 </a>
@@ -203,19 +204,19 @@ export default function Footer({ showCTA = true }: FooterProps) {
                   href={`mailto:${siteConfig.contact.email}`}
                   className="flex items-center gap-3 group"
                 >
-                  <div className="w-9 h-9 rounded-full bg-white/5 flex items-center justify-center flex-shrink-0 group-hover:bg-accent/20 transition-colors">
-                    <Mail className="w-4 h-4 text-accent" />
+                  <div className="w-8 h-8 lg:w-9 lg:h-9 rounded-full bg-white/5 flex items-center justify-center flex-shrink-0 group-hover:bg-accent/20 transition-colors">
+                    <Mail className="w-3.5 h-3.5 lg:w-4 lg:h-4 text-accent" />
                   </div>
-                  <span className="text-white/70 group-hover:text-white transition-colors text-sm break-all">
+                  <span className="text-white/70 group-hover:text-white transition-colors text-xs lg:text-sm break-all">
                     {siteConfig.contact.email}
                   </span>
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-full bg-white/5 flex items-center justify-center flex-shrink-0">
-                  <MapPin className="w-4 h-4 text-accent" />
+                <div className="w-8 h-8 lg:w-9 lg:h-9 rounded-full bg-white/5 flex items-center justify-center flex-shrink-0">
+                  <MapPin className="w-3.5 h-3.5 lg:w-4 lg:h-4 text-accent" />
                 </div>
-                <span className="text-white/70 text-sm">
+                <span className="text-white/70 text-xs lg:text-sm">
                   {siteConfig.contact.address.city}, {siteConfig.contact.address.province}
                 </span>
               </li>
@@ -226,12 +227,12 @@ export default function Footer({ showCTA = true }: FooterProps) {
 
       {/* Bottom Bar */}
       <div className="border-t border-white/10">
-        <div className="container-custom py-5">
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-sm">
+        <div className="container-custom py-4 lg:py-5">
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-3 lg:gap-4 text-xs lg:text-sm">
             <p className="text-white/60 text-center sm:text-left">
               © {getCurrentYear()} {siteConfig.name}. All rights reserved.
             </p>
-            <div className="flex gap-6">
+            <div className="flex gap-4 lg:gap-6">
               <Link
                 href="/privacy"
                 className="text-white/60 hover:text-white transition-colors"

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { Phone, Mail, MapPin, Upload, X, CheckCircle, Send, Loader2, ImageIcon, FileText } from 'lucide-react';
 import { ScrollAnimation } from '@/components/ui';
@@ -45,6 +45,13 @@ export default function ContactPage() {
   const [emailError, setEmailError] = useState('');
   const [emailTouched, setEmailTouched] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  // Scroll to top when form is submitted successfully
+  useEffect(() => {
+    if (isSubmitted) {
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }
+  }, [isSubmitted]);
 
   const isValidEmail = (email: string) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
