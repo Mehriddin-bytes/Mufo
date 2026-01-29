@@ -54,14 +54,13 @@ export default function Footer({ showCTA = true }: FooterProps) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8">
           {/* Left: Company Info */}
           <div className="lg:col-span-4">
-            <Link href="/" className="block mb-4 lg:mb-6 max-w-[200px] lg:max-w-sm">
+            <Link href="/" className="block mb-4 lg:mb-6">
               <Image
-                src="/logo.png"
+                src="/Logo.png"
                 alt="Mufo Renovation"
-                width={400}
-                height={120}
-                style={{ height: '80px', width: '100%', objectFit: 'contain', objectPosition: 'left', filter: 'brightness(0) invert(1)' }}
-                className="lg:!h-[120px]"
+                width={160}
+                height={50}
+                style={{ filter: 'brightness(0) invert(1)' }}
               />
             </Link>
             <p className="text-white/60 leading-relaxed mb-4 lg:mb-6 max-w-sm text-sm lg:text-base">

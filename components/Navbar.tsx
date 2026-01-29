@@ -68,11 +68,11 @@ export default function Navbar() {
             onClick={closeMenu}
           >
             <Image
-              src="/logo.png"
+              src="/Logo.png"
               alt="Mufo Renovation"
               width={140}
-              height={100}
-              style={{ height: '100px', width: 'auto', filter: isScrolled ? 'none' : 'brightness(0) invert(1)' }}
+              height={45}
+              style={{ filter: isScrolled ? 'none' : 'brightness(0) invert(1)' }}
               priority
             />
           </Link>
