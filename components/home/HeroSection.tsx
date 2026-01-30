@@ -51,7 +51,7 @@ export default function HeroSection() {
 
           {/* Description */}
           <p className="text-lg sm:text-xl text-white/70 max-w-xl mb-10 leading-relaxed">
-            From stunning bathrooms to complete home renovations, we bring your vision
+            From building restorations to complete renovations, we bring your vision
             to life with expert craftsmanship and attention to every detail.
           </p>
 
