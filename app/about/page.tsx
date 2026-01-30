@@ -7,7 +7,7 @@ import { TimelineSection, CertificationsSection } from '@/components/shared';
 
 export const metadata = {
   title: 'About Us | Mufo Renovation',
-  description: 'Learn about Mufo Renovation - over 12 years of expert craftsmanship, transforming homes across the Greater Toronto Area.',
+  description: 'Learn about Mufo Renovation - over 12 years of expert craftsmanship, transforming homes across Ontario.',
 };
 
 const valueIcons = {
@@ -22,7 +22,7 @@ const milestones = [
   { year: '2015', title: 'Expanded Services', description: 'Added full home renovation to our service offerings.' },
   { year: '2018', title: '200th Project', description: 'Celebrated our 200th completed renovation project.' },
   { year: '2021', title: 'Team Growth', description: 'Expanded to 25+ skilled craftsmen and professionals.' },
-  { year: '2024', title: '350+ Projects', description: 'Continuing to transform homes across the GTA.' },
+  { year: '2024', title: '350+ Projects', description: 'Continuing to transform homes across Ontario.' },
 ];
 
 export default function AboutPage() {
@@ -128,7 +128,7 @@ export default function AboutPage() {
                   craftsmen has grown into one of Toronto&apos;s most trusted renovation companies.
                 </p>
                 <p className="text-gray-600 text-sm leading-relaxed mb-6">
-                  Our founder, Michael Foley, brought together a team of skilled artisans who
+                  Our founder, Asror Egamberdiyev, brought together a team of skilled artisans who
                   share his commitment to excellence. Today, we continue that tradition, treating
                   every project with the same dedication to quality.
                 </p>
@@ -173,7 +173,7 @@ export default function AboutPage() {
                 <p className="text-gray-600 leading-relaxed mb-8">
                   We don&apos;t just renovate buildings – we restore confidence. Our commitment to excellence,
                   combined with decades of industry experience, makes us the trusted choice for property
-                  managers and building owners across the GTA.
+                  managers and building owners across Ontario.
                 </p>
 
                 {/* Stats Highlight */}

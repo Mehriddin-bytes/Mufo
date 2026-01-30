@@ -31,7 +31,7 @@ const serviceImages: Record<string, string> = {
 
 export const metadata = {
   title: 'Our Services | Mufo Renovation',
-  description: 'Explore our comprehensive renovation services including kitchen, bathroom, basement, and full home renovations.',
+  description: 'Explore our comprehensive renovation services including bathroom, basement, and full home renovations.',
 };
 
 export default function ServicesPage() {
@@ -65,7 +65,7 @@ export default function ServicesPage() {
                 <span className="text-accent-light">Services</span>
               </h1>
               <p className="text-lg text-white/70 max-w-xl mx-auto lg:mx-0">
-                From kitchens to complete home makeovers, we bring expertise and craftsmanship
+                From bathrooms to complete home makeovers, we bring expertise and craftsmanship
                 to every project. Explore our services and find the perfect solution for your home.
               </p>
             </div>

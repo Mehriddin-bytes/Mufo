@@ -262,7 +262,7 @@ export default function ContactPage() {
               {/* Trust badge */}
               <div className="mt-12 pt-8 border-t border-white/10">
                 <p className="text-white/40 text-sm">
-                  Trusted by 350+ property managers across the GTA
+                  Trusted by 350+ property managers across Ontario
                 </p>
               </div>
             </div>

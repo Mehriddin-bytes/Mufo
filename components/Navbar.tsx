@@ -132,7 +132,7 @@ export default function Navbar() {
                               Professional Building Restoration
                             </h3>
                             <p className="text-white/70 text-sm leading-relaxed mb-6">
-                              Trusted by property managers across the GTA for quality workmanship and reliable service.
+                              Trusted by property managers across Ontario for quality workmanship and reliable service.
                             </p>
                             <Link
                               href="/services"

@@ -906,7 +906,7 @@ export const testimonials: Testimonial[] = [
     name: 'Rebecca Thompson',
     role: 'Homeowner',
     location: 'Toronto, ON',
-    content: 'Mufo Renovation completely transformed our dated kitchen into a stunning modern space. Their attention to detail and craftsmanship exceeded all our expectations.',
+    content: 'Mufo Renovation completely transformed our dated space into a stunning modern area. Their attention to detail and craftsmanship exceeded all our expectations.',
     rating: 5,
   },
   {
@@ -920,7 +920,7 @@ export const testimonials: Testimonial[] = [
   {
     id: '3',
     name: 'Jennifer Walsh',
-    role: 'Interior Designer',
+    role: 'Exterior Designer',
     location: 'Oakville, ON',
     content: 'I regularly recommend Mufo to my clients. Their quality of work is consistently excellent, and they understand how to bring design visions to life.',
     rating: 5,
