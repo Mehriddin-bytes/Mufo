@@ -214,7 +214,41 @@ export default function Navbar() {
           </div>
 
           {/* Desktop CTA */}
-          <div className="hidden lg:flex items-center gap-5">
+          <div className="hidden lg:flex items-center gap-4">
+            {/* Social Icons */}
+            <div className="flex items-center gap-1.5">
+              <a
+                href={siteConfig.social.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className={cn(
+                  'w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300',
+                  isScrolled
+                    ? 'text-brand hover:bg-brand hover:text-white'
+                    : 'text-white/80 hover:bg-white/20 hover:text-white'
+                )}
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              </a>
+              <a
+                href={siteConfig.social.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                className={cn(
+                  'w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300',
+                  isScrolled
+                    ? 'text-brand hover:bg-brand hover:text-white'
+                    : 'text-white/80 hover:bg-white/20 hover:text-white'
+                )}
+              >
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+              </a>
+            </div>
+
+            <div className={cn('w-px h-6', isScrolled ? 'bg-gray-200' : 'bg-white/20')} />
+
             <a
               href={`tel:${siteConfig.contact.phone.replace(/\D/g, '')}`}
               className={cn(
@@ -344,6 +378,27 @@ export default function Navbar() {
 
             {/* Mobile CTA */}
             <div className="mt-6 pt-6 border-t border-gray-200">
+              {/* Social Icons */}
+              <div className="flex items-center gap-3 px-4 mb-4">
+                <a
+                  href={siteConfig.social.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                  className="w-10 h-10 rounded-full bg-brand/10 flex items-center justify-center text-brand hover:bg-brand hover:text-white transition-all"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                </a>
+                <a
+                  href={siteConfig.social.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook"
+                  className="w-10 h-10 rounded-full bg-brand/10 flex items-center justify-center text-brand hover:bg-brand hover:text-white transition-all"
+                >
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                </a>
+              </div>
               <a
                 href={`tel:${siteConfig.contact.phone.replace(/\D/g, '')}`}
                 className="flex items-center gap-3 py-3 px-4 text-gray-700"
