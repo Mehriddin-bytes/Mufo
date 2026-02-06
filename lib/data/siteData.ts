@@ -23,7 +23,7 @@ export const siteConfig = {
 
   // Social Media Links
   social: {
-    facebook: 'https://www.facebook.com/people/Mufo/61587040304773/',
+    facebook: 'https://www.facebook.com/share/1DFLJryqAj/?mibextid=wwXIfr',
     instagram: 'https://www.instagram.com/mufo.ca',
     linkedin: 'https://linkedin.com/company/muforenovation',
   },
