@@ -377,44 +377,43 @@ export default function Navbar() {
             </div>
 
             {/* Mobile CTA */}
-            <div className="mt-6 pt-6 border-t border-gray-200">
-              {/* Social Icons */}
-              <div className="flex items-center gap-3 px-4 mb-4">
+            <div className="mt-6 pt-6 border-t border-gray-200 space-y-4">
+              {/* Social + Call row */}
+              <div className="flex items-center gap-3 px-4">
                 <a
                   href={siteConfig.social.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="Instagram"
-                  className="w-10 h-10 rounded-full bg-brand/10 flex items-center justify-center text-brand hover:bg-brand hover:text-white transition-all"
+                  className="flex-1 flex items-center justify-center gap-2 py-3 bg-brand/5 text-brand font-semibold rounded-xl hover:bg-brand hover:text-white transition-all"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                  Instagram
                 </a>
                 <a
                   href={siteConfig.social.facebook}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="Facebook"
-                  className="w-10 h-10 rounded-full bg-brand/10 flex items-center justify-center text-brand hover:bg-brand hover:text-white transition-all"
+                  className="flex-1 flex items-center justify-center gap-2 py-3 bg-brand/5 text-brand font-semibold rounded-xl hover:bg-brand hover:text-white transition-all"
                 >
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                  Facebook
                 </a>
               </div>
+
+              {/* Call button */}
               <a
                 href={`tel:${siteConfig.contact.phone.replace(/\D/g, '')}`}
-                className="flex items-center gap-3 py-3 px-4 text-gray-700"
+                className="flex items-center justify-center gap-3 mx-4 py-3.5 bg-accent/10 rounded-xl text-gray-800 hover:bg-accent/20 transition-colors"
               >
-                <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center">
-                  <Phone className="w-5 h-5 text-accent-hover" />
-                </div>
-                <div>
-                  <div className="text-xs text-gray-500 uppercase tracking-wider">Call Us</div>
-                  <div className="font-medium">{siteConfig.contact.phone}</div>
-                </div>
+                <Phone className="w-5 h-5 text-accent-hover" />
+                <span className="font-semibold">{siteConfig.contact.phone}</span>
               </a>
+
+              {/* Get Free Quote */}
               <Link
                 href="/contact"
                 onClick={closeMenu}
-                className="mt-4 flex items-center justify-center gap-2 w-full py-4 bg-brand text-white font-medium hover:bg-brand-hover transition-colors"
+                className="flex items-center justify-center gap-2 mx-4 py-4 bg-brand text-white font-semibold rounded-xl hover:bg-brand-hover transition-colors"
               >
                 Get Free Quote
                 <ArrowRight className="w-4 h-4" />
