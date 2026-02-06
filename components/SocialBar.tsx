@@ -8,16 +8,26 @@ import { cn } from '@/lib/utils';
 const STORAGE_KEY = 'mufo-social-bar-dismissed';
 
 export default function SocialBar() {
-  const [isVisible, setIsVisible] = useState(false);
+  const [shouldMount, setShouldMount] = useState(false);
+  const [isAnimatedIn, setIsAnimatedIn] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const dismissed = localStorage.getItem(STORAGE_KEY);
     if (!dismissed) {
-      const timer = setTimeout(() => setIsVisible(true), 1500);
-      return () => clearTimeout(timer);
+      // First mount the element (hidden off-screen)
+      const mountTimer = setTimeout(() => setShouldMount(true), 1200);
+      return () => clearTimeout(mountTimer);
     }
   }, []);
+
+  useEffect(() => {
+    if (shouldMount) {
+      // Then trigger the slide-up animation after a brief delay for the DOM to render
+      const animateTimer = setTimeout(() => setIsAnimatedIn(true), 50);
+      return () => clearTimeout(animateTimer);
+    }
+  }, [shouldMount]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,17 +38,21 @@ export default function SocialBar() {
   }, []);
 
   const handleDismiss = () => {
-    setIsVisible(false);
-    localStorage.setItem(STORAGE_KEY, 'true');
+    setIsAnimatedIn(false);
+    // Wait for the exit animation to finish before removing from DOM
+    setTimeout(() => {
+      setShouldMount(false);
+      localStorage.setItem(STORAGE_KEY, 'true');
+    }, 500);
   };
 
-  if (!isVisible) return null;
+  if (!shouldMount) return null;
 
   return (
     <div
       className={cn(
         'fixed bottom-4 left-4 right-4 sm:left-6 sm:right-6 z-50 transition-all duration-500',
-        isVisible ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'
+        isAnimatedIn ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'
       )}
     >
       <div
