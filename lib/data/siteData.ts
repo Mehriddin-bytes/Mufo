@@ -441,10 +441,10 @@ export const services: Service[] = [
     description: 'Complete stucco repair, restoration, and application services for residential and commercial buildings.',
     longDescription: 'Stucco provides both aesthetic appeal and weather protection, but requires proper installation and maintenance. Our stucco services address cracking, water damage, and deterioration while enhancing building appearance. Whether you need repairs to existing stucco or new application, our skilled technicians deliver durable, attractive results that stand up to the elements.',
     icon: 'PaintBucket',
-    image: '/images/services/stucco.jpg',
+    image: '/images/gallery/stucco-3.jpg',
     gallery: [
-      { src: '/images/services/stucco/stucco-1.jpg', alt: 'Stucco crack repair', caption: 'Crack Repair' },
-      { src: '/images/services/stucco/stucco-2.jpg', alt: 'Stucco application', caption: 'New Application' },
+      { src: '/images/gallery/stucco-3.jpg', alt: 'Stucco crack repair', caption: 'Crack Repair' },
+      { src: '/images/gallery/stucco-4.jpg', alt: 'Stucco application', caption: 'New Application' },
       { src: '/images/services/stucco/stucco-3.jpg', alt: 'EIFS repair', caption: 'EIFS Restoration' },
       { src: '/images/services/stucco/stucco-4.jpg', alt: 'Color matching', caption: 'Color Matching' },
       { src: '/images/services/stucco/stucco-5.jpg', alt: 'Stucco texturing', caption: 'Texture Work' },
@@ -529,7 +529,7 @@ export const services: Service[] = [
     description: 'Comprehensive high-rise building envelope renovation including facade restoration, window replacement, and cladding systems.',
     longDescription: 'High-rise buildings present unique challenges requiring specialized expertise and equipment. Our high-rise renovation services address the complete building envelope—from roof to grade. We coordinate complex multi-trade projects to deliver comprehensive renovations that improve building performance, appearance, and resident satisfaction while maintaining occupied building operations.',
     icon: 'Building',
-    image: '/images/services/high-rise.jpg',
+    image: '/images/gallery/swingstage-1.jpg',
     gallery: [
       { src: '/images/services/high-rise/high-rise-1.jpg', alt: 'High-rise facade work', caption: 'Facade Renovation' },
       { src: '/images/services/high-rise/high-rise-2.jpg', alt: 'Window replacement', caption: 'Window Replacement' },
@@ -705,7 +705,7 @@ export const services: Service[] = [
     description: 'Comprehensive interior and exterior finishing services including painting, coatings, and decorative finishes.',
     longDescription: 'The finishing touches make all the difference in building appearance and protection. Our interior and exterior finishing services cover everything from protective coatings to decorative finishes. We work with property managers and building owners to maintain and enhance building aesthetics while providing protective barriers against the elements and wear.',
     icon: 'Paintbrush',
-    image: '/images/services/interior-exterior.jpg',
+    image: '/images/wallpanel/wallpanel-1.jpg',
     gallery: [
       { src: '/images/services/interior-exterior/ie-1.jpg', alt: 'Exterior painting', caption: 'Exterior Coating' },
       { src: '/images/services/interior-exterior/ie-2.jpg', alt: 'Interior painting', caption: 'Interior Finishing' },
@@ -1058,7 +1058,7 @@ export const projects: Project[] = [
     categorySlug: 'balcony-restoration',
     location: 'Mississauga, ON',
     description: 'Full balcony restoration for 200-unit condominium including structural repairs, waterproofing, and new railings.',
-    image: '/images/balcony/balcony-web-5.jpg',
+    image: '/images/projects/balcony-1.jpg',
     gallery: [
       { src: '/images/balcony/balcony-1.jpg', alt: 'Concrete repair', caption: 'Structural Work' },
       { src: '/images/balcony/balcony-2.jpg', alt: 'Railing installation', caption: 'New Railings' },
@@ -1076,7 +1076,7 @@ export const projects: Project[] = [
     categorySlug: 'masonry-services',
     location: 'Hamilton, ON',
     description: 'Comprehensive masonry restoration of a heritage commercial building including brick replacement and tuckpointing.',
-    image: '/images/masonry/masonry-web-1.jpg',
+    image: '/images/projects/masonry-1.jpg',
     gallery: [
       { src: '/images/masonry/masonry-2.jpg', alt: 'Brick replacement', caption: 'Brick Matching' },
       { src: '/images/masonry/masonry-5.jpg', alt: 'Tuckpointing', caption: 'Mortar Restoration' },
@@ -1094,11 +1094,11 @@ export const projects: Project[] = [
     categorySlug: 'high-rise-renovation',
     location: 'Toronto, ON',
     description: 'Complete building envelope renovation for 30-storey residential tower including window replacement and cladding.',
-    image: '/images/gallery/highrise-1.jpg',
+    image: '/images/gallery/swingstage-4.jpg',
     gallery: [
-      { src: '/images/gallery/highrise-2.jpg', alt: 'Window installation', caption: 'New Windows' },
-      { src: '/images/gallery/highrise-3.jpg', alt: 'Cladding work', caption: 'Cladding System' },
-      { src: '/images/gallery/highrise-4.jpg', alt: 'Completed tower', caption: 'Completed Project' },
+      { src: '/images/wallpanel/wallpanel-2.jpg', alt: 'Cladding work', caption: 'Cladding System' },
+      { src: '/images/wallpanel/wallpanel-4.jpg', alt: 'Panel installation', caption: 'Panel System' },
+      { src: '/images/gallery/swingstage-2.jpg', alt: 'Facade work', caption: 'Facade Restoration' },
     ],
     features: ['Window Replacement', 'Cladding System', 'Balcony Restoration', 'Energy Upgrades'],
     completionDate: '2023',
@@ -1115,8 +1115,8 @@ export const projects: Project[] = [
     image: '/images/parking/parking-waterproofing.jpg',
     gallery: [
       { src: '/images/parking/parking-waterproofing-membrane.jpg', alt: 'Injection grouting', caption: 'Crack Injection' },
-      { src: '/images/coating/coating-3.jpg', alt: 'Membrane work', caption: 'Membrane System' },
-      { src: '/images/coating/coating-5.jpg', alt: 'Drainage installation', caption: 'Drainage Work' },
+      { src: '/images/gallery/waterproofing-1.jpg', alt: 'Membrane work', caption: 'Membrane System' },
+      { src: '/images/gallery/waterproofing-2.jpg', alt: 'Drainage installation', caption: 'Drainage Work' },
     ],
     features: ['Injection Grouting', 'Membrane Systems', 'Drainage Improvements', 'Concrete Repairs'],
     completionDate: '2024',
@@ -1152,7 +1152,7 @@ export const projects: Project[] = [
     gallery: [
       { src: '/images/wallpanel/wallpanel-3.jpg', alt: 'Lobby renovation', caption: 'Lobby Upgrade' },
       { src: '/images/balcony/balcony-web-2.jpg', alt: 'Balcony work', caption: 'Balcony Restoration' },
-      { src: '/images/windows/windows-1.jpg', alt: 'Exterior', caption: 'Building Exterior' },
+      { src: '/images/gallery/swingstage-3.jpg', alt: 'Exterior', caption: 'Building Exterior' },
     ],
     features: ['Common Area Renovation', 'Balcony Restoration', 'Roofing Replacement', 'Facade Repairs'],
     completionDate: '2023',
@@ -1168,9 +1168,9 @@ export const projects: Project[] = [
     description: 'Complete plaza deck waterproofing system replacement including membrane, drainage, and paver reinstallation.',
     image: '/images/caulking/caulking-coating.jpg',
     gallery: [
-      { src: '/images/coating/coating-7.jpg', alt: 'Membrane installation', caption: 'New Membrane' },
-      { src: '/images/coating/coating-9.jpg', alt: 'Drainage system', caption: 'Drainage Layer' },
-      { src: '/images/coating/coating-2.jpg', alt: 'Paver installation', caption: 'Paver Reinstall' },
+      { src: '/images/gallery/waterproofing-3.jpg', alt: 'Membrane installation', caption: 'New Membrane' },
+      { src: '/images/gallery/waterproofing-4.jpg', alt: 'Drainage system', caption: 'Drainage Layer' },
+      { src: '/images/projects/waterproofing-2-1.jpg', alt: 'Paver installation', caption: 'Paver Reinstall' },
     ],
     features: ['Membrane Replacement', 'Drainage System', 'Paver Installation', 'Planter Waterproofing'],
     completionDate: '2023',
@@ -1210,7 +1210,7 @@ function shuffleArray<T>(array: T[]): T[] {
 }
 
 const galleryImagesUnshuffled: GalleryImage[] = [
-  // Parking Restoration (20 images)
+  // Parking Restoration (17 images)
   { id: 'p1', src: '/images/parking/parking-1.jpg', alt: 'Parking garage restoration', title: 'Garage Restoration', category: 'Parking Restoration', categorySlug: 'parking-restoration' },
   { id: 'p2', src: '/images/parking/parking-2.jpg', alt: 'Concrete repair work', title: 'Concrete Repair', category: 'Parking Restoration', categorySlug: 'parking-restoration' },
   { id: 'p3', src: '/images/parking/parking-3.jpg', alt: 'Parking structure maintenance', title: 'Structure Maintenance', category: 'Parking Restoration', categorySlug: 'parking-restoration' },
@@ -1221,9 +1221,6 @@ const galleryImagesUnshuffled: GalleryImage[] = [
   { id: 'p8', src: '/images/parking/parking-8.jpg', alt: 'Underground parking work', title: 'Underground Work', category: 'Parking Restoration', categorySlug: 'parking-restoration' },
   { id: 'p9', src: '/images/parking/parking-9.jpg', alt: 'Parking concrete work', title: 'Concrete Work', category: 'Parking Restoration', categorySlug: 'parking-restoration' },
   { id: 'p10', src: '/images/parking/parking-10.jpg', alt: 'Parking restoration project', title: 'Restoration Project', category: 'Parking Restoration', categorySlug: 'parking-restoration' },
-  { id: 'p11', src: '/images/parking/garage-1.jpg', alt: 'Garage waterproofing', title: 'Waterproofing', category: 'Parking Restoration', categorySlug: 'parking-restoration' },
-  { id: 'p12', src: '/images/parking/garage-2.jpg', alt: 'Garage structure repair', title: 'Structure Repair', category: 'Parking Restoration', categorySlug: 'parking-restoration' },
-  { id: 'p13', src: '/images/parking/garage-3.jpg', alt: 'Garage maintenance', title: 'Maintenance Work', category: 'Parking Restoration', categorySlug: 'parking-restoration' },
   { id: 'p14', src: '/images/parking/parking-structure.jpg', alt: 'Parking structure', title: 'Structure Work', category: 'Parking Restoration', categorySlug: 'parking-restoration' },
   { id: 'p15', src: '/images/parking/parking-work.jpg', alt: 'Parking work in progress', title: 'Work In Progress', category: 'Parking Restoration', categorySlug: 'parking-restoration' },
   { id: 'p16', src: '/images/parking/parking-patching.jpg', alt: 'Concrete patching', title: 'Patching Work', category: 'Parking Restoration', categorySlug: 'parking-restoration' },
@@ -1232,19 +1229,16 @@ const galleryImagesUnshuffled: GalleryImage[] = [
   { id: 'p19', src: '/images/parking/parking-web-1.jpg', alt: 'Parking restoration', title: 'Restoration Work', category: 'Parking Restoration', categorySlug: 'parking-restoration' },
   { id: 'p20', src: '/images/parking/parking-web-2.jpg', alt: 'Parking repair', title: 'Repair Work', category: 'Parking Restoration', categorySlug: 'parking-restoration' },
 
-  // Balcony Restoration (10 images)
+  // Balcony Restoration (7 images)
   { id: 'b1', src: '/images/balcony/balcony-1.jpg', alt: 'Balcony structural repair', title: 'Structural Repair', category: 'Balcony Restoration', categorySlug: 'balcony-restoration' },
   { id: 'b2', src: '/images/balcony/balcony-2.jpg', alt: 'Balcony railing work', title: 'Railing Installation', category: 'Balcony Restoration', categorySlug: 'balcony-restoration' },
   { id: 'b3', src: '/images/balcony/balcony-3.jpg', alt: 'Balcony waterproofing', title: 'Waterproofing', category: 'Balcony Restoration', categorySlug: 'balcony-restoration' },
   { id: 'b4', src: '/images/balcony/balcony-web-2.jpg', alt: 'Completed balcony', title: 'Completed Project', category: 'Balcony Restoration', categorySlug: 'balcony-restoration' },
   { id: 'b5', src: '/images/balcony/balcony-web-3.jpg', alt: 'Balcony renovation', title: 'Renovation Work', category: 'Balcony Restoration', categorySlug: 'balcony-restoration' },
-  { id: 'b6', src: '/images/balcony/balcony-web-4.jpg', alt: 'Balcony restoration', title: 'Restoration Work', category: 'Balcony Restoration', categorySlug: 'balcony-restoration' },
-  { id: 'b7', src: '/images/balcony/balcony-web-5.jpg', alt: 'Balcony repair', title: 'Repair Work', category: 'Balcony Restoration', categorySlug: 'balcony-restoration' },
-  { id: 'b8', src: '/images/balcony/balcony-web-6.jpg', alt: 'Balcony finishing', title: 'Finishing Work', category: 'Balcony Restoration', categorySlug: 'balcony-restoration' },
   { id: 'b9', src: '/images/gallery/balcony-1.jpg', alt: 'Balcony project', title: 'Balcony Project', category: 'Balcony Restoration', categorySlug: 'balcony-restoration' },
   { id: 'b10', src: '/images/gallery/balcony-2.jpg', alt: 'Balcony work', title: 'Balcony Work', category: 'Balcony Restoration', categorySlug: 'balcony-restoration' },
 
-  // Masonry Services (24 images)
+  // Masonry Services (20 images)
   { id: 'm1', src: '/images/masonry/masonry-1.jpg', alt: 'Brick replacement', title: 'Brick Replacement', category: 'Masonry Services', categorySlug: 'masonry-services' },
   { id: 'm2', src: '/images/masonry/masonry-2.jpg', alt: 'Tuckpointing work', title: 'Tuckpointing', category: 'Masonry Services', categorySlug: 'masonry-services' },
   { id: 'm3', src: '/images/masonry/masonry-3.jpg', alt: 'Stone restoration', title: 'Stone Restoration', category: 'Masonry Services', categorySlug: 'masonry-services' },
@@ -1265,70 +1259,35 @@ const galleryImagesUnshuffled: GalleryImage[] = [
   { id: 'm18', src: '/images/masonry/masonry-18.jpg', alt: 'Masonry detail', title: 'Detail Work', category: 'Masonry Services', categorySlug: 'masonry-services' },
   { id: 'm19', src: '/images/masonry/masonry-19.jpg', alt: 'Stone detail', title: 'Stone Detail', category: 'Masonry Services', categorySlug: 'masonry-services' },
   { id: 'm20', src: '/images/masonry/masonry-20.jpg', alt: 'Completed masonry', title: 'Completed Work', category: 'Masonry Services', categorySlug: 'masonry-services' },
-  { id: 'm21', src: '/images/masonry/masonry-web-1.jpg', alt: 'Masonry web project', title: 'Project Work', category: 'Masonry Services', categorySlug: 'masonry-services' },
-  { id: 'm22', src: '/images/masonry/masonry-web-2.jpg', alt: 'Masonry building', title: 'Building Project', category: 'Masonry Services', categorySlug: 'masonry-services' },
-  { id: 'm23', src: '/images/masonry/masonry-web-3.jpg', alt: 'Masonry construction', title: 'Construction', category: 'Masonry Services', categorySlug: 'masonry-services' },
-  { id: 'm24', src: '/images/masonry/masonry-web-4.jpg', alt: 'Masonry complete', title: 'Complete Project', category: 'Masonry Services', categorySlug: 'masonry-services' },
 
-  // High-Rise Renovation (15 images)
-  { id: 'h1', src: '/images/gallery/highrise-1.jpg', alt: 'High-rise building facade', title: 'Building Facade', category: 'High-Rise Renovation', categorySlug: 'high-rise-renovation' },
-  { id: 'h2', src: '/images/gallery/highrise-2.jpg', alt: 'High-rise window work', title: 'Window Work', category: 'High-Rise Renovation', categorySlug: 'high-rise-renovation' },
-  { id: 'h3', src: '/images/gallery/highrise-3.jpg', alt: 'High-rise cladding', title: 'Cladding Work', category: 'High-Rise Renovation', categorySlug: 'high-rise-renovation' },
-  { id: 'h4', src: '/images/gallery/highrise-4.jpg', alt: 'High-rise renovation', title: 'Renovation Work', category: 'High-Rise Renovation', categorySlug: 'high-rise-renovation' },
+  // High-Rise Renovation (6 images)
   { id: 'h5', src: '/images/wallpanel/wallpanel-1.jpg', alt: 'Wall panel installation', title: 'Panel Installation', category: 'High-Rise Renovation', categorySlug: 'high-rise-renovation' },
   { id: 'h6', src: '/images/wallpanel/wallpanel-2.jpg', alt: 'Building cladding', title: 'Building Cladding', category: 'High-Rise Renovation', categorySlug: 'high-rise-renovation' },
   { id: 'h7', src: '/images/wallpanel/wallpanel-3.jpg', alt: 'Exterior panels', title: 'Exterior Panels', category: 'High-Rise Renovation', categorySlug: 'high-rise-renovation' },
   { id: 'h8', src: '/images/wallpanel/wallpanel-4.jpg', alt: 'Panel system', title: 'Panel System', category: 'High-Rise Renovation', categorySlug: 'high-rise-renovation' },
   { id: 'h9', src: '/images/wallpanel/wallpanel-5.jpg', alt: 'Wall system', title: 'Wall System', category: 'High-Rise Renovation', categorySlug: 'high-rise-renovation' },
-  { id: 'h10', src: '/images/windows/windows-1.jpg', alt: 'Window replacement', title: 'Window Replacement', category: 'High-Rise Renovation', categorySlug: 'high-rise-renovation' },
-  { id: 'h11', src: '/images/windows/windows-2.jpg', alt: 'Window installation', title: 'Window Installation', category: 'High-Rise Renovation', categorySlug: 'high-rise-renovation' },
-  { id: 'h12', src: '/images/windows/windows-3.jpg', alt: 'Windows project', title: 'Windows Project', category: 'High-Rise Renovation', categorySlug: 'high-rise-renovation' },
   { id: 'h13', src: '/images/siding/siding-1.jpg', alt: 'Siding installation', title: 'Siding Work', category: 'High-Rise Renovation', categorySlug: 'high-rise-renovation' },
-  { id: 'h14', src: '/images/siding/siding-3.jpg', alt: 'Building siding', title: 'Building Siding', category: 'High-Rise Renovation', categorySlug: 'high-rise-renovation' },
-  { id: 'h15', src: '/images/siding/siding-4.jpg', alt: 'Exterior siding', title: 'Exterior Siding', category: 'High-Rise Renovation', categorySlug: 'high-rise-renovation' },
 
-  // Waterproofing (15 images)
-  { id: 'w1', src: '/images/coating/coating-2.jpg', alt: 'Waterproof coating', title: 'Waterproof Coating', category: 'Waterproofing', categorySlug: 'waterproofing' },
-  { id: 'w2', src: '/images/coating/coating-3.jpg', alt: 'Protective coating', title: 'Protective Coating', category: 'Waterproofing', categorySlug: 'waterproofing' },
-  { id: 'w3', src: '/images/coating/coating-4.jpg', alt: 'Coating application', title: 'Coating Application', category: 'Waterproofing', categorySlug: 'waterproofing' },
-  { id: 'w4', src: '/images/coating/coating-5.jpg', alt: 'Surface coating', title: 'Surface Coating', category: 'Waterproofing', categorySlug: 'waterproofing' },
-  { id: 'w5', src: '/images/coating/coating-6.jpg', alt: 'Coating work', title: 'Coating Work', category: 'Waterproofing', categorySlug: 'waterproofing' },
-  { id: 'w6', src: '/images/coating/coating-7.jpg', alt: 'Waterproofing work', title: 'Waterproofing Work', category: 'Waterproofing', categorySlug: 'waterproofing' },
-  { id: 'w7', src: '/images/coating/coating-8.jpg', alt: 'Membrane coating', title: 'Membrane Coating', category: 'Waterproofing', categorySlug: 'waterproofing' },
-  { id: 'w8', src: '/images/coating/coating-9.jpg', alt: 'Coating project', title: 'Coating Project', category: 'Waterproofing', categorySlug: 'waterproofing' },
+  // Waterproofing (4 images)
   { id: 'w9', src: '/images/parking/parking-waterproofing.jpg', alt: 'Parking waterproofing', title: 'Parking Waterproofing', category: 'Waterproofing', categorySlug: 'waterproofing' },
   { id: 'w10', src: '/images/parking/parking-waterproofing-membrane.jpg', alt: 'Membrane installation', title: 'Membrane Work', category: 'Waterproofing', categorySlug: 'waterproofing' },
   { id: 'w11', src: '/images/parking/parking-caulking-coating.jpg', alt: 'Caulking and coating', title: 'Caulking & Coating', category: 'Waterproofing', categorySlug: 'waterproofing' },
   { id: 'w12', src: '/images/caulking/caulking-coating.jpg', alt: 'Sealant application', title: 'Sealant Work', category: 'Waterproofing', categorySlug: 'waterproofing' },
-  { id: 'w13', src: '/images/caulking/caulking-web-1.jpg', alt: 'Caulking work', title: 'Caulking Work', category: 'Waterproofing', categorySlug: 'waterproofing' },
-  { id: 'w14', src: '/images/caulking/caulking-web-2.jpg', alt: 'Waterproof sealing', title: 'Waterproof Sealing', category: 'Waterproofing', categorySlug: 'waterproofing' },
-  { id: 'w15', src: '/images/caulking/caulking-web-3.jpg', alt: 'Joint sealing', title: 'Joint Sealing', category: 'Waterproofing', categorySlug: 'waterproofing' },
 
-  // Stucco Services (12 images)
-  { id: 's1', src: '/images/stucco/stucco-1.jpg', alt: 'Stucco repair', title: 'Stucco Repair', category: 'Stucco Services', categorySlug: 'stucco-services' },
-  { id: 's2', src: '/images/stucco/stucco-2.jpg', alt: 'Stucco application', title: 'Stucco Application', category: 'Stucco Services', categorySlug: 'stucco-services' },
+  // Stucco Services (8 images)
   { id: 's3', src: '/images/caulking/caulking-1.jpg', alt: 'Exterior caulking', title: 'Exterior Caulking', category: 'Stucco Services', categorySlug: 'stucco-services' },
   { id: 's4', src: '/images/caulking/caulking-2.jpg', alt: 'Building caulking', title: 'Building Caulking', category: 'Stucco Services', categorySlug: 'stucco-services' },
   { id: 's5', src: '/images/caulking/caulking-3.jpg', alt: 'Caulking project', title: 'Caulking Project', category: 'Stucco Services', categorySlug: 'stucco-services' },
-  { id: 's6', src: '/images/caulking/caulking-web-4.jpg', alt: 'Facade caulking', title: 'Facade Work', category: 'Stucco Services', categorySlug: 'stucco-services' },
-  { id: 's7', src: '/images/caulking/caulking-web-5.jpg', alt: 'Stucco finishing', title: 'Finishing Work', category: 'Stucco Services', categorySlug: 'stucco-services' },
   { id: 's8', src: '/images/tile/tile-1.jpg', alt: 'Tile work', title: 'Tile Work', category: 'Stucco Services', categorySlug: 'stucco-services' },
   { id: 's9', src: '/images/tile/tile-2.jpg', alt: 'Tile installation', title: 'Tile Installation', category: 'Stucco Services', categorySlug: 'stucco-services' },
   { id: 's10', src: '/images/tile/tile-3.jpg', alt: 'Tile project', title: 'Tile Project', category: 'Stucco Services', categorySlug: 'stucco-services' },
   { id: 's11', src: '/images/patching/patching-1.jpg', alt: 'Surface patching', title: 'Surface Patching', category: 'Stucco Services', categorySlug: 'stucco-services' },
   { id: 's12', src: '/images/patching/patching-2.jpg', alt: 'Patching work', title: 'Patching Work', category: 'Stucco Services', categorySlug: 'stucco-services' },
 
-  // Swing Stage Services (10 images)
+  // Swing Stage Services (3 images)
   { id: 'ss1', src: '/images/stage/stage-1.jpg', alt: 'Swing stage setup', title: 'Stage Setup', category: 'Swing Stage Services', categorySlug: 'swing-stage-services' },
   { id: 'ss2', src: '/images/stage/stage-assembly.jpg', alt: 'Stage assembly', title: 'Stage Assembly', category: 'Swing Stage Services', categorySlug: 'swing-stage-services' },
   { id: 'ss3', src: '/images/stage/stage-weight.jpg', alt: 'Stage equipment', title: 'Equipment Setup', category: 'Swing Stage Services', categorySlug: 'swing-stage-services' },
-  { id: 'ss4', src: '/images/roof/roof-1.jpg', alt: 'Roof work access', title: 'Roof Access', category: 'Swing Stage Services', categorySlug: 'swing-stage-services' },
-  { id: 'ss5', src: '/images/roof/roof-2.jpg', alt: 'High access work', title: 'High Access Work', category: 'Swing Stage Services', categorySlug: 'swing-stage-services' },
-  { id: 'ss6', src: '/images/roof/roof-3.jpg', alt: 'Rooftop operations', title: 'Rooftop Operations', category: 'Swing Stage Services', categorySlug: 'swing-stage-services' },
-  { id: 'ss7', src: '/images/roof/roof-4.jpg', alt: 'Elevated work', title: 'Elevated Work', category: 'Swing Stage Services', categorySlug: 'swing-stage-services' },
-  { id: 'ss8', src: '/images/roof/roof-5.jpg', alt: 'Access platform', title: 'Access Platform', category: 'Swing Stage Services', categorySlug: 'swing-stage-services' },
-  { id: 'ss9', src: '/images/roof/roof-6.jpg', alt: 'Work platform', title: 'Work Platform', category: 'Swing Stage Services', categorySlug: 'swing-stage-services' },
-  { id: 'ss10', src: '/images/siding/siding-5.jpg', alt: 'Building exterior access', title: 'Exterior Access', category: 'Swing Stage Services', categorySlug: 'swing-stage-services' },
 ];
 
 // Export shuffled gallery images

@@ -32,7 +32,7 @@ export default function AboutPage() {
       <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 bg-brand overflow-hidden">
         {/* Background Image */}
         <Image
-          src="/images/masonry/masonry-web-2.jpg"
+          src="/images/masonry/masonry-3.jpg"
           alt="Professional construction work"
           fill
           className="object-cover"

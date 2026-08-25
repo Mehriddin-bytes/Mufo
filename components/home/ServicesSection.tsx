@@ -19,10 +19,10 @@ const serviceImages: Record<string, string> = {
   'swing-stage-services': '/images/stage/stage-1.jpg',
   'balcony-restoration': '/images/balcony/balcony-1.jpg',
   'masonry-services': '/images/masonry/masonry-1.jpg',
-  'stucco-services': '/images/stucco/stucco-1.jpg',
-  'high-rise-renovation': '/images/coating/coating-2.jpg',
+  'stucco-services': '/images/gallery/stucco-3.jpg',
+  'high-rise-renovation': '/images/gallery/swingstage-1.jpg',
   'underground-parking': '/images/parking/parking-8.jpg',
-  'interior-exterior': '/images/coating/coating-6.jpg',
+  'interior-exterior': '/images/wallpanel/wallpanel-1.jpg',
   'waterproofing': '/images/parking/parking-waterproofing.jpg',
 };
 

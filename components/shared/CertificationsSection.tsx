@@ -85,12 +85,6 @@ const defaultCertifications: Certification[] = [
     logo: '/certifications/frpo.jpg',
     url: 'https://frpo.org'
   },
-  {
-    name: 'Canadian Federation of Apartment Associations',
-    abbr: 'CFAA',
-    logo: '/certifications/cfaa.png',
-    url: 'https://rentalhousingcanada.ca'
-  },
 ];
 
 export default function CertificationsSection({
