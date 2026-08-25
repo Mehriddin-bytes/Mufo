@@ -3,7 +3,6 @@ import { DM_Sans, Cormorant_Garamond, Merriweather } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/Navbar';
 import FooterWrapper from '@/components/FooterWrapper';
-import SocialBar from '@/components/SocialBar';
 import { siteConfig } from '@/lib/data/siteData';
 
 const dmSans = DM_Sans({
@@ -50,7 +49,6 @@ export default function RootLayout({
         <Navbar />
         <main>{children}</main>
         <FooterWrapper />
-        <SocialBar />
       </body>
     </html>
   );
