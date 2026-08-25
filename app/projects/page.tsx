@@ -20,7 +20,7 @@ export default function ProjectsPage() {
       <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 bg-brand overflow-hidden">
         {/* Background Image */}
         <Image
-          src="/images/parking/parking-1.jpg"
+          src="/images/parking/parking-structure.jpg"
           alt="Projects background"
           fill
           className="object-cover"

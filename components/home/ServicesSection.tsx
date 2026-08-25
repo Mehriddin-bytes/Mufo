@@ -15,7 +15,7 @@ const iconMap = {
 };
 
 const serviceImages: Record<string, string> = {
-  'parking-restoration': '/images/parking/parking-1.jpg',
+  'parking-restoration': '/images/parking/parking-web-1.jpg',
   'swing-stage-services': '/images/stage/stage-1.jpg',
   'balcony-restoration': '/images/balcony/balcony-1.jpg',
   'masonry-services': '/images/masonry/masonry-1.jpg',
@@ -23,7 +23,7 @@ const serviceImages: Record<string, string> = {
   'high-rise-renovation': '/images/gallery/swingstage-1.jpg',
   'underground-parking': '/images/parking/parking-8.jpg',
   'interior-exterior': '/images/wallpanel/wallpanel-1.jpg',
-  'waterproofing': '/images/parking/parking-waterproofing.jpg',
+  'waterproofing': '/images/projects/waterproofing-1-2.jpg',
 };
 
 export default function ServicesSection() {
@@ -104,7 +104,7 @@ export default function ServicesSection() {
                 >
                   {/* Background Image */}
                   <Image
-                    src={serviceImages[service.slug] || '/images/parking/parking-1.jpg'}
+                    src={serviceImages[service.slug] || '/images/parking/parking-web-1.jpg'}
                     alt={service.title}
                     fill
                     sizes="(max-width: 768px) 75vw, 280px"
@@ -155,7 +155,7 @@ export default function ServicesSection() {
               >
                 {/* Background Image */}
                 <Image
-                  src={serviceImages[service.slug] || '/images/parking/parking-1.jpg'}
+                  src={serviceImages[service.slug] || '/images/parking/parking-web-1.jpg'}
                   alt={service.title}
                   fill
                   sizes="(max-width: 768px) 50vw, (max-width: 1024px) 25vw, 280px"

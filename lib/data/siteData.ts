@@ -89,13 +89,9 @@ export const services: Service[] = [
     description: 'Comprehensive parking garage restoration including concrete repair, waterproofing, and protective coatings.',
     longDescription: 'Parking structures face unique challenges from vehicle traffic, salt exposure, and environmental factors. Our parking restoration services address structural deterioration, waterproofing failures, and surface degradation to extend the life of your investment. We utilize advanced repair techniques and high-performance materials to deliver lasting results that minimize future maintenance.',
     icon: 'Car',
-    image: '/images/services/parking.jpg',
+    image: '/images/services/parking/parking-2.jpg',
     gallery: [
-      { src: '/images/services/parking/parking-1.jpg', alt: 'Concrete repair in parking garage', caption: 'Concrete Restoration' },
       { src: '/images/services/parking/parking-2.jpg', alt: 'Waterproofing membrane installation', caption: 'Membrane Application' },
-      { src: '/images/services/parking/parking-3.jpg', alt: 'Expansion joint repair', caption: 'Joint Restoration' },
-      { src: '/images/services/parking/parking-4.jpg', alt: 'Traffic coating application', caption: 'Traffic Coatings' },
-      { src: '/images/services/parking/parking-5.jpg', alt: 'Structural repairs', caption: 'Structural Work' },
       { src: '/images/services/parking/parking-6.jpg', alt: 'Completed parking restoration', caption: 'Completed Project' },
     ],
     features: [
@@ -356,7 +352,6 @@ export const services: Service[] = [
     image: '/images/services/masonry.jpg',
     gallery: [
       { src: '/images/services/masonry/masonry-1.jpg', alt: 'Brick replacement work', caption: 'Brick Replacement' },
-      { src: '/images/services/masonry/masonry-2.jpg', alt: 'Tuckpointing in progress', caption: 'Tuckpointing' },
       { src: '/images/services/masonry/masonry-3.jpg', alt: 'Stone restoration', caption: 'Stone Work' },
       { src: '/images/services/masonry/masonry-4.jpg', alt: 'Lintel replacement', caption: 'Lintel Repairs' },
       { src: '/images/services/masonry/masonry-5.jpg', alt: 'Chimney repair', caption: 'Chimney Restoration' },
@@ -793,7 +788,7 @@ export const services: Service[] = [
     description: 'Comprehensive waterproofing services for roofs, walls, foundations, and plaza decks.',
     longDescription: 'Water infiltration is the leading cause of building deterioration and damage. Our waterproofing services address water control throughout the building envelope—from roofing systems to below-grade foundations. We utilize proven membrane systems, coatings, and sealants to provide lasting protection against water damage, protecting both building structure and interior finishes.',
     icon: 'Droplets',
-    image: '/images/services/waterproofing.jpg',
+    image: '/images/projects/waterproofing-1-2.jpg',
     gallery: [
       { src: '/images/services/waterproofing/wp-1.jpg', alt: 'Roof waterproofing', caption: 'Roof Systems' },
       { src: '/images/services/waterproofing/wp-2.jpg', alt: 'Foundation waterproofing', caption: 'Foundation Work' },
@@ -1042,9 +1037,9 @@ export const projects: Project[] = [
     description: 'Complete restoration of a 500-space parking structure including concrete repairs, waterproofing, and traffic coatings.',
     image: '/images/parking/parking-structure.jpg',
     gallery: [
-      { src: '/images/parking/parking-1.jpg', alt: 'Concrete repair work', caption: 'Structural Repairs' },
-      { src: '/images/parking/parking-3.jpg', alt: 'Waterproofing membrane', caption: 'Membrane Installation' },
-      { src: '/images/parking/parking-5.jpg', alt: 'Traffic coating', caption: 'Traffic Coating' },
+      { src: '/images/parking/parking-web-1.jpg', alt: 'Concrete repair work', caption: 'Structural Repairs' },
+      { src: '/images/parking/parking-web-2.jpg', alt: 'Waterproofing membrane', caption: 'Membrane Installation' },
+      { src: '/images/parking/parking-web-3.jpg', alt: 'Traffic coating', caption: 'Traffic Coating' },
     ],
     features: ['Concrete Restoration', 'Waterproofing', 'Traffic Coatings', 'Joint Replacement'],
     completionDate: '2024',
@@ -1078,7 +1073,7 @@ export const projects: Project[] = [
     description: 'Comprehensive masonry restoration of a heritage commercial building including brick replacement and tuckpointing.',
     image: '/images/projects/masonry-1.jpg',
     gallery: [
-      { src: '/images/masonry/masonry-2.jpg', alt: 'Brick replacement', caption: 'Brick Matching' },
+      { src: '/images/masonry/masonry-3.jpg', alt: 'Brick replacement', caption: 'Brick Matching' },
       { src: '/images/masonry/masonry-5.jpg', alt: 'Tuckpointing', caption: 'Mortar Restoration' },
       { src: '/images/masonry/masonry-8.jpg', alt: 'Completed facade', caption: 'Restored Facade' },
     ],
@@ -1112,11 +1107,11 @@ export const projects: Project[] = [
     categorySlug: 'waterproofing',
     location: 'Oakville, ON',
     description: 'Comprehensive waterproofing of underground parking with injection grouting and membrane installation.',
-    image: '/images/parking/parking-waterproofing.jpg',
+    image: '/images/projects/waterproofing-1-2.jpg',
     gallery: [
-      { src: '/images/parking/parking-waterproofing-membrane.jpg', alt: 'Injection grouting', caption: 'Crack Injection' },
-      { src: '/images/gallery/waterproofing-1.jpg', alt: 'Membrane work', caption: 'Membrane System' },
-      { src: '/images/gallery/waterproofing-2.jpg', alt: 'Drainage installation', caption: 'Drainage Work' },
+      { src: '/images/projects/waterproofing-2-1.jpg', alt: 'Injection grouting', caption: 'Crack Injection' },
+      { src: '/images/parking/parking-caulking-coating.jpg', alt: 'Membrane work', caption: 'Membrane System' },
+      { src: '/images/gallery/waterproofing-3.jpg', alt: 'Drainage installation', caption: 'Drainage Work' },
     ],
     features: ['Injection Grouting', 'Membrane Systems', 'Drainage Improvements', 'Concrete Repairs'],
     completionDate: '2024',
@@ -1151,7 +1146,7 @@ export const projects: Project[] = [
     image: '/images/wallpanel/wallpanel-1.jpg',
     gallery: [
       { src: '/images/wallpanel/wallpanel-3.jpg', alt: 'Lobby renovation', caption: 'Lobby Upgrade' },
-      { src: '/images/balcony/balcony-web-2.jpg', alt: 'Balcony work', caption: 'Balcony Restoration' },
+      { src: '/images/gallery/balcony-3.jpg', alt: 'Balcony work', caption: 'Balcony Restoration' },
       { src: '/images/gallery/swingstage-3.jpg', alt: 'Exterior', caption: 'Building Exterior' },
     ],
     features: ['Common Area Renovation', 'Balcony Restoration', 'Roofing Replacement', 'Facade Repairs'],
@@ -1210,17 +1205,10 @@ function shuffleArray<T>(array: T[]): T[] {
 }
 
 const galleryImagesUnshuffled: GalleryImage[] = [
-  // Parking Restoration (17 images)
-  { id: 'p1', src: '/images/parking/parking-1.jpg', alt: 'Parking garage restoration', title: 'Garage Restoration', category: 'Parking Restoration', categorySlug: 'parking-restoration' },
+  // Parking Restoration (10 images)
   { id: 'p2', src: '/images/parking/parking-2.jpg', alt: 'Concrete repair work', title: 'Concrete Repair', category: 'Parking Restoration', categorySlug: 'parking-restoration' },
-  { id: 'p3', src: '/images/parking/parking-3.jpg', alt: 'Parking structure maintenance', title: 'Structure Maintenance', category: 'Parking Restoration', categorySlug: 'parking-restoration' },
-  { id: 'p4', src: '/images/parking/parking-4.jpg', alt: 'Expansion joint work', title: 'Joint Replacement', category: 'Parking Restoration', categorySlug: 'parking-restoration' },
-  { id: 'p5', src: '/images/parking/parking-5.jpg', alt: 'Parking deck coating', title: 'Deck Coating', category: 'Parking Restoration', categorySlug: 'parking-restoration' },
   { id: 'p6', src: '/images/parking/parking-6.jpg', alt: 'Structural reinforcement', title: 'Reinforcement Work', category: 'Parking Restoration', categorySlug: 'parking-restoration' },
-  { id: 'p7', src: '/images/parking/parking-7.jpg', alt: 'Parking garage repair', title: 'Garage Repair', category: 'Parking Restoration', categorySlug: 'parking-restoration' },
   { id: 'p8', src: '/images/parking/parking-8.jpg', alt: 'Underground parking work', title: 'Underground Work', category: 'Parking Restoration', categorySlug: 'parking-restoration' },
-  { id: 'p9', src: '/images/parking/parking-9.jpg', alt: 'Parking concrete work', title: 'Concrete Work', category: 'Parking Restoration', categorySlug: 'parking-restoration' },
-  { id: 'p10', src: '/images/parking/parking-10.jpg', alt: 'Parking restoration project', title: 'Restoration Project', category: 'Parking Restoration', categorySlug: 'parking-restoration' },
   { id: 'p14', src: '/images/parking/parking-structure.jpg', alt: 'Parking structure', title: 'Structure Work', category: 'Parking Restoration', categorySlug: 'parking-restoration' },
   { id: 'p15', src: '/images/parking/parking-work.jpg', alt: 'Parking work in progress', title: 'Work In Progress', category: 'Parking Restoration', categorySlug: 'parking-restoration' },
   { id: 'p16', src: '/images/parking/parking-patching.jpg', alt: 'Concrete patching', title: 'Patching Work', category: 'Parking Restoration', categorySlug: 'parking-restoration' },
@@ -1229,18 +1217,15 @@ const galleryImagesUnshuffled: GalleryImage[] = [
   { id: 'p19', src: '/images/parking/parking-web-1.jpg', alt: 'Parking restoration', title: 'Restoration Work', category: 'Parking Restoration', categorySlug: 'parking-restoration' },
   { id: 'p20', src: '/images/parking/parking-web-2.jpg', alt: 'Parking repair', title: 'Repair Work', category: 'Parking Restoration', categorySlug: 'parking-restoration' },
 
-  // Balcony Restoration (7 images)
+  // Balcony Restoration (5 images)
   { id: 'b1', src: '/images/balcony/balcony-1.jpg', alt: 'Balcony structural repair', title: 'Structural Repair', category: 'Balcony Restoration', categorySlug: 'balcony-restoration' },
   { id: 'b2', src: '/images/balcony/balcony-2.jpg', alt: 'Balcony railing work', title: 'Railing Installation', category: 'Balcony Restoration', categorySlug: 'balcony-restoration' },
   { id: 'b3', src: '/images/balcony/balcony-3.jpg', alt: 'Balcony waterproofing', title: 'Waterproofing', category: 'Balcony Restoration', categorySlug: 'balcony-restoration' },
-  { id: 'b4', src: '/images/balcony/balcony-web-2.jpg', alt: 'Completed balcony', title: 'Completed Project', category: 'Balcony Restoration', categorySlug: 'balcony-restoration' },
-  { id: 'b5', src: '/images/balcony/balcony-web-3.jpg', alt: 'Balcony renovation', title: 'Renovation Work', category: 'Balcony Restoration', categorySlug: 'balcony-restoration' },
   { id: 'b9', src: '/images/gallery/balcony-1.jpg', alt: 'Balcony project', title: 'Balcony Project', category: 'Balcony Restoration', categorySlug: 'balcony-restoration' },
   { id: 'b10', src: '/images/gallery/balcony-2.jpg', alt: 'Balcony work', title: 'Balcony Work', category: 'Balcony Restoration', categorySlug: 'balcony-restoration' },
 
-  // Masonry Services (20 images)
+  // Masonry Services (19 images)
   { id: 'm1', src: '/images/masonry/masonry-1.jpg', alt: 'Brick replacement', title: 'Brick Replacement', category: 'Masonry Services', categorySlug: 'masonry-services' },
-  { id: 'm2', src: '/images/masonry/masonry-2.jpg', alt: 'Tuckpointing work', title: 'Tuckpointing', category: 'Masonry Services', categorySlug: 'masonry-services' },
   { id: 'm3', src: '/images/masonry/masonry-3.jpg', alt: 'Stone restoration', title: 'Stone Restoration', category: 'Masonry Services', categorySlug: 'masonry-services' },
   { id: 'm4', src: '/images/masonry/masonry-4.jpg', alt: 'Masonry repair', title: 'Masonry Repair', category: 'Masonry Services', categorySlug: 'masonry-services' },
   { id: 'm5', src: '/images/masonry/masonry-5.jpg', alt: 'Brick work', title: 'Brick Work', category: 'Masonry Services', categorySlug: 'masonry-services' },
@@ -1260,17 +1245,14 @@ const galleryImagesUnshuffled: GalleryImage[] = [
   { id: 'm19', src: '/images/masonry/masonry-19.jpg', alt: 'Stone detail', title: 'Stone Detail', category: 'Masonry Services', categorySlug: 'masonry-services' },
   { id: 'm20', src: '/images/masonry/masonry-20.jpg', alt: 'Completed masonry', title: 'Completed Work', category: 'Masonry Services', categorySlug: 'masonry-services' },
 
-  // High-Rise Renovation (6 images)
+  // High-Rise Renovation (5 images)
   { id: 'h5', src: '/images/wallpanel/wallpanel-1.jpg', alt: 'Wall panel installation', title: 'Panel Installation', category: 'High-Rise Renovation', categorySlug: 'high-rise-renovation' },
   { id: 'h6', src: '/images/wallpanel/wallpanel-2.jpg', alt: 'Building cladding', title: 'Building Cladding', category: 'High-Rise Renovation', categorySlug: 'high-rise-renovation' },
   { id: 'h7', src: '/images/wallpanel/wallpanel-3.jpg', alt: 'Exterior panels', title: 'Exterior Panels', category: 'High-Rise Renovation', categorySlug: 'high-rise-renovation' },
   { id: 'h8', src: '/images/wallpanel/wallpanel-4.jpg', alt: 'Panel system', title: 'Panel System', category: 'High-Rise Renovation', categorySlug: 'high-rise-renovation' },
   { id: 'h9', src: '/images/wallpanel/wallpanel-5.jpg', alt: 'Wall system', title: 'Wall System', category: 'High-Rise Renovation', categorySlug: 'high-rise-renovation' },
-  { id: 'h13', src: '/images/siding/siding-1.jpg', alt: 'Siding installation', title: 'Siding Work', category: 'High-Rise Renovation', categorySlug: 'high-rise-renovation' },
 
-  // Waterproofing (4 images)
-  { id: 'w9', src: '/images/parking/parking-waterproofing.jpg', alt: 'Parking waterproofing', title: 'Parking Waterproofing', category: 'Waterproofing', categorySlug: 'waterproofing' },
-  { id: 'w10', src: '/images/parking/parking-waterproofing-membrane.jpg', alt: 'Membrane installation', title: 'Membrane Work', category: 'Waterproofing', categorySlug: 'waterproofing' },
+  // Waterproofing (2 images)
   { id: 'w11', src: '/images/parking/parking-caulking-coating.jpg', alt: 'Caulking and coating', title: 'Caulking & Coating', category: 'Waterproofing', categorySlug: 'waterproofing' },
   { id: 'w12', src: '/images/caulking/caulking-coating.jpg', alt: 'Sealant application', title: 'Sealant Work', category: 'Waterproofing', categorySlug: 'waterproofing' },
 
