@@ -35,27 +35,22 @@ const serviceImageSets: Record<string, { hero: string; content: string[] }> = {
       '/images/parking/parking-web-3.jpg',
       '/images/parking/parking-2.jpg',
       '/images/parking/parking-8.jpg',
-      '/images/parking/parking-work.jpg',
     ],
   },
   'swing-stage-services': {
     hero: '/images/stage/stage-1.jpg',
     content: [
-      '/images/stage/stage-1.jpg',
       '/images/stage/stage-assembly.jpg',
       '/images/stage/stage-weight.jpg',
-      '/images/gallery/swingstage-1.jpg',
-      '/images/gallery/swingstage-2.jpg',
-      '/images/gallery/swingstage-3.jpg',
+      '/images/wallpanel/wallpanel-2.jpg',
     ],
   },
   'balcony-restoration': {
-    hero: '/images/gallery/balcony-2.jpg',
+    hero: '/images/balcony/balcony-1.jpg',
     content: [
-      '/images/balcony/balcony-1.jpg',
       '/images/balcony/balcony-2.jpg',
       '/images/balcony/balcony-3.jpg',
-      '/images/gallery/balcony-1.jpg',
+      '/images/patching/patching-2.jpg',
     ],
   },
   'masonry-services': {
@@ -69,24 +64,22 @@ const serviceImageSets: Record<string, { hero: string; content: string[] }> = {
     ],
   },
   'stucco-services': {
-    hero: '/images/gallery/stucco-3.jpg',
+    hero: '/images/caulking/caulking-3.jpg',
     content: [
-      '/images/gallery/stucco-4.jpg',
       '/images/patching/patching-1.jpg',
-      '/images/caulking/caulking-1.jpg',
-      '/images/caulking/caulking-3.jpg',
+      '/images/caulking/caulking-2.jpg',
+      '/images/gallery/stucco-4.jpg',
       '/images/tile/tile-1.jpg',
-      '/images/tile/tile-2.jpg',
+      '/images/patching/patching-2.jpg',
     ],
   },
   'high-rise-renovation': {
-    hero: '/images/gallery/swingstage-4.jpg',
+    hero: '/images/wallpanel/wallpanel-4.jpg',
     content: [
-      '/images/wallpanel/wallpanel-2.jpg',
-      '/images/wallpanel/wallpanel-4.jpg',
-      '/images/wallpanel/wallpanel-5.jpg',
       '/images/wallpanel/wallpanel-1.jpg',
+      '/images/wallpanel/wallpanel-5.jpg',
       '/images/wallpanel/wallpanel-3.jpg',
+      '/images/wallpanel/wallpanel-2.jpg',
     ],
   },
   'underground-parking': {
@@ -99,21 +92,22 @@ const serviceImageSets: Record<string, { hero: string; content: string[] }> = {
     ],
   },
   'interior-exterior': {
-    hero: '/images/wallpanel/wallpanel-2.jpg',
+    hero: '/images/wallpanel/wallpanel-3.jpg',
     content: [
-      '/images/wallpanel/wallpanel-1.jpg',
-      '/images/wallpanel/wallpanel-3.jpg',
-      '/images/siding/siding-2.png',
+      '/images/tile/tile-2.jpg',
       '/images/tile/tile-1.jpg',
       '/images/tile/tile-3.jpg',
+      '/images/siding/siding-2.png',
+      '/images/wallpanel/wallpanel-1.jpg',
     ],
   },
   'waterproofing': {
-    hero: '/images/projects/waterproofing-1-2.jpg',
+    hero: '/images/parking/parking-caulking-coating.jpg',
     content: [
       '/images/caulking/caulking-coating.jpg',
-      '/images/gallery/waterproofing-3.jpg',
       '/images/gallery/waterproofing-4.jpg',
+      '/images/parking/parking-web-3.jpg',
+      '/images/parking/parking-6.jpg',
     ],
   },
 };

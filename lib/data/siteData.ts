@@ -89,7 +89,7 @@ export const services: Service[] = [
     description: 'Comprehensive parking garage restoration including concrete repair, waterproofing, and protective coatings.',
     longDescription: 'Parking structures face unique challenges from vehicle traffic, salt exposure, and environmental factors. Our parking restoration services address structural deterioration, waterproofing failures, and surface degradation to extend the life of your investment. We utilize advanced repair techniques and high-performance materials to deliver lasting results that minimize future maintenance.',
     icon: 'Car',
-    image: '/images/services/parking/parking-2.jpg',
+    image: '/images/parking/parking-web-1.jpg',
     gallery: [
       { src: '/images/services/parking/parking-2.jpg', alt: 'Waterproofing membrane installation', caption: 'Membrane Application' },
       { src: '/images/services/parking/parking-6.jpg', alt: 'Completed parking restoration', caption: 'Completed Project' },
@@ -436,7 +436,7 @@ export const services: Service[] = [
     description: 'Complete stucco repair, restoration, and application services for residential and commercial buildings.',
     longDescription: 'Stucco provides both aesthetic appeal and weather protection, but requires proper installation and maintenance. Our stucco services address cracking, water damage, and deterioration while enhancing building appearance. Whether you need repairs to existing stucco or new application, our skilled technicians deliver durable, attractive results that stand up to the elements.',
     icon: 'PaintBucket',
-    image: '/images/gallery/stucco-3.jpg',
+    image: '/images/caulking/caulking-3.jpg',
     gallery: [
       { src: '/images/gallery/stucco-3.jpg', alt: 'Stucco crack repair', caption: 'Crack Repair' },
       { src: '/images/gallery/stucco-4.jpg', alt: 'Stucco application', caption: 'New Application' },
@@ -524,7 +524,7 @@ export const services: Service[] = [
     description: 'Comprehensive high-rise building envelope renovation including facade restoration, window replacement, and cladding systems.',
     longDescription: 'High-rise buildings present unique challenges requiring specialized expertise and equipment. Our high-rise renovation services address the complete building envelope—from roof to grade. We coordinate complex multi-trade projects to deliver comprehensive renovations that improve building performance, appearance, and resident satisfaction while maintaining occupied building operations.',
     icon: 'Building',
-    image: '/images/gallery/swingstage-1.jpg',
+    image: '/images/wallpanel/wallpanel-4.jpg',
     gallery: [
       { src: '/images/services/high-rise/high-rise-1.jpg', alt: 'High-rise facade work', caption: 'Facade Renovation' },
       { src: '/images/services/high-rise/high-rise-2.jpg', alt: 'Window replacement', caption: 'Window Replacement' },
@@ -700,7 +700,7 @@ export const services: Service[] = [
     description: 'Comprehensive interior and exterior finishing services including painting, coatings, and decorative finishes.',
     longDescription: 'The finishing touches make all the difference in building appearance and protection. Our interior and exterior finishing services cover everything from protective coatings to decorative finishes. We work with property managers and building owners to maintain and enhance building aesthetics while providing protective barriers against the elements and wear.',
     icon: 'Paintbrush',
-    image: '/images/wallpanel/wallpanel-1.jpg',
+    image: '/images/tile/tile-2.jpg',
     gallery: [
       { src: '/images/services/interior-exterior/ie-1.jpg', alt: 'Exterior painting', caption: 'Exterior Coating' },
       { src: '/images/services/interior-exterior/ie-2.jpg', alt: 'Interior painting', caption: 'Interior Finishing' },
@@ -788,7 +788,7 @@ export const services: Service[] = [
     description: 'Comprehensive waterproofing services for roofs, walls, foundations, and plaza decks.',
     longDescription: 'Water infiltration is the leading cause of building deterioration and damage. Our waterproofing services address water control throughout the building envelope—from roofing systems to below-grade foundations. We utilize proven membrane systems, coatings, and sealants to provide lasting protection against water damage, protecting both building structure and interior finishes.',
     icon: 'Droplets',
-    image: '/images/projects/waterproofing-1-2.jpg',
+    image: '/images/parking/parking-caulking-coating.jpg',
     gallery: [
       { src: '/images/services/waterproofing/wp-1.jpg', alt: 'Roof waterproofing', caption: 'Roof Systems' },
       { src: '/images/services/waterproofing/wp-2.jpg', alt: 'Foundation waterproofing', caption: 'Foundation Work' },
@@ -1055,7 +1055,7 @@ export const projects: Project[] = [
     description: 'Full balcony restoration for 200-unit condominium including structural repairs, waterproofing, and new railings.',
     image: '/images/projects/balcony-1.jpg',
     gallery: [
-      { src: '/images/balcony/balcony-1.jpg', alt: 'Concrete repair', caption: 'Structural Work' },
+      { src: '/images/patching/patching-2.jpg', alt: 'Concrete repair', caption: 'Structural Work' },
       { src: '/images/balcony/balcony-2.jpg', alt: 'Railing installation', caption: 'New Railings' },
       { src: '/images/balcony/balcony-3.jpg', alt: 'Waterproofing', caption: 'Membrane Application' },
     ],
@@ -1089,7 +1089,7 @@ export const projects: Project[] = [
     categorySlug: 'high-rise-renovation',
     location: 'Toronto, ON',
     description: 'Complete building envelope renovation for 30-storey residential tower including window replacement and cladding.',
-    image: '/images/gallery/swingstage-4.jpg',
+    image: '/images/wallpanel/wallpanel-5.jpg',
     gallery: [
       { src: '/images/wallpanel/wallpanel-2.jpg', alt: 'Cladding work', caption: 'Cladding System' },
       { src: '/images/wallpanel/wallpanel-4.jpg', alt: 'Panel installation', caption: 'Panel System' },
@@ -1111,7 +1111,7 @@ export const projects: Project[] = [
     gallery: [
       { src: '/images/projects/waterproofing-2-1.jpg', alt: 'Injection grouting', caption: 'Crack Injection' },
       { src: '/images/parking/parking-caulking-coating.jpg', alt: 'Membrane work', caption: 'Membrane System' },
-      { src: '/images/gallery/waterproofing-3.jpg', alt: 'Drainage installation', caption: 'Drainage Work' },
+      { src: '/images/parking/parking-web-3.jpg', alt: 'Drainage installation', caption: 'Drainage Work' },
     ],
     features: ['Injection Grouting', 'Membrane Systems', 'Drainage Improvements', 'Concrete Repairs'],
     completionDate: '2024',
@@ -1205,24 +1205,21 @@ function shuffleArray<T>(array: T[]): T[] {
 }
 
 const galleryImagesUnshuffled: GalleryImage[] = [
-  // Parking Restoration (10 images)
+  // Parking Restoration (9 images)
   { id: 'p2', src: '/images/parking/parking-2.jpg', alt: 'Concrete repair work', title: 'Concrete Repair', category: 'Parking Restoration', categorySlug: 'parking-restoration' },
   { id: 'p6', src: '/images/parking/parking-6.jpg', alt: 'Structural reinforcement', title: 'Reinforcement Work', category: 'Parking Restoration', categorySlug: 'parking-restoration' },
   { id: 'p8', src: '/images/parking/parking-8.jpg', alt: 'Underground parking work', title: 'Underground Work', category: 'Parking Restoration', categorySlug: 'parking-restoration' },
   { id: 'p14', src: '/images/parking/parking-structure.jpg', alt: 'Parking structure', title: 'Structure Work', category: 'Parking Restoration', categorySlug: 'parking-restoration' },
-  { id: 'p15', src: '/images/parking/parking-work.jpg', alt: 'Parking work in progress', title: 'Work In Progress', category: 'Parking Restoration', categorySlug: 'parking-restoration' },
   { id: 'p16', src: '/images/parking/parking-patching.jpg', alt: 'Concrete patching', title: 'Patching Work', category: 'Parking Restoration', categorySlug: 'parking-restoration' },
   { id: 'p17', src: '/images/parking/parking-rebar.jpg', alt: 'Rebar installation', title: 'Rebar Work', category: 'Parking Restoration', categorySlug: 'parking-restoration' },
   { id: 'p18', src: '/images/parking/rebar-structure.jpg', alt: 'Rebar structure', title: 'Structural Rebar', category: 'Parking Restoration', categorySlug: 'parking-restoration' },
   { id: 'p19', src: '/images/parking/parking-web-1.jpg', alt: 'Parking restoration', title: 'Restoration Work', category: 'Parking Restoration', categorySlug: 'parking-restoration' },
   { id: 'p20', src: '/images/parking/parking-web-2.jpg', alt: 'Parking repair', title: 'Repair Work', category: 'Parking Restoration', categorySlug: 'parking-restoration' },
 
-  // Balcony Restoration (5 images)
+  // Balcony Restoration (3 images)
   { id: 'b1', src: '/images/balcony/balcony-1.jpg', alt: 'Balcony structural repair', title: 'Structural Repair', category: 'Balcony Restoration', categorySlug: 'balcony-restoration' },
   { id: 'b2', src: '/images/balcony/balcony-2.jpg', alt: 'Balcony railing work', title: 'Railing Installation', category: 'Balcony Restoration', categorySlug: 'balcony-restoration' },
   { id: 'b3', src: '/images/balcony/balcony-3.jpg', alt: 'Balcony waterproofing', title: 'Waterproofing', category: 'Balcony Restoration', categorySlug: 'balcony-restoration' },
-  { id: 'b9', src: '/images/gallery/balcony-1.jpg', alt: 'Balcony project', title: 'Balcony Project', category: 'Balcony Restoration', categorySlug: 'balcony-restoration' },
-  { id: 'b10', src: '/images/gallery/balcony-2.jpg', alt: 'Balcony work', title: 'Balcony Work', category: 'Balcony Restoration', categorySlug: 'balcony-restoration' },
 
   // Masonry Services (19 images)
   { id: 'm1', src: '/images/masonry/masonry-1.jpg', alt: 'Brick replacement', title: 'Brick Replacement', category: 'Masonry Services', categorySlug: 'masonry-services' },
